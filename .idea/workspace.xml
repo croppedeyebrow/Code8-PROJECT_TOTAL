@@ -4,7 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a9bef0f-6acc-4be1-91c9-5115536ba85f" name="Changes" comment="공연 회원 조회 수정" />
+    <list default="true" id="2a9bef0f-6acc-4be1-91c9-5115536ba85f" name="Changes" comment="공연 회원 조회 수정">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/projectBackend/project/service/AuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/projectBackend/project/service/AuthService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/project-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/project-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/AuthService.class.uniqueId0" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/AuthService.class.uniqueId0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/build/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/build/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/js/main.40b947f0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/js/main.40b947f0.js.LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/js/main.40b947f0.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/node_modules/.cache/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,14 +71,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/dev/PROJECT_TOTAL"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/dev/PROJECT_TOTAL&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.projectBackend.project.controller" />

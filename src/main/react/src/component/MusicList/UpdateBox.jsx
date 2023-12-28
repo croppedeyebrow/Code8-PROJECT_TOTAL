@@ -40,9 +40,10 @@ import {
 } from "../../style/music/MusicUpdateStyle";
 
 const UploadButton = styled.button`
-  background-color: #4caf50;
+  background-color: #008bff;
   color: white;
-  padding: 10px 20px;
+
+  padding: 1rem 4rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -53,9 +54,9 @@ const UploadButton = styled.button`
 `;
 
 const FileUploadButton = styled.button`
-  background-color: #4caf50;
+  background-color: #008bff;
   color: white;
-  padding: 10px 20px;
+  padding: 1rem 4rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;

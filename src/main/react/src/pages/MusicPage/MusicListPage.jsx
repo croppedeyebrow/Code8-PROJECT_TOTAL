@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import SearchBox from "../../component/musicList/SearchBox";
@@ -17,14 +17,27 @@ const SingList = styled.div`
   align-items: center;
 `;
 
+const PostSlideContainer = styled.div`
+  width: 100%;
+  height: 30rem;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  background-color: white;
+  margin-top: 5rem;
+  overflow: hidden;
+`;
+
 const SingerPost = styled.div`
-  width: 140rem;
+  box-sizing: border-box;
+  width: 40rem;
   height: 30rem;
   justify-content: center;
   display: flex;
+  flex-direction: row;
+  animation: slide 5s linear infinite;
   position: relative;
   color: white;
-  margin-top: 5rem;
 
   @media (max-width: 1280px) {
     width: 100rem;
@@ -35,8 +48,10 @@ const SingerPost = styled.div`
   }
 `;
 
+const slide = keyframes`0% { transform: translateX(0); } 100% { transform: translateX(-100%); }`;
+
 const SingerPostImg = styled.img`
-  width: 40rem;
+  width: 140rem;
   height: 30rem;
   display: flex;
   position: relative;
@@ -837,8 +852,10 @@ const StyledLink = styled(Link)`
 const MusicList = () => {
   const { id } = useParams();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [musicinfolist, setMusicInfoList] = useState(null);
   const [promoImages, setPromoImages] = useState([]);
+  const slideshow = useRef(null);
+
+  const [musicinfolist, setMusicInfoList] = useState(null);
   const [selectedGenre, setSelectedGenre] = useState(null);
 
   //카테고리별 검색
@@ -901,18 +918,10 @@ const MusicList = () => {
         const promoImageUrls = response.data.map(
           (item) => item.musicDTO.thumbnailImage
         );
-        setPromoImages(promoImageUrls);
+        setPromoImages(promoImageUrls); //이미지 뽑기.
 
-        // 프로모션 이미지가 있을 경우 자동 슬라이드 적용
-        if (promoImageUrls.length > 0) {
-          const interval = setInterval(() => {
-            setCurrentIndex((prevIndex) =>
-              prevIndex === promoImageUrls.length - 1 ? 0 : prevIndex + 1
-            );
-          }, 5000); // 5초마다 슬라이드 변경
-
-          return () => clearInterval(interval);
-        }
+        const randomImages = getRandomImage(promoImageUrls);
+        setPromoImages(randomImages); //랜덤으로 이미지 뽑기.
       } catch (error) {
         console.log(error);
       }
@@ -920,6 +929,21 @@ const MusicList = () => {
 
     getAllMusic();
   }, []);
+
+  //랜덤으로 이미지 뽑기.
+  const getRandomImage = (images) => {
+    const shuffledImages = [...images].sort(() => 0.5 - Math.random());
+    return shuffledImages.slice(0, 11);
+  };
+
+  //슬라이드 이벤트
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % promoImages.length);
+    }, 2000);
+
+    return () => clearInterval(timer);
+  }, [promoImages.length]);
 
   //여기서부터 리스트 페이지네이션
   const [currentPage, setCurrentPage] = useState(1);
@@ -1011,45 +1035,28 @@ const MusicList = () => {
 
   return (
     <SingList>
-      <SingerPost>
+      <PostSlideContainer>
         <div
+          ref={slideshow}
           style={{
-            width: "100%",
-            overflow: "hidden",
-            position: "relative",
-            // direction: "rtl",
+            display: "flex",
+            // width: `${promoImages.length * 100}%`, // 전체 이미지 너비 설정
+            transform: `translateX(-${
+              currentIndex * (100 / promoImages.length)
+            }%)`, // 현재 이미지의 위치 계산
+            transition: "transform 10s ease-in-out", // 슬라이드 애니메이션 효과
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              transition: "transform 3s ease-in-out",
-              transform: `translateX(-${currentIndex * 100}%)`,
-            }}
-          >
-            {promoImages.map((promoImg, index) => (
-              <div
-                key={index}
-                style={{
-                  flex: "0 0 auto",
-                  maxWidth: "100%",
-                }}
-              >
-                <SingerPostImg
-                  alt={`Promo Image ${index + 1}`}
-                  src={promoImg}
-                  // style={{
-                  //   width: "40rem",
-                  //   height: "30rem",
-                  //   objectFit: "cover",
-                  //   margin: "0 1rem",
-                  // }}
-                />
-              </div>
-            ))}
-          </div>
+          {promoImages.map((image, index) => (
+            <SingerPost
+              key={index}
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              <SingerPostImg src={image} />
+            </SingerPost>
+          ))}
         </div>
-      </SingerPost>
+      </PostSlideContainer>
 
       <InfoContainer>
         <SearchBarBox>

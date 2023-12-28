@@ -33,6 +33,7 @@ const MusicAxiosApi = {
     inputfile
   ) => {
     console.log("음악 등록 AxiosApi 작동");
+    const currentdate = new Date();
     const musicDTO = {
       musicDTO: {
         composer: inputComposer,
@@ -42,8 +43,8 @@ const MusicAxiosApi = {
         musicInfo: inputSingInfo,
         musicTitle: inputSingName,
         promoImage: url,
-        purchaseCount: 100,
-        releaseDate: "2023-12-19",
+        purchaseCount: 0,
+        releaseDate: currentdate,
         thumbnailImage: url,
         musicFile: inputfile,
       },

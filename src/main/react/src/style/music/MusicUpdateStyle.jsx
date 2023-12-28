@@ -219,24 +219,8 @@ export const UpdateZone = styled.div`
   box-shadow: 0 1rem 3rem -0.5rem rgba(0, 0, 0, 0.25);
   height: 68rem;
   display: flex;
+  position: relative;
   flex-direction: column;
-
-  //     div {
-  //       margin-left: 3%;
-  //       width: 38rem;
-  //       /* background-color: pink; */
-  //       font-weight: 200;
-  //       font-size: 1.6rem;
-  //       display: flex;
-  //    justify-content: space-between;
-
-  //     }
-  //     div.discription {
-  //       Input {
-  //         height: 17rem;
-  //       }
-  //     }
-  //   }
 
   h1 {
     padding-left: 3%;
@@ -247,6 +231,21 @@ export const UpdateZone = styled.div`
     position: relative;
     /* background-color: blue; */
     color: var(--mainolive);
+
+    @media (max-width: 1280px) {
+      display: flex;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      bottom: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      display: flex;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   div.buttonContainer {
@@ -255,6 +254,23 @@ export const UpdateZone = styled.div`
     display: flex;
     justify-content: right;
     /* background-color: skyblue; */
+  }
+
+  @media (max-width: 1280px) {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 150rem;
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    height: 150rem;
   }
 `;
 
@@ -415,6 +431,10 @@ export const Musicimg01 = styled.div`
   display: flex;
   position: relative;
   flex-direction: row;
+
+  @media (max-width: 768px) {
+    width: 30rem;
+  }
 `;
 
 export const Musicfile = styled.div`
@@ -436,6 +456,10 @@ export const Musicfile01 = styled.div`
   display: flex;
   position: relative;
   flex-direction: row;
+
+  @media (max-width: 768px) {
+    width: 30rem;
+  }
 `;
 
 export const SingInfo = styled.div`
@@ -445,7 +469,7 @@ export const SingInfo = styled.div`
   display: flex;
   position: relative;
   flex-direction: row;
-  gap: 3.1rem;
+  gap: 3.5rem;
   padding-top: 1rem;
 `;
 
@@ -457,7 +481,7 @@ export const Lyrics = styled.div`
   display: flex;
   position: relative;
   flex-direction: row;
-  gap: 5rem;
+  gap: 4.8rem;
 `;
 
 export const TitleUploadButton = styled.button`
@@ -486,7 +510,24 @@ export const InputContainer = styled.div`
   position: relative;
   flex-direction: row;
   justify-content: center;
-  gap: 3rem;
+  gap: 8rem;
+
+  @media (max-width: 1280px) {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8rem;
+  }
 `;
 
 export const InputContainer01 = styled.div`
@@ -499,6 +540,14 @@ export const InputContainer01 = styled.div`
   position: relative;
   flex-direction: column;
   /* background-color: skyblue; */
+
+  // @media (max-width: 1280px) {
+  //   width: 100%;
+  // }
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 export const InputContainer02 = styled.div`
@@ -518,6 +567,21 @@ export const Terms = styled.div`
   flex-direction: column;
   width: 20rem;
   height: 20rem;
+
+  @media (max-width: 1280px) {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+  }
 `;
 
 export const TermsTitle = styled.div`
@@ -543,7 +607,7 @@ export const Term02 = styled.div`
 
 export const InputBox = styled.input`
   margin-bottom: 1rem;
-  width: 70%;
+  width: 30.1rem;
   height: 3.5rem;
   border: 0.03rem solid var(--mainolive);
 
@@ -551,10 +615,14 @@ export const InputBox = styled.input`
     color: var(--mainolive);
     padding-left: 1rem;
   }
+
+  @media (max-width: 768px) {
+    width: 30rem;
+  }
 `;
 
 export const TextArea = styled.textarea`
-  width: 30rem;
+  width: 30.3rem;
   display: flex;
   position: relative;
   flex-direction: column;
@@ -568,6 +636,10 @@ export const TextArea = styled.textarea`
 `;
 
 export const Button = styled.button`
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
   width: 10rem;
   height: 4.5rem;
   border-radius: 4rem;
@@ -577,6 +649,7 @@ export const Button = styled.button`
   border: 0.3rem solid var(--mainsky);
   background-color: white;
   margin-right: 5rem;
+
   &:hover {
     cursor: pointer;
     transform: scale(1.1); // 크기를 10% 증가
@@ -585,5 +658,22 @@ export const Button = styled.button`
   &:active {
     background-color: var(--mainsky);
     color: white;
+  }
+
+  @media (max-width: 1280px) {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
   }
 `;

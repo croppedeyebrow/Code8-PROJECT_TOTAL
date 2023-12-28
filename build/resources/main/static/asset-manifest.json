@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.48615ed5.css",
-    "main.js": "/static/js/main.70bf836b.js",
+    "main.js": "/static/js/main.d4e0a783.js",
     "static/js/787.dcaeec60.chunk.js": "/static/js/787.dcaeec60.chunk.js",
     "static/media/Login_Bg.png": "/static/media/Login_Bg.f960992f10eeae1c0533.png",
     "static/media/musicplay.gif": "/static/media/musicplay.51406f67f8c0e1995dc0.gif",
@@ -15,6 +15,7 @@
     "static/media/LogoSymbol_white.png": "/static/media/LogoSymbol_white.45c35555242e6f505a61.png",
     "static/media/Artist_2.png": "/static/media/Artist_2.5d204bf583d91543f3bb.png",
     "static/media/SubscriberBox.svg": "/static/media/SubscriberBox.88b0e6bc12befe82c3af8784554ef83f.svg",
+    "static/media/Hamburger_color.png": "/static/media/Hamburger_color.04df890ff19f202f1611.png",
     "static/media/HeartBox.svg": "/static/media/HeartBox.6a325452f1ae026ae734621c95128355.svg",
     "static/media/Symbol_color.png": "/static/media/Symbol_color.e5f00e64cbce954259e3.png",
     "static/media/Heart.png": "/static/media/Heart.1dbd92a064a46df5bd52.png",
@@ -36,11 +37,11 @@
     "static/media/Write.svg": "/static/media/Write.5455a2679a81f3c0d437f8c7dbb9e0ff.svg",
     "static/media/Down.svg": "/static/media/Down.06b6eb601e43f888ef10f384577148d2.svg",
     "main.48615ed5.css.map": "/static/css/main.48615ed5.css.map",
-    "main.70bf836b.js.map": "/static/js/main.70bf836b.js.map",
+    "main.d4e0a783.js.map": "/static/js/main.d4e0a783.js.map",
     "787.dcaeec60.chunk.js.map": "/static/js/787.dcaeec60.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.48615ed5.css",
-    "static/js/main.70bf836b.js"
+    "static/js/main.d4e0a783.js"
   ]
 }

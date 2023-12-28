@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import MainAxios from "../../axios/MainAxios";
 import ModalComponent from "../../utils/ModalComponent";
 import FooterContext from "../../context/FooterContext";
+import UseAuth from "../../hooks/UseAuth";
 
 const Performance = () => {
   const [inputValue, setInputValue] = useState(""); // 입력필드에 입력값을 저장
@@ -25,6 +26,7 @@ const Performance = () => {
 
   const { setFooterData } = useContext(FooterContext);
 
+  const email = UseAuth();
   useEffect(() => {
     setFooterData("Data from SomePage");
   }, []);
@@ -84,10 +86,14 @@ const Performance = () => {
   };
 
   const handleRegister = () => {
+    if (!email) {
+      alert("로그인이 필요합니다.");
+      navigate("/login");
+    } else {
     navigate("/PerformanceUpdate");
     console.log("공연 등록 버튼 클릭");
   };
-
+  }
   return (
     <>
       <GlobalStyle />

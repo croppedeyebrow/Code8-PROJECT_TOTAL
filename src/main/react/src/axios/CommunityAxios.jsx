@@ -201,5 +201,32 @@ const CommunityAxiosApi = {
       }
     );
   },
+    // 카테고리 쓰기
+    cateInsert: async (email, category) => {
+      const accessToken = Common.getAccessToken();
+      const cate = {
+        email: email,
+        categoryName: category,
+      };
+      return await axios.post(Common.DOMAIN + "/api/category/new", cate, {
+        headers: {
+          "Content-Type": "application/json",
+          // Authorization: "Bearer " + accessToken,
+        },
+      });
+    },
+    // 카테고리 삭제
+    cateDelete: async (categoryId) => {
+      const accessToken = Common.getAccessToken();
+      return await axios.delete(
+        Common.DOMAIN + `/api/category/delete/${categoryId}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            // Authorization: "Bearer " + accessToken,
+          },
+        }
+      );
+    },
 };
 export default CommunityAxiosApi;

@@ -126,7 +126,7 @@ const CommunitySearchComponent = () => {
                       <TableNormalRow
                         key={post.id}
                         onClick={() => {
-                          navigate(`/community/detail/${post.id}`);
+                          navigate(`/communitypage/detail/${post.id}`);
                         }}
                       >
                         <TableRowDataIcon>

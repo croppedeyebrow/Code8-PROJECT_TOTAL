@@ -76,9 +76,8 @@ export const Aside = styled.div`
   flex-shrink: 0;
   align-self: stretch;
   @media (max-width: 768px) {
-    flex: 1; // 화면 크기가 768px 이하일 때 유동적으로 확장
-    max-width: none; // max-width 해제
-    position: fixed; // 고정 위치 설정
+    flex: 1;
+    max-width: none;
     top: 0;
     left: 0;
     bottom: 0;

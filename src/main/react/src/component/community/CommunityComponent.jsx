@@ -126,7 +126,7 @@ const CommunityComponent = () => {
               placeholder="새 글을 작성하세요"
               type="text"
               onClick={() => {
-                navigate(`/community/write`);
+                navigate(`/communitypage/write`);
               }}
             ></PostBoarder>
             <SendButton>
@@ -163,7 +163,7 @@ const CommunityComponent = () => {
                     <TableNormalRow
                       key={post.id}
                       onClick={() => {
-                        navigate(`/community/detail/${post.id}`);
+                        navigate(`/communitypage/detail/${post.id}`);
                       }}
                     >
                       <TableRowDataIcon>

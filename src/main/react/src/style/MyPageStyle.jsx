@@ -21,8 +21,8 @@ export const MainHead = styled.div`
 `;
 export const MainProfile = styled.div`
   position: relative;
-  width: 20em;
-  height: 20em;
+  width: 27em;
+  height: 27em;
   flex-shrink: 0;
   border-radius: 20em;
   border: 50px solid #fff;
@@ -230,6 +230,7 @@ export const RegButton = styled.button`
 `;
 export const ItemList = styled.div`
   display: flex;
+  overflow: auto;
   width: 100%;
   height: 20em;
   flex-direction: row;
@@ -242,7 +243,8 @@ export const ItemSlider = styled.div`
 `;
 export const ItemSlider2 = styled.div`
   width: 100%;
-  height: 80vh;
+  height: 85vh;
+  padding: 1.5em;
 `;
 export const Picture = styled.div`
   width: 171px;
@@ -333,7 +335,7 @@ export const PerformanceBox = styled.div`
   padding-top: 20px;
   padding-bottom: 20px;
   width: 406px;
-  height: 678px;
+  height: 700px;
   flex-shrink: 0;
   border-radius: 30px;
   opacity: 1;
@@ -408,13 +410,11 @@ export const PerformanceText4 = styled.p`
   line-height: normal;
   margin: 0;
   padding: 0;
-  padding-bottom: 20px;
+  margin-bottom: 10px;
 `;
 export const ButtonBox = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 0;
-  padding: 0;
 `;
 export const PerformanceButton = styled.button`
   width: 96.759px;
@@ -552,6 +552,7 @@ export const CardContainer = styled.div`
   border: 1px solid #e5e5e5;
   border-radius: 10px;
   padding: 20px;
+  margin: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 `;
 
@@ -576,10 +577,9 @@ export const CardButton = styled.button`
 export const ChatingContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 1820px;
-  height: 478px;
-  justify-content: space-between;
-  align-content: space-between;
+  width: 100%;
+  height: 100%;
+  justify-content: flex-start;
 `;
 // 채팅방 생성 모달
 export const Container = styled.div`

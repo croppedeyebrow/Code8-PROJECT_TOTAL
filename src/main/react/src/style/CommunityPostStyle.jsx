@@ -9,7 +9,6 @@ export const PostContainer = styled.div`
   flex: 1;
 `;
 export const PostSection = styled.div`
-  height: 1494.03px;
   align-self: stretch;
 `;
 export const Heading = styled.div`
@@ -403,32 +402,32 @@ export const SearchContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  margin: 10px;
+  margin-top: 3em;
 `;
 
-export const SearchInput = styled.input`
-  flex: 3;
-  width: 100%;
-  height: 100%;
-  padding: 10px;
-  margin-right: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-`;
+// export const SearchInput = styled.input`
+//   flex: 3;
+//   width: 100%;
+//   height: 100%;
+//   padding: 10px;
+//   margin-right: 10px;
+//   border: 1px solid #ccc;
+//   border-radius: 5px;
+//   font-size: 14px;
+// `;
 
-export const SearchButton = styled.button`
-  width: 150px;
-  height: 40px;
-  padding: 0;
-  margin: 0;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
-`;
+// export const SearchButton = styled.button`
+//   width: 150px;
+//   height: 40px;
+//   padding: 0;
+//   margin: 0;
+//   background-color: #007bff;
+//   color: #fff;
+//   border: none;
+//   border-radius: 5px;
+//   font-size: 14px;
+//   cursor: pointer;
+// `;
 
 export const Select = styled.select`
   flex: 1;
@@ -439,4 +438,57 @@ export const Select = styled.select`
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 14px;
+`;
+export const SearchBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  background-color: #fff;
+  border: 1px solid #51e3d4;
+  transition: 1s;
+
+  &:hover {
+    box-shadow: 0px 0px 1px 1px #2446da;
+    width: 800px;
+  }
+`;
+
+export const SearchButton = styled.a`
+  text-decoration: none;
+  float: right;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #51e3d4;
+
+  &:hover {
+    background-color: #fff;
+  }
+`;
+
+export const SearchInput = styled.input`
+  padding: 0;
+  width: 0;
+  opacity: 0;
+  visibility: hidden;
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  font-size: 1rem;
+  line-height: 30px;
+  transition: width 0.4s, opacity 0.4s, visibility 0.4s;
+
+  ${SearchBox}:hover & {
+    width: 700px;
+    padding: 0 6px;
+    opacity: 1;
+    visibility: visible;
+  }
 `;

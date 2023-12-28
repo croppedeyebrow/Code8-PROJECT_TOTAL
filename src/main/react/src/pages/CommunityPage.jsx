@@ -107,7 +107,7 @@ const CommunityPage = () => {
               </CommunityDashboard>
               <CommunityMenuList>
                 <CommunityMenuItem>
-                  <Link to="/community">
+                  <Link to="/communitypage">
                     <CommunityLink>
                       <CommunitySVG>
                         <Menu />
@@ -131,7 +131,7 @@ const CommunityPage = () => {
                     <CommunityItemList>
                       {categories.map((category) => (
                         <Link
-                          to={`/community/${category.categoryId}`}
+                          to={`/communitypage/${category.categoryId}`}
                           key={category.categoryId}
                         >
                           <CommunityLink key={category.categoryId}>

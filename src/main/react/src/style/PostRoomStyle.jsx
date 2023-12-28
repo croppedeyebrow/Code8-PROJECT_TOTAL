@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 
 export const PostContainer = styled.div`
-  /* display: flex; */
   width: 1000px;
   flex-direction: column;
   padding: 0px 21.6px 0px 36px;
@@ -132,6 +131,11 @@ export const CommentContent = styled.div`
   &:not(:first-child) {
     margin-left: 20px;
   }
+`;
+export const CommentNickname = styled.a`
+  color: #000000; /* 검은색 */
+  text-decoration: none; /* 밑줄 없애기 */
+  font-weight: bold; /* 진하게 */
 `;
 
 export const CommentHeader = styled.div`

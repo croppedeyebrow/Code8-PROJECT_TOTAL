@@ -75,7 +75,7 @@ const CommunityRankComponent = ({ categoryName }) => {
                       <PostRankList>
                         <PostRankListItem
                           onClick={() =>
-                            navigate(`/community/detail/${post.communityId}`)
+                            navigate(`/communitypage/detail/${post.communityId}`)
                           }
                         >
                           <PostRankLink>

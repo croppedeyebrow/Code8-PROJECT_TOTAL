@@ -49,8 +49,9 @@ public class WebSecurityConfig implements WebMvcConfigurer {
                 .antMatchers("/news/**").permitAll()
                 .antMatchers("/sms/**", "/api/community/**").permitAll()
                 .antMatchers("/performance/list", "/performance/list/page", "/performance/list/count",  "/ticketer/**").permitAll()
-                .antMatchers("/auth/**",   "/main/**").permitAll()
-                .antMatchers(HttpMethod.OPTIONS, "/**", "/", "/static/**").permitAll()
+                .antMatchers("/auth/**", "/main/**").permitAll()
+                .antMatchers( "/", "/static/**").permitAll()
+                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
                 .antMatchers("/v2/api-docs", "/swagger-resources/**", "/swagger-ui.html", "/webjars/**", "/swagger/**", "/sign-api/exception").permitAll()
                 .anyRequest().authenticated()

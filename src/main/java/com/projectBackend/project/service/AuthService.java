@@ -105,18 +105,18 @@ public class AuthService {
                     // 가장 최근의 리프레쉬 데이터
                     if (!tokens.isEmpty()) {
                         Token token = tokens.get(tokens.size() - 1);
-                            log.info("token : {}", token);
-                            // 불러온 리프레쉬 토큰
-                            String refreshToken = token.getRefreshToken();
-                            log.info("refreshToken : {}", refreshToken);
-                            if ( tokenProvider.validateRefreshToken(refreshToken)) {
-                                    return email;
+                        log.info("token : {}", token);
+                        // 불러온 리프레쉬 토큰
+                        String refreshToken = token.getRefreshToken();
+                        log.info("refreshToken : {}", refreshToken);
+                        if ( tokenProvider.validateRefreshToken(refreshToken)) {
+                            return email;
                         }
-                            else {
-                                return null;
-                            }
-                        } else {
+                        else {
                             return null;
+                        }
+                    } else {
+                        return null;
                     }
                 } else {
                     System.out.println("해당 회원 정보가 없습니다.");
@@ -137,9 +137,11 @@ public class AuthService {
     // 관리자 로그인
     public TokenDto admin (UserReqDto userReqDto) {
         String email = userReqDto.getUserEmail();
-        Optional<Member> userEntity = userRepository.findByUserEmail(email);
 
         if (email.equals("adminlogin123@admin.com")) {
+        Optional<Member> userEntity = userRepository.findByUserEmail(email);
+
+
             if (userEntity.isPresent()) {
                 // userEntity 객체의 정보를 데이터 베이스 객체로 생성
                 Member user = userEntity.get();
@@ -172,9 +174,9 @@ public class AuthService {
         if(member.isPresent()) {
             Member user = member.get();
             String role = String.valueOf(user.getAuthority());
-            log.info("Authority : {}", user.getAuthority());
+            log.warn("Authority : {}", user.getAuthority());
             if (role.equals("ROLE_ADMIN")) {
-                System.out.println("어드민 맞아용");
+                log.info("어드민 맞아용");
                 return true;
             }
             else return false;
@@ -186,6 +188,7 @@ public class AuthService {
     // 카카오 로그인 => 카카오 토큰이 존재하지만, 사용하지 않을 생각
     public TokenDto kakaoLogin(String email) {
         try {
+
             System.out.println("kakao login : " + email);
             // 카카오 로그인 => 카카오 이메일 + 랜덤 비밀번호 사용
             // 랜덤 비밀번호를 저장하기 위한 데이터 조회 및 저장
@@ -193,7 +196,7 @@ public class AuthService {
             if (member.isPresent()) {
                 Member user = member.get();
                 System.out.println("카카오 로그인 회원 : " + user);
-                
+
                 // 랜덤 비밀번호 생성 및 저장
                 String password = generateRandomPassword();
                 // 비밀번호 해싱
@@ -217,7 +220,7 @@ public class AuthService {
                     System.out.println("카카오 리프레쉬 토큰 : " + refreshToken);
                     token.setRefreshToken(refreshToken);
                     token.setMember(user);
-
+                    tokenRepository.deleteByMember_Id(user.getId());
                     tokenRepository.save(token);
                     return tokenDto;
                 }
@@ -360,6 +363,7 @@ public class AuthService {
     public List<Member> getUserList() {
         return userRepository.findAll();
     }
+
 
 
 }

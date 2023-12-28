@@ -96,7 +96,7 @@ const PerformanceList = ({ performanceList, onCardMouseOver }) => {
               image={performance.performanceImage}
               title={performance.performanceName}
               venue={performance.venue}
-              performer={performance.nicknames}
+              performer={[performance.nicknames]}
               date={performance.performanceDate}
               onMouseOver={onCardMouseOver}
             />

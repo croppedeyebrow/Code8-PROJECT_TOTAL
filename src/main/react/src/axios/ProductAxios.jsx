@@ -1,13 +1,13 @@
 import axios from "axios";
-import Common, { CHORD8_DOMAIN, Interceptor } from "../utils/Common";
+import Common, { Interceptor } from "../utils/Common";
 
-
+const BACK_DOMAIN = "";
 
 const AxiosApi = {
   // 회원 정보 조회
   getUserList: async () => {
     try {
-      return await axios.get(CHORD8_DOMAIN + "/auth/userList");
+      return await axios.get(BACK_DOMAIN + "/auth/userList");
     } catch (error) {
       console.error("Error in getUserList:", error);
       throw error; // Re-throw the error for further handling if necessary
@@ -17,7 +17,7 @@ const AxiosApi = {
   // 상품 조회
   productGet: async () => {
     try {
-      return await axios.get(CHORD8_DOMAIN + "/product/productlist");
+      return await axios.get(BACK_DOMAIN + "/product/productlist");
     } catch (error) {
       console.error("Error in productGet:", error);
       throw error;
@@ -27,7 +27,7 @@ const AxiosApi = {
   // ID를 기준으로 상품을 찾음
   findProductById: async (id) => {
     try {
-      const response = await axios.get(CHORD8_DOMAIN + `/product/${id}`);
+      const response = await axios.get(BACK_DOMAIN + `/product/${id}`);
       return response;
     } catch (error) {
       console.error("Error in findProductById:", error);
@@ -38,7 +38,7 @@ const AxiosApi = {
   // 뉴스 조회
   newsGet: async () => {
     try {
-      return await axios.get(CHORD8_DOMAIN + "/news/newslist");
+      return await axios.get(BACK_DOMAIN + "/news/newslist");
     } catch (error) {
       console.error("Error in newsGet:", error);
       throw error;
@@ -54,7 +54,7 @@ const AxiosApi = {
         productPrice: price,
       };
       return await Interceptor.post(
-        CHORD8_DOMAIN + "/product/purchase",
+        BACK_DOMAIN + "/product/purchase",
         productDto,
         {
           headers: {
@@ -75,7 +75,7 @@ export const getSearchedArtists = async (searchQuery) => {
   try {
     // console.log(searchQuery);s
     const response = await fetch(
-      `${CHORD8_DOMAIN}/product/search?keyword=${searchQuery}`
+      `${BACK_DOMAIN}/product/search?keyword=${searchQuery}`
     );
 
     if (!response.ok) {

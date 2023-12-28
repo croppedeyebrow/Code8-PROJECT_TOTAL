@@ -22,8 +22,8 @@ const Common = {
   },
 
   // 카카오 로그인
-
-
+  KH_DOMAIN: "",
+  DOMAIN: "",
   SOCKET_URL: "ws://localhost:8111/ws/comment",
   SOCKET_CHAT_URL: "ws://localhost:8111/ws/chat",
   API_KEY: "a42a4db55c114cff5770a883fc8607f9",

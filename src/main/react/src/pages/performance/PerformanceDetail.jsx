@@ -1,5 +1,5 @@
 import PerformanceAxios from "../../axios/PerformanceAxios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import KakaomapComponent from "../../component/performance/KakaomapComponent";
@@ -7,6 +7,10 @@ import MainAxios from "../../axios/MainAxios";
 import PerformerCardView from "../../component/performance/PerformerCardView";
 import basket from "../../images/Basket.png";
 import NoneBtnModalComponent from "../../utils/NoneBtnModalComponent";
+import Ticket from "../../component/performance/Ticket";
+import FooterContext from "../../context/FooterContext";
+import SignUpAxios from "../../axios/SignUpAxios";
+import UseAuth from "../../hooks/UseAuth";
 
 const Container = styled.div`
     margin: 8rem; 
@@ -17,7 +21,7 @@ const Container = styled.div`
 
 const Image = styled.img`
     width: 42rem;
-    height: 55rem;
+    height: 56rem;
     overflow: hidden;
     border-radius: 3rem;
     margin-right: 5rem;
@@ -72,7 +76,7 @@ const Information = styled.div`
             &:hover {
                 cursor: pointer;
                 background-color: black;
-                transform: scale(1.1);
+                transform: scale(1.05);
                 transition: transform 0.05s ease-in-out; // transform 속성에 대한 전환 효과 설정
             }
             &:active {
@@ -130,7 +134,7 @@ const Bottom = styled.div`
             // 마우스 호버링 효과
             cursor: pointer;
             background-color: var(--mainsky);
-            transform: scale(1.1);
+            transform: scale(1.05);
             transition: transform 0.05s ease-in-out; // transform 속성에 대한 전환 효과 설정
             }
             &:active {
@@ -153,13 +157,25 @@ const Bottom = styled.div`
 
 const PerformanceDetail = () => {
     const { id } = useParams();
-    const [performance, setPerformance] = useState(null); // performance 상태를 관리하는 useState 훅
-    const [memberInfo, setMemberInfo] = useState(null); // memberInfo 상태를 관리하는 useState 훅
+    const [ performance, setPerformance ] = useState(null); // performance 상태를 관리하는 useState 훅
+    const [ memberInfo, setMemberInfo ] = useState(null); // memberInfo 상태를 관리하는 useState 훅
 
-    const [showLoginModal, setShowLoginModal] = useState(false); // 로그인여부 확인 모달
-    const [showPaymentModal, setShowPaymentModal] = useState(false); // 결제 모달
+    const [ showLoginModal, setShowLoginModal ] = useState(false); // 로그인여부 확인 모달
+    const [ showPaymentModal, setShowPaymentModal ] = useState(false); // 결제 모달
     const [ isModalOpen, setIsModalOpen ] = useState(false); // 공연삭제알림 모달컴포넌트용
-    const [showDeleteConfirmModal, setShowDeleteConfirmModal] = useState(false); // 공연삭제 재확인 모달컴포넌트용
+    const [ showDeleteConfirmModal, setShowDeleteConfirmModal ] = useState(false); // 공연삭제 재확인 모달컴포넌트용
+
+    const { setFooterData } = useContext(FooterContext); // FooterContext에서 setFooterData를 가져옵니다.
+
+    
+
+    useEffect(() => {
+        setFooterData([<a href="https://www.flaticon.com/kr/free-icons/" title="연필 아이콘">연필 아이콘  제작자: Pixel perfect - Flaticon </a>
+        , <br/>, <a href="https://www.flaticon.com/kr/free-icons/" title="연필 아이콘">연필 zz아이콘  제작자: Pixel perfect - Flaticon</a>]);
+    }, []);
+
+     // 현재 시간과 공연 시간을 비교합니다.
+  const isEnded = new Date() > new Date(performance &&performance.performanceDate);
 
     useEffect(() => {
         console.log(id);
@@ -183,6 +199,8 @@ const PerformanceDetail = () => {
     /* performance.nicknames = [{}, {}, {}] 은 특정 공연의 공연자 닉네임 닉네임 key는 nicknames /
        userRes.data = [{}, {}, {}] 은 전체 유저의 정보 닉네임 key는 userNickname
     */
+
+
     useEffect(() => {
         const getMemberInfo = async () => {
           try {
@@ -194,7 +212,7 @@ const PerformanceDetail = () => {
             setMemberInfo(matchingUser);
             console.log("matchingUser", matchingUser);
           } catch (error) {
-            console.log(error);
+            console.log(error);                                                                                                                     
           }
         };
       
@@ -203,17 +221,15 @@ const PerformanceDetail = () => {
         }
       }, [performance]);
 
-      const email = localStorage.getItem('email');
-      const checkLocalStorage = () => { // 로컬스토리지상에서 이메일, accessToken, refreshToken이 있는지 확인
-        const accessToken = localStorage.getItem('accessToken');
-        const refreshToken = localStorage.getItem('refreshToken');
-
-        if (!email || !accessToken || !refreshToken) {
-            setShowLoginModal(true);
-        } else {
-            setShowPaymentModal(true);
-        }
-    };
+      // 로그인 확인, 및 이메일 추출
+      const email = UseAuth();
+      const checkLogin = () => { // 로컬스토리지상에서 이메일, accessToken, refreshToken이 있는지 확인
+        if (!email) { 
+            setShowLoginModal(true); // email 이 없으면 로그인 필요 모달 호출
+            } else {
+            setShowPaymentModal(true); // email 있으면 티켓구매모달 호출
+            }
+        };
     
     // 삭제하고 모달을 닫는 함수
     const deleteAndClose = async () => {
@@ -235,6 +251,8 @@ const PerformanceDetail = () => {
         window.location.href = "/performance";
     }
 
+
+
     return (
         <>
             <Container>
@@ -247,7 +265,7 @@ const PerformanceDetail = () => {
                         <div className="seat">좌석 수 : {performance && performance.seatCount}</div>
                         <div className="desc">{performance && performance.description}</div>
                         <div className="delete">
-                        {memberInfo && memberInfo.some(user => user.userEmail === email) && (
+                        {memberInfo && memberInfo.some(user => user.userEmail === email) && ( 
                             <button onClick={() => setShowDeleteConfirmModal(true)}>공연 삭제</button>
                         )}
                         </div>
@@ -268,11 +286,17 @@ const PerformanceDetail = () => {
                         ))}
                         </div>
                     <div className="ticket">
-                        <div className="ticketing">티켓 구매</div>
-                        <div className="price">{performance && performance.price} P</div>
-                        <div className="button" onClick={checkLocalStorage}>
-                            <div className="icon"></div>
-                        </div>
+                        {!isEnded ? (
+                            <>
+                            <div className="ticketing">티켓 구매</div>
+                            <div className="price">{performance.price} P</div>
+                            <div className="button" onClick={checkLogin}>
+                                <div className="icon"></div>
+                            </div>
+                            </>
+                        ) : (
+                            <div className="ticketing" style = {{fontSize: "2.2rem", fontWeight: "700"}}>판매가 종료된 공연입니다.</div>
+                        )}
                     </div>
                 </Bottom>
             </Container>
@@ -285,7 +309,15 @@ const PerformanceDetail = () => {
             <NoneBtnModalComponent
                 isOpen={showPaymentModal}
                 setIsOpen={setShowPaymentModal}
-                content="결제루삥뽕"
+                content={<Ticket
+                    title={performance && performance.performanceName}
+                    seatCount={performance && performance.seatCount}
+                    price={performance && performance.price}
+                    point={memberInfo && memberInfo.point}
+                    performanceId={performance && performance.performanceId}
+                    email={email}
+                    closePaymentModal={setShowPaymentModal}
+                    />}
                 close={{ text: "닫기"}}
                 />
             {/* // {showLoginModal && <NoneBtnModalComponent title="로그인이 필요합니다." onClose={() => setShowLoginModal(false)} />}

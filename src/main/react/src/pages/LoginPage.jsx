@@ -148,7 +148,7 @@ const LoginPage = () => {
         window.localStorage.setItem("admin", "admin");
         alert("관리자 로그인 성공");
         // 로그인 성공 시 메인 페이지로 이동
-        navigate("/admin");
+        navigate("/adminpage");
       } else {
         alert("입력 정보를 확인하시오.");
       }
@@ -162,11 +162,19 @@ const LoginPage = () => {
       <Container>
         <BACKGROUND>
           <LoginSginup>
-            <LOGO></LOGO>
+            <LOGO onDoubleClick={onClickAddminLogin}></LOGO>
 
             <div className="login">
               <div className="inline">
-                <LoginTitle>Login</LoginTitle>
+                <LoginTitle>
+                  Login{" "}
+                  <span
+                    onClick={onClickAddminLogin}
+                    style={{ cursor: "pointer" }}
+                  >
+                    /admin
+                  </span>
+                </LoginTitle>
                 <InputEmail
                   placeholder="EMAIL"
                   onFocus={onChangeEmail}
@@ -226,12 +234,14 @@ const LoginPage = () => {
             <div className="signup">
               <div className="inline">
                 <SignUpTitle>SignUp</SignUpTitle>
-                <P>아직 회원이 아니시라면?</P>
+                <p style={{ color: "white", fontSize: "1.5rem" }}>
+                  아직 회원이 아니시라면?
+                </p>
                 <P3 style={{ color: "#005AA5", marginTop: "30px" }}>
                   아직 회원이 아니시라면?
                 </P3>
                 <SignUpButton>
-                  <P2 style={{ marginTop: "40px" }}>회원 가입</P2>
+                  <P2>회원 가입</P2>
                   <div className="signup-img" onClick={onClickTosign}></div>
                 </SignUpButton>
               </div>
@@ -242,14 +252,7 @@ const LoginPage = () => {
                 left: "50%",
                 opacity: "0.5",
               }}
-            >
-              <button
-                onClick={onClickAddminLogin}
-                style={{ cursor: "pointer" }}
-              >
-                관리자
-              </button>
-            </div>
+            ></div>
           </LoginSginup>
         </BACKGROUND>
       </Container>

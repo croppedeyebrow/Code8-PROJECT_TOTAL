@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import styled from "styled-components";
-import FooterContext from "../../context/FooterContext";
+import styled, { keyframes } from "styled-components";
+import SearchBox from "../../component/musicList/SearchBox";
 import Searchicon from "../../images/SearchIcon.png";
 import Waveform from "../../component/musicList/MusicPlayer";
 import { Link } from "react-router-dom";
@@ -9,31 +9,71 @@ import MusicAxiosApi from "../../axios/MusicAxios";
 
 const SingList = styled.div`
   width: 100%;
-  height: 100rem;
+  height: 274rem;
   display: flex;
   position: relative;
   flex-direction: column;
   background-color: white;
+  align-items: center;
 `;
 
 const SingerPost = styled.div`
-  width: 100vw;
-  height: 50rem;
+  width: 140rem;
+  height: 30rem;
   justify-content: center;
   display: flex;
   position: relative;
-  box-shadow: 0 0.5rem rgba(0, 0, 0, 0.2);
   color: white;
+  margin-top: 5rem;
+
+  @media (max-width: 1280px) {
+    width: 100rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 30rem;
+  }
 `;
 
 const SingerPostImg = styled.img`
-  width: 100vw;
-  height: 100%;
+  width: 40rem;
+  height: 30rem;
   display: flex;
   position: relative;
+  border: 0.05rem solid #008bff;
   object-fit: cover;
   overflow: hidden;
-  // bottom: 20rem;
+  border-radius: 4rem;
+  box-shadow: 0 1rem 3rem -0.5rem rgba(0, 0, 0, 0.25);
+
+  @media (max-width: 1280px) {
+    width: 40rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 30rem;
+  }
+`;
+
+const InfoContainer = styled.div`
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  width: 120rem;
+  height: 280rem;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  border-radius: 5rem;
+  align-items: center;
+  box-shadow: 0 1rem 3rem -0.5rem rgba(0, 0, 0, 0.25);
+
+  @media (max-width: 1280px) {
+    width: 80rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 const SearchBarBox = styled.div`
@@ -42,50 +82,86 @@ const SearchBarBox = styled.div`
   margin-top: 5rem;
   margin-bottom: 5rem;
   background-color: white;
-  width: 100vw;
+  width: 110rem;
   height: 17rem;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 1280px) {
+    width: 80rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 const SearchBar = styled.div`
   width: 80rem;
   height: 8rem;
   border-radius: 1.5rem;
-  border: 1px solid #008bff;
+
   // margin-left: 15rem;
   position: relative;
   display: flex;
   background-color: #eeeeee;
   align-items: center;
-  justify-content: center;
-  box-shadow: 0px 4px 4px #00000040;
+  justify-contents: center;
+  box-shadow: 0px 0.8px 0.8px rgba(0, 0, 0, 0.1); /* 음영 효과를 주는 box-shadow 설정 */
+
+  @media (max-width: 1280px) {
+    width: 60rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 35rem;
+  }
 `;
 
 const SingLIstBottom = styled.div`
-  height: 150rem;
-  width: 100vw;
+  height: 180rem;
+  padding-top: 5rem;
+  width: 110rem;
   display: flex;
   position: relative;
-  justify-content: center;
+  background-color: white;
+  border-radius: 4rem;
+  // box-shadow: 0px 0.8px 0.8px #00ffa8;
   align-items: center;
   flex-direction: column;
+
+  @media (max-width: 1280px) {
+    width: 80rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 40rem;
+  }
 `;
 
 const ListNavbar = styled.div`
-  width: 80vw;
-  height: 6rem;
+  width: 100rem;
+  height: 8rem;
   display: flex;
   position: relative;
   flex-direction: row;
   align-items: center;
-  gap: 1.5rem;
-  background-color: black;
+  justify-content: center;
+  gap: 3rem;
+  background-color: #008bff;
   box-shadow: 5px;
-  border: 0.5rem solid #00ffa8;
+  margin-bottom: 2rem;
   // padding-left: 10rem;
   border-radius: 1rem;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* 음영 효과를 주는 box-shadow 설정 */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* 음영 효과를 주는 box-shadow 설정 */
+
+  @media (max-width: 1280px) {
+    width: 80rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 38rem;
+  }
 `;
 
 const MusicCategory01 = styled.div`
@@ -94,9 +170,11 @@ const MusicCategory01 = styled.div`
   display: flex;
   position: relative;
   flex-direction: row;
-  background-color: black;
-  color: #aa9797;
-  font-size: 1.8rem;
+  background-color: none;
+  color: #ffffff;
+  font-size: 2.6rem;
+  font-weight: 700;
+
   align-items: center;
   justify-content: center;
   overflow: hidden; /* 텍스트 밑으로 확장되지 않도록 오버플로우 제어 */
@@ -115,7 +193,7 @@ const MusicCategory01 = styled.div`
     width: 0%; /* 초기에는 화면의 절반만큼의 너비를 가짐 */
     height: 2px; /* 밑줄 높이 */
     bottom: 0;
-    background-color: #61e6ca; /* 밑줄 색상 */
+    background-color: #ffffff; /* 밑줄 색상 */
     transition: width 0.3s ease; /* 변화 시 애니메이션 */
   }
 
@@ -123,6 +201,16 @@ const MusicCategory01 = styled.div`
   &:hover:after {
     width: 100%; /* 호버 시 전체 너비로 확장 */
     transition: width 0.3s ease; /* 변화 시 애니메이션 */
+  }
+
+  @media (max-width: 1280px) {
+    font-size: 2.2rem;
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    font-weight: 700;
   }
 `;
 
@@ -132,9 +220,10 @@ const MusicCategory02 = styled.div`
   display: flex;
   position: relative;
   flex-direction: row;
-  background-color: black;
-  color: #aa9797;
-  font-size: 1.8rem;
+  background-color: none;
+  color: #ffffff;
+  font-size: 2.6rem;
+  font-weight: 700;
   align-items: center;
   justify-content: center;
   overflow: hidden; /* 텍스트 밑으로 확장되지 않도록 오버플로우 제어 */
@@ -153,7 +242,7 @@ const MusicCategory02 = styled.div`
     width: 0%; /* 초기에는 화면의 절반만큼의 너비를 가짐 */
     height: 2px; /* 밑줄 높이 */
     bottom: 0;
-    background-color: #61e6ca; /* 밑줄 색상 */
+    background-color: #ffffff; /* 밑줄 색상 */
     transition: width 0.3s ease; /* 변화 시 애니메이션 */
   }
 
@@ -161,6 +250,16 @@ const MusicCategory02 = styled.div`
   &:hover:after {
     width: 100%; /* 호버 시 전체 너비로 확장 */
     transition: width 0.3s ease; /* 변화 시 애니메이션 */
+  }
+
+  @media (max-width: 1280px) {
+    font-size: 2.2rem;
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    font-weight: 700;
   }
 `;
 
@@ -170,9 +269,10 @@ const MusicCategory03 = styled.div`
   display: flex;
   position: relative;
   flex-direction: row;
-  background-color: black;
-  color: #aa9797;
-  font-size: 1.8rem;
+  background-color: none;
+  color: #ffffff;
+  font-size: 2.6rem;
+  font-weight: 700;
   align-items: center;
   justify-content: center;
   overflow: hidden; /* 텍스트 밑으로 확장되지 않도록 오버플로우 제어 */
@@ -191,7 +291,7 @@ const MusicCategory03 = styled.div`
     width: 0%; /* 초기에는 화면의 절반만큼의 너비를 가짐 */
     height: 2px; /* 밑줄 높이 */
     bottom: 0;
-    background-color: #61e6ca; /* 밑줄 색상 */
+    background-color: #ffffff; /* 밑줄 색상 */
     transition: width 0.3s ease; /* 변화 시 애니메이션 */
   }
 
@@ -199,18 +299,29 @@ const MusicCategory03 = styled.div`
   &:hover:after {
     width: 100%; /* 호버 시 전체 너비로 확장 */
     transition: width 0.3s ease; /* 변화 시 애니메이션 */
+  }
+
+  @media (max-width: 1280px) {
+    font-size: 2.2rem;
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    font-weight: 700;
   }
 `;
 
 const MusicCategory04 = styled.div`
-  width: 11rem;
+  width: 13rem;
   height: 5.5rem;
   display: flex;
   position: relative;
   flex-direction: row;
-  background-color: black;
-  color: #aa9797;
-  font-size: 1.8rem;
+  background-color: none;
+  color: #ffffff;
+  font-size: 2.6rem;
+  font-weight: 700;
   align-items: center;
   justify-content: center;
   overflow: hidden; /* 텍스트 밑으로 확장되지 않도록 오버플로우 제어 */
@@ -229,7 +340,7 @@ const MusicCategory04 = styled.div`
     width: 0%; /* 초기에는 화면의 절반만큼의 너비를 가짐 */
     height: 2px; /* 밑줄 높이 */
     bottom: 0;
-    background-color: #61e6ca; /* 밑줄 색상 */
+    background-color: #ffffff; /* 밑줄 색상 */
     transition: width 0.3s ease; /* 변화 시 애니메이션 */
   }
 
@@ -237,18 +348,29 @@ const MusicCategory04 = styled.div`
   &:hover:after {
     width: 100%; /* 호버 시 전체 너비로 확장 */
     transition: width 0.3s ease; /* 변화 시 애니메이션 */
+  }
+
+  @media (max-width: 1280px) {
+    font-size: 2.2rem;
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    font-weight: 700;
   }
 `;
 
 const MusicCategory05 = styled.div`
-  width: 11rem;
+  width: 15rem;
   height: 5.5rem;
   display: flex;
   position: relative;
   flex-direction: row;
-  background-color: black;
-  color: #aa9797;
-  font-size: 1.8rem;
+  background-color: none;
+  color: #ffffff;
+  font-size: 2.6rem;
+  font-weight: 700;
   align-items: center;
   justify-content: center;
   overflow: hidden; /* 텍스트 밑으로 확장되지 않도록 오버플로우 제어 */
@@ -267,7 +389,7 @@ const MusicCategory05 = styled.div`
     width: 0%; /* 초기에는 화면의 절반만큼의 너비를 가짐 */
     height: 2px; /* 밑줄 높이 */
     bottom: 0;
-    background-color: #61e6ca; /* 밑줄 색상 */
+    background-color: #ffffff; /* 밑줄 색상 */
     transition: width 0.3s ease; /* 변화 시 애니메이션 */
   }
 
@@ -276,39 +398,68 @@ const MusicCategory05 = styled.div`
     width: 100%; /* 호버 시 전체 너비로 확장 */
     transition: width 0.3s ease; /* 변화 시 애니메이션 */
   }
+
+  @media (max-width: 1280px) {
+    font-size: 2.2rem;
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
 `;
 
 const ListContainer = styled.div`
-  width: 80vw;
-  height: 107rem;
+  width: 110rem;
+  height: 130rem;
   display: flex;
   position: relative;
   flex-direction: column;
-  // border: 1px solid green;
-  background-color: #171717;
+  align-items: center;
+
+  @media (max-width: 1280px) {
+    width: 80rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 38rem;
+  }
 `;
 
 const ListBox = styled.div`
-  width: 80vw;
+  width: 100rem;
   height: 10rem;
-  margin-bottom: 1rem;
-  // padding-left: 3rem;
-  background-color: #171717;
-  border: 0.2px solid white;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  background: #ffffff;
+
+  box-shadow: 0 1rem 3rem -0.5rem rgba(0, 0, 0, 0.25);
   display: flex;
   position: relative;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   border-radius: 1rem;
-  gap: 4rem;
+  gap: 2rem;
+  padding-left: 2rem;
+
+  @media (max-width: 1280px) {
+    width: 80rem;
+    gap: 4rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 38rem;
+  }
 `;
 
 const MusicThumnail = styled.img`
-  width: 4rem;
-  height: 4rem;
+  width: 6rem;
+  height: 6rem;
   // border: 1px solid white;
-  border-radius: 8rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 0.5rem 0.8rem -0.5rem #008bff;
   display: flex;
   position: relative;
   justify-content: center;
@@ -320,6 +471,11 @@ const MusicThumnail = styled.img`
     box-shadow: 0px 4px 8px white;
     transform: scale(1.1);
   }
+
+  @media (max-width: 768px) {
+    width: 3rem;
+    height: 3rem;
+  }
 `;
 
 const MusicDet = styled.div`
@@ -329,23 +485,31 @@ const MusicDet = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
+
+  @media (max-width: 1280px) {
+    width: 13rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 10rem;
+  }
 `;
 
 const SongName = styled.div`
   width: 15rem;
   height: 4.2rem;
-  // border: 1px solid white;
   display: flex;
   position: relative;
   justify-content: center;
   align-items: center;
-  color: white;
-  font-size: 1.4rem;
+  color: #008bff;
+  font-size: 2rem;
+  font-weight: 700;
   overflow: hidden; /* 텍스트 밑으로 확장되지 않도록 오버플로우 제어 */
 
   /* 호버 효과 스타일 */
   &:hover {
-    color: white; /* 호버 시 텍스트 색상 변경 */
+    color: black; /* 호버 시 텍스트 색상 변경 */
     cursor: pointer; /* 호버 시 마우스 커서 변경 */
     text-decoration: none; /* 밑줄 제거 */
   }
@@ -355,9 +519,9 @@ const SongName = styled.div`
     content: "";
     position: absolute;
     width: 0%; /* 초기에는 화면의 절반만큼의 너비를 가짐 */
-    height: 10px; /* 밑줄 높이 */
+    height: 0.8rem; /* 밑줄 높이 */
     bottom: 0;
-    background-color: #61e6ca; /* 밑줄 색상 */
+    background-color: #008bff; /* 밑줄 색상 */
     transition: width 0.3s ease; /* 변화 시 애니메이션 */
   }
 
@@ -365,6 +529,18 @@ const SongName = styled.div`
   &:hover:after {
     width: 100%; /* 호버 시 전체 너비로 확장 */
     transition: width 0.3s ease; /* 변화 시 애니메이션 */
+  }
+
+  @media (max-width: 1280px) {
+    width: 10rem;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    width: 7rem;
+    font-size: 1.4rem;
+    font-weight: 700;
   }
 `;
 
@@ -376,8 +552,17 @@ const SingerName = styled.div`
   position: relative;
   justify-content: center;
   align-items: center;
-  color: #aaaaaa;
-  font-size: 1.2rem;
+  color: black;
+  font-size: 1.4rem;
+  font-weight: 400;
+
+  @media (max-width: 1280px) {
+    width: 10rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 7rem;
+  }
 `;
 
 const MusicPlaySet = styled.div`
@@ -385,46 +570,79 @@ const MusicPlaySet = styled.div`
   height: 6rem;
   display: flex;
   position: relative;
-  // border: 1px solid white;
+  border-shadow: 0 0.5rem 0.8rem -0.5rem #ffffff;
+  justify-content: center;
   color: white;
+
+  @media (max-width: 1280px) {
+    width: 30rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 15rem;
+  }
 `;
 
 const MusicTag = styled.div`
-  width: 17rem;
+  width: 14rem;
   height: 4rem;
-  // border: 1px solid white;
-  color: white;
+
+  color: #008bff;
   display: flex;
   position: relative;
   justify-content: center;
   align-items: center;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 1.3rem;
+
+  @media (max-width: 1280px) {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const PublishDay = styled.div`
-  width: 5rem;
+  width: 7rem;
   height: 4rem;
-  border: 1px solid black;
-  color: #00ffa8;
+
+  color: black;
   display: flex;
   position: relative;
   justify-content: center;
   align-items: center;
   font-weight: 400;
   font-size: 1.3rem;
+
+  @media (max-width: 1280px) {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const PaginationContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 8rem;
+
+  @media (max-width: 1280px) {
+    width: 40rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 38rem;
+  }
 `;
 
 const PaginationButton = styled.button`
   margin: 0 5px;
   padding: 5px 10px;
-  background-color: ${(props) => (props.clicked ? "#00ffa8" : "black")};
+  background-color: ${(props) => (props.clicked ? " #008bff" : "black")};
   color: ${(props) => (props.clicked ? "black" : "white")};
   color: white;
   cursor: pointer;
@@ -448,7 +666,7 @@ const InputBox = styled.div`
 
 const SearchInput = styled.input`
   background-color: #ffffff;
-  border: 1px solid #008bff;
+  border: none;
   border-radius: 3rem;
   box-shadow: inset 0px 4px 4px #00000040;
   height: 5rem;
@@ -469,6 +687,16 @@ const SearchInput = styled.input`
     &:focus {
       outline: none;
     }
+  }
+
+  @media (max-width: 1280px) {
+    width: 56rem;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 30rem;
+    font-size: 1rem;
   }
 `;
 
@@ -495,6 +723,20 @@ const SearchButton = styled.button`
   &:active {
     transform: scale(0.9); /* 클릭 시 크기를 0.9배로 축소 */
   }
+
+  @media (max-width: 1280px) {
+    width: 3rem;
+    height: 3rem;
+    right: 3rem;
+    top: 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 2rem;
+    height: 2rem;
+    top: 3rem;
+    right: 0.5rem;
+  }
 `;
 
 const SearchIcon = styled.img`
@@ -503,6 +745,93 @@ const SearchIcon = styled.img`
   position: relative;
   display: flex;
   // left: 0.4rem;
+
+  @media (max-width: 1280px) {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 1rem;
+    height: 1rem;
+    right: 0.1rem;
+  }
+`;
+
+const Registzone = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  justify-content: center;
+  align-items: center;
+  width: 100rem;
+
+  height: 10rem;
+
+  @media (max-width: 1280px) {
+    width: 80rem;
+    height: 10rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 40rem;
+    height: 10rem;
+  }
+`;
+
+const RegistInfo = styled.div`
+  position: relative;
+  display: flex;
+  height: 4rem;
+  font-size: 3rem;
+  font-weight: 700;
+
+  @media (max-width: 1280px) {
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+`;
+
+const RegistButton = styled.button`
+  position: relative;
+  display: flex;
+  width: 10rem;
+  height: 4rem;
+  background: #008bff;
+  border: none;
+  // padding: 10px 20px;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  border-radius: 4px;
+  color: #ffffff;
+  box-shadow: 1px 1px 5px #000, -1px -1px 5px #117bff;, inset 1px 1px 5px #126bff;,
+    inset -1px -1px 5px #008bff;
+  transition: all 0.1s;
+overflow: hidden;
+
+  &:hover {
+    box-shadow: 1px 1px 15px #117bff, -1px -1px 15px #117bff, inset 1px 1px 5px #126bff,
+      inset -1px -1px 5px #008bff;
+    transform: scale(1.05);
+  }
+
+   &:active {
+    transform: scale(0.95);
+  }
+
+
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
 `;
 
 const MusicList = () => {
@@ -511,32 +840,6 @@ const MusicList = () => {
   const [musicinfolist, setMusicInfoList] = useState(null);
   const [promoImages, setPromoImages] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState(null);
-
-  //아이콘 저작권 링크.
-  const { setFooterData } = useContext(FooterContext);
-
-  useEffect(() => {
-    setFooterData(
-      <a
-        href="https://www.flaticon.com/free-animated-icons/pause"
-        title="pause animated icons"
-      >
-        Pause animated icons created by Freepik - Flaticon
-      </a>,
-      <a
-        href="https://www.flaticon.com/free-animated-icons/music"
-        title="music animated icons"
-      >
-        Music animated icons created by Freepik - Flaticon
-      </a>,
-      <a
-        href="https://www.flaticon.com/free-icons/magnifying-glass"
-        title="magnifying glass icons"
-      >
-        Magnifying glass icons created by Smashicons - Flaticon
-      </a>
-    );
-  }, []);
 
   //카테고리별 검색
   // 기존 음악 카테고리 클릭 이벤트 핸들러에서 선택된 장르를 설정하는 함수
@@ -659,12 +962,12 @@ const MusicList = () => {
       .slice(startIndex, endIndex)
       .map((item, index) => (
         <ListBox key={startIndex + index}>
-          <Link to={`/music-info/${item.musicDTO.id}`}>
+          <StyledLink to={`/music-info/${item.musicDTO.id}`}>
             <MusicThumnail
               alt="앨범썸네일"
               src={item.musicDTO.thumbnailImage}
             />
-          </Link>
+          </StyledLink>
           <MusicDet>
             <SongName>{item.musicDTO.musicTitle}</SongName>
             <SingerName>{`by : ${item.userResDto.userNickname}`}</SingerName>
@@ -690,7 +993,8 @@ const MusicList = () => {
 
   const renderPagination = () => {
     const pageNumbers = [];
-    for (let i = 1; i <= totalPages; i++) {
+    const displayPages = window.innerWidth <= 768 ? 5 : totalPages;
+    for (let i = 1; i <= displayPages; i++) {
       pageNumbers.push(
         <PaginationButton
           key={i}
@@ -709,12 +1013,17 @@ const MusicList = () => {
     <SingList>
       <SingerPost>
         <div
-          style={{ width: "100%", overflow: "hidden", position: "relative" }}
+          style={{
+            width: "100%",
+            overflow: "hidden",
+            position: "relative",
+            // direction: "rtl",
+          }}
         >
           <div
             style={{
               display: "flex",
-              transition: "transform 0.5s ease-in-out",
+              transition: "transform 3s ease-in-out",
               transform: `translateX(-${currentIndex * 100}%)`,
             }}
           >
@@ -729,11 +1038,12 @@ const MusicList = () => {
                 <SingerPostImg
                   alt={`Promo Image ${index + 1}`}
                   src={promoImg}
-                  style={{
-                    width: "100vw",
-                    height: "100vh",
-                    objectFit: "contain",
-                  }}
+                  // style={{
+                  //   width: "40rem",
+                  //   height: "30rem",
+                  //   objectFit: "cover",
+                  //   margin: "0 1rem",
+                  // }}
                 />
               </div>
             ))}
@@ -741,47 +1051,56 @@ const MusicList = () => {
         </div>
       </SingerPost>
 
-      <SearchBarBox>
-        <SearchBar>
-          {/* <SearchBox></SearchBox> */}
+      <InfoContainer>
+        <SearchBarBox>
+          <SearchBar>
+            {/* <SearchBox></SearchBox> */}
 
-          <InputBox>
-            <SearchInput
-              type="text"
-              placeholder="관심있는 인디가수의 이름이나 곡 이름을 검색하세요."
-              value={searchValue}
-              onChange={handleInputChange}
-            />
-            <SearchButton onClick={handleSearch}>
-              <SearchIcon alt="검색돋보기" src={Searchicon} />
-            </SearchButton>
-          </InputBox>
-        </SearchBar>
-      </SearchBarBox>
+            <InputBox>
+              <SearchInput
+                type="text"
+                placeholder="관심있는 인디가수의 이름이나 곡 이름을 검색하세요."
+                value={searchValue}
+                onChange={handleInputChange}
+              />
+              <SearchButton onClick={handleSearch}>
+                <SearchIcon alt="검색돋보기" src={Searchicon} />
+              </SearchButton>
+            </InputBox>
+          </SearchBar>
+        </SearchBarBox>
 
-      <SingLIstBottom>
-        <ListNavbar>
-          <MusicCategory01 onClick={() => handleGenreClick("발라드")}>
-            발라드
-          </MusicCategory01>
-          <MusicCategory02 onClick={() => handleGenreClick("락/메탈")}>
-            락/메탈
-          </MusicCategory02>
-          <MusicCategory03 onClick={() => handleGenreClick("힙합/랩")}>
-            힙합/랩
-          </MusicCategory03>
-          <MusicCategory04 onClick={() => handleGenreClick("R&B/soul")}>
-            R&B/soul
-          </MusicCategory04>
-          <MusicCategory05 onClick={() => handleGenreClick("포크/블루스")}>
-            포크/블루스
-          </MusicCategory05>
-        </ListNavbar>
+        <Registzone>
+          <RegistInfo>당신의 음악을 세상에 알려주세요.!</RegistInfo>
+          <StyledLink to={`/music-regist`}>
+            <RegistButton>등록하기</RegistButton>
+          </StyledLink>
+        </Registzone>
 
-        <ListContainer>{currentItems}</ListContainer>
+        <SingLIstBottom>
+          <ListNavbar>
+            <MusicCategory01 onClick={() => handleGenreClick("발라드")}>
+              발라드
+            </MusicCategory01>
+            <MusicCategory02 onClick={() => handleGenreClick("락/메탈")}>
+              락/메탈
+            </MusicCategory02>
+            <MusicCategory03 onClick={() => handleGenreClick("힙합/랩")}>
+              힙합/랩
+            </MusicCategory03>
+            <MusicCategory04 onClick={() => handleGenreClick("R&B/soul")}>
+              R&B/soul
+            </MusicCategory04>
+            <MusicCategory05 onClick={() => handleGenreClick("포크/블루스")}>
+              포크/블루스
+            </MusicCategory05>
+          </ListNavbar>
 
-        <PaginationContainer>{renderPagination()}</PaginationContainer>
-      </SingLIstBottom>
+          <ListContainer>{currentItems}</ListContainer>
+
+          <PaginationContainer>{renderPagination()}</PaginationContainer>
+        </SingLIstBottom>
+      </InfoContainer>
     </SingList>
   );
 };

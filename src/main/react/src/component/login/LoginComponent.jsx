@@ -36,6 +36,7 @@ export const LOGO = styled.div`
     background-repeat: no-repeat;
     background-image: url(${Logo_color});
     background-size: contain;
+    cursor: pointer;
   }
 `;
 
@@ -263,6 +264,7 @@ export const P2 = styled.p`
   @media (max-width: 768px) {
     font-size: 2rem;
     color: black;
+    margin-top: 40px;
   }
 `;
 

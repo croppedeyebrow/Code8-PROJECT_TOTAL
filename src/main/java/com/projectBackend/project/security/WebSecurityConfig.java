@@ -42,7 +42,6 @@ public class WebSecurityConfig implements WebMvcConfigurer {
                 .accessDeniedHandler(jwtAccessDeniedHandler)
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
                 .antMatchers("/music/musiclist", "/music/detail/{id}" , "/music/search").permitAll()
                 .antMatchers("/musiccomment/list/{musicId}").permitAll()
@@ -51,7 +50,9 @@ public class WebSecurityConfig implements WebMvcConfigurer {
                 .antMatchers("/sms/**", "/api/community/**").permitAll()
                 .antMatchers("/performance/list", "/performance/list/page", "/performance/list/count",  "/ticketer/**").permitAll()
                 .antMatchers("/auth/**",   "/main/**").permitAll()
-                .antMatchers("/v2/api-docs", "/swagger-resources/**", "/swagger-ui.html", "/webjars/**", "/swagger/**", "/sign-api/exception",  "/", "/static/**").permitAll()
+                .antMatchers(HttpMethod.OPTIONS, "/**", "/", "/static/**").permitAll()
+
+                .antMatchers("/v2/api-docs", "/swagger-resources/**", "/swagger-ui.html", "/webjars/**", "/swagger/**", "/sign-api/exception").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .apply(new JwtSecurityConfig(tokenProvider))
@@ -59,5 +60,13 @@ public class WebSecurityConfig implements WebMvcConfigurer {
                 .cors(); // .and().cors() 추가 된 부분
 
         return http.build();
+    }
+    @Override  // 메소드 오버라이딩, localhost:3000 번으로 들어오는 요청 허가
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("http://localhost:3000")
+                .allowedMethods("*")
+                .allowedHeaders("*")
+                .allowCredentials(false);
     }
 }

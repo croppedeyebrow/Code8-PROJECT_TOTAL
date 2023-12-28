@@ -104,3 +104,4 @@ task copyReactBuildFiles(type: Copy) { // 리액트 빌드 파일들을 복사�
 jar { // jar 파일에 리액트 빌드 파일들을 포함시킨다.
 	enabled = false // 기본 jar 파일 생성을 끈다.
 }
+

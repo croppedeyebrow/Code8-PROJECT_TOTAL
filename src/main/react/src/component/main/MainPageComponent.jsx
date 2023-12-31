@@ -7,7 +7,6 @@ export const MainContainer = styled.div`
   @media (max-width: 768px) {
     min-width: 380px;
     min-height: 4000px;
-    border: 3px solid red;
   }
 `;
 

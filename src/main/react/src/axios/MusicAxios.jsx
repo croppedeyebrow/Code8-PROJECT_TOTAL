@@ -153,7 +153,7 @@ const MusicAxiosApi = {
   getMusicPage: async (page, size) => {
     console.log("음악페이지수조회 AxiosApi 작동");
     return await axios.get(
-      CHORD8_DOMAIN + `/music/musiclist/count?page=${page}&size=${size}`
+      CHORD8_DOMAIN + `/music/list/count?page=${page}&size=${size}`
     );
   },
 
@@ -161,7 +161,7 @@ const MusicAxiosApi = {
   getMusicList: async (page, size) => {
     console.log("음악페이지네이션조회 AxiosApi 작동");
     return await axios.get(
-      CHORD8_DOMAIN + `/music/musiclist/page?page=${page}&size=${size}`
+      CHORD8_DOMAIN + `/music/list/page?page=${page}&size=${size}`
     );
   },
 };

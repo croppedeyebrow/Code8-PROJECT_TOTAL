@@ -15,6 +15,9 @@ import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
@@ -139,7 +142,7 @@ public class AuthService {
         String email = userReqDto.getUserEmail();
 
         if (email.equals("adminlogin123@admin.com")) {
-        Optional<Member> userEntity = userRepository.findByUserEmail(email);
+            Optional<Member> userEntity = userRepository.findByUserEmail(email);
 
 
             if (userEntity.isPresent()) {
@@ -314,6 +317,34 @@ public class AuthService {
         return tokenProvider.generateAccessToken(authentication);
     }
 
+    // 회원 정보 페이지 네이션
+    public List<UserResDto> getUser(int page,int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        List<Member> members = userRepository.findAll(pageable).getContent();
+        List<UserResDto> userResDtos = new ArrayList<>();
+        for (Member member : members) {
+            UserResDto userResDto = UserResDto.of(member);
+            userResDtos.add(userResDto);
+        }
+        return userResDtos;
+    }
+    public int getUsers(Pageable pageable) {
+        return userRepository.findAll(pageable).getTotalPages();
+    }
+
+    // 회원 삭제 : 로그인을 못하게 변경
+    public void deleteUser(Long id) {
+        log.info("id : {}",id);
+        Optional<Member> member = userRepository.findById(id);
+        if (member.isPresent()) {
+            Member user = member.get();
+            user.setAuthority(Authority.ROLE_NULL);
+            user.setUserPassword("qusakdsjlfhlkjdsf1231234309584)#*(");
+            userRepository.save(user);
+        }
+    }
+
+
 
     // 길종환
     public UserResDto getUserInfo(String token) {
@@ -359,6 +390,7 @@ public class AuthService {
             return false;
         }
     }
+
     // 장현준, 전체유저리스트
     public List<Member> getUserList() {
         return userRepository.findAll();

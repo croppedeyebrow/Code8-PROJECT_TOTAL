@@ -3,14 +3,51 @@ import { Container, SideMenu, InfoBox } from "../style/AdminStyle";
 import { useNavigate } from "react-router-dom";
 import SignUpAxios from "../axios/SignUpAxios";
 import UserList from "../component/admin/UserList";
+import MusicList from "../component/admin/MusicList";
 import PerformanceAxios from "../axios/PerformanceAxios";
+import AdminAxios from "../axios/AdminAxios";
+import Category from "../component/category/Category";
+import MainAxios from "../axios/MainAxios";
+import PerformanceList from "../component/admin/PerformanceList";
+import MusicAxios from "../axios/MusicAxios";
+import styled from "styled-components";
+
+const PaginationContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+`;
+
+const PageButton = styled.button`
+  border: 1px solid #ddd;
+  padding: 5px;
+  width: 28px;
+  margin: 0 5px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: darkgray;
+  }
+
+  &:focus {
+    outline: none;
+    background-color: royalblue;
+  }
+`;
 
 const AdminPage = () => {
   const useanvigate = useNavigate();
 
   // 회원 정보 및 통계
   const [selectedButton, setSelectedButton] = useState("User");
-  const [userList, setUserList] = useState([]);
+  const [selectGraph, setSelectGraph] = useState("");
+  const [pageList, setPageList] = useState([]);
+  const [userDataList, setUserDataList] = useState([]);
+  const [musicList, setMusicList] = useState([]);
+  const [performanceList, setPerformanceList] = useState([]);
   const [male, setMale] = useState([]);
   const [female, setFemale] = useState([]);
   const [userAgeList, setUserAgeList] = useState({
@@ -19,25 +56,37 @@ const AdminPage = () => {
     forties: [],
     others: [],
   });
+  // 페이지 네이션
+  const [currentPage, setCurrentPage] = useState(0); // 현재 페이지
+  const [totalPage, setTotalPage] = useState(0); // 총 페이지 수
+
+  // 타이틀 초기화
+  const reset = (text) => {
+    setSelectedButton(text);
+    setSelectGraph("");
+  };
+
   // 그래프 통계를 위한 클릭 함수
-  const onClick = () => {
-    setSelectedButton(selectedButton + "Graph1");
-    if (userList) {
-      setMale(userList.filter((user) => user.userGen === "male"));
-      setFemale(userList.filter((user) => user.userGen === "female"));
-      const twentiesList = userList.filter(
+  // 그래프 1함수
+  const onClick = (e) => {
+    const value = e.target.innerText;
+    setSelectGraph(value);
+    if (userDataList) {
+      setMale(userDataList.filter((user) => user.userGen === "male"));
+      setFemale(userDataList.filter((user) => user.userGen === "female"));
+      const twentiesList = userDataList.filter(
         (data) => data.userAge >= 20 && data.userAge <= 29
       );
 
-      const thirtiesList = userList.filter(
+      const thirtiesList = userDataList.filter(
         (data) => data.userAge >= 30 && data.userAge <= 39
       );
 
-      const fortiesList = userList.filter(
+      const fortiesList = userDataList.filter(
         (data) => data.userAge >= 40 && data.userAge <= 49
       );
 
-      const otherList = userList.filter(
+      const otherList = userDataList.filter(
         (data) => data.userAge <= 19 || data.userAge >= 50
       );
 
@@ -50,38 +99,102 @@ const AdminPage = () => {
     }
   };
 
-  // 유저 정보 호출 함수
+  // 통계 데이터 호출 함수
   const getData = async () => {
     try {
-      if (selectedButton === "User") {
-        const res = await PerformanceAxios.getUserList();
-        if (res.status === 200) {
-          console.log("회원 정보들 : ", res);
-          setUserList(res.data);
-        }
+      switch (selectedButton) {
+        case "User":
+          // 총페이지 설정
+          // // 현제 페이지 설정
+          const userdatares = await PerformanceAxios.getUserList();
+
+          if (userdatares.status === 200) {
+            setUserDataList(userdatares.data);
+
+            // console.log("회원 정보들 : ", userres);
+            // console.log("usercountres", usercountres);
+            const userres = await AdminAxios.getUserPage(currentPage, 1);
+            const usercountres = await AdminAxios.getUserPageCount(0, 1);
+            if (userres.status === 200) {
+              setPageList(userres.data);
+              setTotalPage(usercountres.data);
+            }
+          }
+          break;
+        case "Music":
+          const musicres = await MainAxios.heartSong();
+          if (musicres.status === 200) {
+            console.log("음악 정보들 : ", musicres);
+            setMusicList(musicres.data);
+            const musiccount = await MusicAxios.getMusicPage(0, 1);
+            const musicpagelist = await MusicAxios.getMusicList(currentPage, 1);
+            if (musiccount.status === 200) {
+              setPageList(musicpagelist.data);
+              console.log("음악 페이지 리스트", musicpagelist.data);
+              setTotalPage(musiccount.data);
+            }
+          }
+          break;
+        case "Performance":
+          const performanceres = await PerformanceAxios.getPerformanceList();
+          const count = await PerformanceAxios.getPerformancePage(0, 1);
+          const pageList = await PerformanceAxios.getPerformancePageList(
+            currentPage,
+            1
+          );
+          if (performanceres.status === 200) {
+            // console.log("공연 정보들 : ", performanceres);
+            setPerformanceList(performanceres.data);
+            console.log(pageList.data);
+            setTotalPage(count.data);
+            setPageList(pageList.data);
+          }
+          break;
+        default:
+          break;
       }
     } catch (e) {
       console.log(e);
     }
   };
 
+  // 페이지 클릭 이벤트
+  const handlePageChange = (number) => {
+    console.log(number);
+    setCurrentPage(number - 1);
+  };
+
+  const renderPagination = () => {
+    return (
+      <PaginationContainer>
+        {Array.from({ length: totalPage }, (_, i) => i + 1).map((page) => (
+          <PageButton key={page} onClick={() => handlePageChange(page)}>
+            {page}
+          </PageButton>
+        ))}
+      </PaginationContainer>
+    );
+  };
   // 관리자 체크
   useEffect(() => {
     const isAdmin = async () => {
-      const res = await SignUpAxios.checkAddmin();
-      console.log("어드민?", res);
-      if (res.data === true) {
-        alert("관리자님, 안녕하세요!");
-        // 관리자일 경우 함수 실행
-        getData();
-      } else {
-        window.localStorage.clear();
-        useanvigate("/");
+      try {
+        const res = await SignUpAxios.checkAddmin();
+        // console.log("어드민?", res);
+        if (res.data === true) {
+          getData();
+        } else {
+          window.localStorage.clear();
+          useanvigate("/");
+        }
+      } catch (e) {
+        console.log(e);
+        // useanvigate("/");
       }
     };
 
     isAdmin();
-  }, [useanvigate]);
+  }, [selectedButton, currentPage]);
 
   return (
     <>
@@ -92,7 +205,7 @@ const AdminPage = () => {
               backgroundColor:
                 selectedButton === "User" ? "var(--mainsky)" : "",
             }}
-            onClick={() => setSelectedButton("User")}
+            onClick={() => reset("User")}
           >
             User
           </button>
@@ -101,7 +214,7 @@ const AdminPage = () => {
               backgroundColor:
                 selectedButton === "Music" ? "var(--mainsky)" : "",
             }}
-            onClick={() => setSelectedButton("Music")}
+            onClick={() => reset("Music")}
           >
             Music
           </button>
@@ -110,7 +223,7 @@ const AdminPage = () => {
               backgroundColor:
                 selectedButton === "Performance" ? "var(--mainsky)" : "",
             }}
-            onClick={() => setSelectedButton("Performance")}
+            onClick={() => reset("Performance")}
           >
             Performance
           </button>
@@ -119,20 +232,15 @@ const AdminPage = () => {
               backgroundColor:
                 selectedButton === "Point" ? "var(--mainsky)" : "",
             }}
-            onClick={() => setSelectedButton("Point")}
-          ></button>
-          <button
-            style={{
-              backgroundColor:
-                selectedButton === "Store" ? "var(--mainsky)" : "",
-            }}
-            onClick={() => setSelectedButton("Store")}
-          ></button>
+            onClick={() => reset("Category")}
+          >
+            Category
+          </button>
         </SideMenu>
         <InfoBox>
           <div className="top">
             <div className="left">
-              <div className="title">{selectedButton}</div>
+              <div className="title">{selectedButton + selectGraph}</div>
               <div className="count">
                 {/* Total a {4230} {selectedButton} */}
               </div>
@@ -147,19 +255,32 @@ const AdminPage = () => {
               </div>
               <div className="buttonzone">
                 <button onClick={onClick}>Graph1</button>
-                <button>Graph2</button>
+                <button onClick={onClick}>Graph2</button>
               </div>
             </div>
           </div>
           <div className="info">
             <UserList
-              selectedButton={selectedButton}
+              selectedButton={selectedButton + selectGraph}
               male={male}
               female={female}
-              userList={userList}
+              userList={pageList}
+              userDataList={userDataList}
               userAgeList={userAgeList}
             ></UserList>
+            <MusicList
+              selectedButton={selectedButton + selectGraph}
+              pageList={pageList}
+              musicList={musicList}
+            ></MusicList>
+            {selectedButton === "Category" && <Category />}
+            <PerformanceList
+              selectedButton={selectedButton + selectGraph}
+              performanceList={performanceList}
+              pageList={pageList}
+            ></PerformanceList>
           </div>
+          {renderPagination()}
         </InfoBox>
       </Container>
     </>

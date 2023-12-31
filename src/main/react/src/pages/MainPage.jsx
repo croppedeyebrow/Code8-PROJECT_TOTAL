@@ -24,7 +24,7 @@ const MainPage = () => {
   // console.log("메인 페이지 useAuth :", useAuth);
   const usenavigate = useNavigate();
   const onClick = () => {
-    usenavigate("/shop");
+    usenavigate("/shopPage");
   };
 
   return (

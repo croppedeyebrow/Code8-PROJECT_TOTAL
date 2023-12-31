@@ -20,13 +20,9 @@ const UseAuth = () => {
           const email = res.data;
           setIsLoggedIn(email);
         } else {
-          // alert("로그인 상태가 아닙니다.");
-          // navigator("/login"); // 로그인 페이지
           setIsLoggedIn("");
         }
       } catch (e) {
-        // alert("서버의 연결 불안정 혹은 토큰이 만료 되었습니다.", e);
-        // navigator("/");
         setIsLoggedIn("");
       }
     };

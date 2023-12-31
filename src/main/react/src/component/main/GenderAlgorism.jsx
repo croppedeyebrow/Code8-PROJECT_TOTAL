@@ -137,7 +137,7 @@ const Gender = (useAuth) => {
         <>
           <Title>AI 추천!!</Title>
           <Slider {...settings}>
-            {list.map((data, index) => (
+            {list.slice(0, 10).map((data, index) => (
               <Contents key={index}>
                 <Content
                   onDoubleClick={() => onClick(data.musicDTO.id)}

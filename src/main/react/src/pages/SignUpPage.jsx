@@ -13,6 +13,8 @@ import {
   SignUpButton,
   Agree,
   CONTAINER,
+  P1,
+  Input1,
 } from "../component/signup/SignUpComponent";
 import SignUpAxios from "../axios/SignUpAxios";
 import { useNavigate } from "react-router-dom";
@@ -456,7 +458,7 @@ const SignupPage = () => {
                       ></Input>
 
                       <CheckButton onClick={openKakao}>
-                        <p style={{ lineHeight: "1.1" }}>주소찾기</p>
+                        <P1>주소찾기</P1>
                         <NoneBtnModalComponent
                           isOpen={kakaoModal}
                           setIsOpen={closeKakao}
@@ -542,14 +544,14 @@ const SignupPage = () => {
                     <div className="session-right">
                       <div className="session-right-top">나이</div>
                       <div className="session-right-bottom">
-                        <Input
+                        <Input1
                           width="80%"
                           marginTop="-5px"
                           height="100%"
                           onChange={onChangeAge}
                           onBlur={onChangeAge}
                           onFocus={onChangeAge}
-                        ></Input>
+                        ></Input1>
                       </div>
                     </div>
                   </div>
@@ -625,9 +627,7 @@ const SignupPage = () => {
               </div>
             </Main>
             <BOTTOM>
-              <SignUpButton width="15%" height="40%" onClick={onClickSignUp}>
-                가입
-              </SignUpButton>
+              <SignUpButton onClick={onClickSignUp}>가입</SignUpButton>
             </BOTTOM>
           </SIGNUP>
         </BACKGROUND>

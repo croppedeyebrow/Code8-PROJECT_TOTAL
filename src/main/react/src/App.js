@@ -17,46 +17,65 @@ import CommunityPage from "./pages/CommunityPage";
 import MyPage from "./pages/MyPage";
 import Test from "./pages/SimpleTest";
 import AdminPage from "./pages/AdminPage";
+import ShopPage from "./pages/Shop/ShopPage";
+import CartPage from "./pages/Product/CartPage";
+import OrderFormPage from "./pages/Product/OrderFormPage";
+import ProductPage from "./pages/Product/ProductPage";
 import FooterContext from "./context/FooterContext";
-
+import { CartProvider } from "./context/CartContext";
 
 function App() {
-  const [ footerData, setFooterData ] = useState([])
+  const [footerData, setFooterData] = useState([]);
 
   return (
     <>
       <GlobalStyle />
       <Router>
-        <FooterContext.Provider value={{  footerData, setFooterData }}>
-        <Header />
+        <CartProvider>
+          <FooterContext.Provider value={{ footerData, setFooterData }}>
+            <Header />
 
-        <Routes>
-          <Route path="/performance" element={<Performance />} />
-          <Route path="/PerformanceUpdate" element={<PerformanceUpdate />}/>
-          <Route
-            path="/PerformanceDetail/:id"
-            element={<PerformanceDetail/>}
-          />
-          <Route path="/" element={<MainPage></MainPage>} />
-          <Route path="/login" element={<LoginPage></LoginPage>} />
-          <Route path="/signup" element={<SignupPage></SignupPage>} />
-          <Route path="/kakao" element={<KakaoLogin></KakaoLogin>} />
-          <Route
-            path="/music-regist"
-            element={<MusicRegistPage></MusicRegistPage>}
-          />
-          <Route path="/music-list" element={<MusicList></MusicList>} />
-          <Route path="/music-info/:id" element={<MusicInfo></MusicInfo>} />
-          <Route
-            path="/comunitypage"
-            element={<CommunityPage></CommunityPage>}
-          />
-          <Route path="/mypage" element={<MyPage></MyPage>} />
-          <Route path="/adminpage" element={<AdminPage/>} />
-          <Route path="/test" element={<Test></Test>} />
-        </Routes>
-        <Footer />
-        </FooterContext.Provider>
+            <Routes>
+              <Route path="/performance" element={<Performance />} />
+              <Route
+                path="/PerformanceUpdate"
+                element={<PerformanceUpdate />}
+              />
+              <Route
+                path="/PerformanceDetail/:id"
+                element={<PerformanceDetail />}
+              />
+              <Route path="/" element={<MainPage></MainPage>} />
+              <Route path="/login" element={<LoginPage></LoginPage>} />
+              <Route path="/signup" element={<SignupPage></SignupPage>} />
+              <Route path="/kakao" element={<KakaoLogin></KakaoLogin>} />
+              <Route
+                path="/music-regist"
+                element={<MusicRegistPage></MusicRegistPage>}
+              />
+              <Route path="/music-list" element={<MusicList></MusicList>} />
+              <Route path="/music-info/:id" element={<MusicInfo></MusicInfo>} />
+              <Route
+                path="/communitypage"
+                element={<CommunityPage></CommunityPage>}
+              />
+              <Route path="/mypage" element={<MyPage></MyPage>} />
+              <Route path="/adminpage" element={<AdminPage />} />
+              <Route path="/test" element={<Test></Test>} />
+              <Route path="/shopPage" element={<ShopPage></ShopPage>} />
+              <Route path="/cart" element={<CartPage></CartPage>} />
+              <Route
+                path="/orderform"
+                element={<OrderFormPage></OrderFormPage>}
+              />
+              <Route
+                path="/productPage"
+                element={<ProductPage></ProductPage>}
+              />
+            </Routes>
+            <Footer />
+          </FooterContext.Provider>
+        </CartProvider>
       </Router>
     </>
   );

@@ -124,11 +124,11 @@ public class MusicController {
 
 
 
-    // 페이지네이션
+    // 페이지네이션 (수정 조영준)
     @GetMapping("/list/page")
-    public ResponseEntity<List<MusicDTO>> musicList(@RequestParam(defaultValue = "0") int page,
-                                                    @RequestParam(defaultValue = "11") int size) {
-        List<MusicDTO> list = musicService.getMusicList(page, size);
+    public ResponseEntity<List<MusicUserDto>> musicList(@RequestParam(defaultValue = "0") int page,
+                                                        @RequestParam(defaultValue = "11") int size) {
+        List<MusicUserDto> list = musicService.getMusicList(page, size);
         log.info("list : {}", list);
         return ResponseEntity.ok(list);
     }

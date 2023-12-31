@@ -204,15 +204,38 @@ public class MusicService {
 
 
     // 페이지네이션
-    public List<MusicDTO> getMusicList(int page, int size) {
+    public List<MusicUserDto> getMusicList(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
+        // 리스트 정보를 뽑아옴
         List<Music> musics = musicRepository.findAll(pageable).getContent();
-        List<MusicDTO> musicDTOS = new ArrayList<>();
+        // 닉네임 값을 뽑아 옴
+        List<String> nickNames = new ArrayList<>();
+
         for (Music music : musics) {
-            String nickname = music.getMember().getUserNickname();
-            musicDTOS.add(convertEntityToUserDto(music, nickname).getMusicDTO());
+            nickNames.add(music.getMember().getUserNickname());
         }
-        return musicDTOS;
+        System.out.println("user nickname list" + nickNames);
+        // music & user data 전달
+        List<MusicUserDto> musicUserDtos = new ArrayList<>();
+        for (int i = 0; i < musics.size(); i++) {
+            // i 번째 엔티티 객체
+            Music music = musics.get(i);
+            System.out.println(i + "music " + music);
+
+            // 닉네임 값
+            String nickname = nickNames.get(i);
+            System.out.println(i + "nickname1 : " + nickname);
+
+            // music Dto로 변환
+            MusicUserDto musicUserDto = convertEntityToUserDto(music, nickname);
+            System.out.println(i + "musicDto : " + musicUserDto);
+
+            // 최종 응답 dto list
+            musicUserDtos.add(musicUserDto);
+        }
+        System.out.println("final musicUserDtos : " + musicUserDtos);
+
+        return musicUserDtos;
     }
 
     // 페이지 수 조회
@@ -444,7 +467,7 @@ public class MusicService {
         }
         return musicUserDtoList;
     }
-    
+
     // 조영준
     // 날짜별 정렬
     public List<MusicUserDto> newSongList () {

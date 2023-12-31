@@ -14,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class UserResDto {
+    private Long id;
     private String userEmail;
     private String userPasswword;
     private String userNickname;
@@ -41,6 +42,7 @@ public class UserResDto {
     public static UserResDto of(Member member) {
         // 응답에는 비밀번호가 필요없기에 일다 제외
         return UserResDto.builder()
+                .id(member.getId())
                 .userEmail(member.getUserEmail())
                 .userNickname(member.getUserNickname())
                 .userName(member.getUserName())

@@ -123,7 +123,7 @@ const CatouselSlider = () => {
   return (
     <Container>
       <Slider {...settings}>
-        {list.map((data, index) => (
+        {list.slice(0, 10).map((data, index) => (
           <Contents key={index}>
             <Content
               onDoubleClick={() => onClick(data.musicDTO.id)}

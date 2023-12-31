@@ -91,7 +91,7 @@ const HeartSong = () => {
     <>
       <Container>
         <Main>
-          {list.map((data, index) => (
+          {list.slice(0, 10).map((data, index) => (
             <Contents key={index}>
               {/* <Content onDoubleClick={onClick}>{index + 1}</Content> */}
               <img

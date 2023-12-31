@@ -57,6 +57,12 @@ const SignupPage = () => {
     }
   };
 
+  // 약관 모달
+  const [agreeModal, setAgreeModal] = useState(false);
+  const openAgreeModal = () => {
+    setAgreeModal(!agreeModal);
+  };
+
   // 인증 번호 입력창 제어
   const [sms, setSms] = useState(false);
   const closeSms = () => {
@@ -599,7 +605,162 @@ const SignupPage = () => {
                   <div className="agreement-top">약관 동의</div>
                   <div className="agreement-main">
                     <div className="agreement-main-row">
-                      <span style={{ fontWeight: "900" }}>모두 동의</span>
+                      <span
+                        style={{ fontWeight: "900", cursor: "pointer" }}
+                        onClick={openAgreeModal}
+                      >
+                        모두 동의
+                        <NoneBtnModalComponent
+                          isOpen={agreeModal}
+                          setIsOpen={openAgreeModal}
+                          close={{ text: "닫기" }}
+                          content={
+                            <div
+                              style={{
+                                maxHeight: "70vh", // 모달 높이 제한
+                                overflowY: "auto", // 세로 스크롤이 필요할 때만 표시
+                              }}
+                            >
+                              <p style={{ color: "black" }}>
+                                개인정보 처리 규정
+                                <br />
+                                안녕하세요! [chord8]을 이용해 주셔서 감사합니다.
+                                저희는 사용자의 개인정보를 소중히 보호하며, 관련
+                                법령 및 규정을 준수하고 있습니다. 아래는 저희 웹
+                                페이지에서 개인정보를 수집, 이용, 보호하는 데
+                                관한 규정입니다.
+                              </p>
+                              <p style={{ color: "black" }}>
+                                1. 수집하는 개인정보 항목
+                                <br />
+                                필수항목: 이름 선택항목: 없음
+                                <br />
+                                2. 개인정보의 수집 및 이용 목적
+                                <br />
+                                이름: 서비스 이용에 따른 개인식별, 웹 페이지
+                                이용에 따른 통계 및 분석
+                                <br />
+                                3. 개인정보의 보유 및 이용 기간 회원 탈퇴 시
+                                또는 서비스 종료 시 즉시 파기
+                                <br />
+                                4. 개인정보의 파기 절차 및 방법
+                                <br />
+                                파기 절차: 개인정보는 목적 달성 후 즉시
+                                파기되며, 복구 및 재생이 불가능한 방법으로
+                                파기됩니다. 파기 방법: 전자적 파일 형태의 정보는
+                                기록을 재생할 수 없는 기술적 방법을 사용하여
+                                삭제하고, 종이에 출력된 개인정보는 분쇄기를 통해
+                                파기됩니다.
+                                <br /> 5. 개인정보의 제3자 제공에 관한 사항
+                                <br />
+                                저희 웹 페이지는 사용자의 동의 없이 개인정보를
+                                타 기관 또는 제3자에게 제공하지 않습니다.
+                                <br />
+                                6. 이용자의 권리와 행사 방법
+                                <br />
+                                이용자는 언제든지 자신의 개인정보에 대한 접근,
+                                정정, 삭제, 처리정지 등의 권리를 행사할 수
+                                있습니다. 이와 관련한 문의는
+                                [jojo6807@naver.com]로 연락 주시기 바랍니다.
+                                <br /> 7. 개인정보 보호책임자
+                                <br />
+                                개인정보 보호책임자: [조영준]
+                                <br />
+                                이메일 주소: [jojo6807@naver.com]
+                                <br />
+                                위의 규정은 웹 페이지 이용자의 개인정보를
+                                보호하기 위한 기본적인 내용을 담고 있습니다.
+                                저희는 이 규정을 개정할 수 있으며, 개정된 내용은
+                                웹 페이지를 통해 공지됩니다.
+                                <br />
+                                감사합니다. [chord8]을 이용해 주셔서 기쁩니다!
+                              </p>
+                              <span
+                                onClick={openAgreeModal}
+                                style={{
+                                  cursor: "pointer",
+                                  color: "red",
+                                }}
+                              >
+                                개인정보처리방침(필수)
+                              </span>
+                              <Agree
+                                type="checkbox"
+                                checked={firstAgree}
+                                onChange={handleFirstAreeChange}
+                              ></Agree>
+
+                              <p style={{ color: "black" }}>
+                                [웹 페이지명] 이용약관
+                                <br />
+                                제1조 (목적)
+                                <br />본 약관은 [웹 페이지명] (이하 "서비스"라
+                                합니다)의 이용 조건과 절차, 회원과 서비스 제공자
+                                간의 권리 및 의무, 책임 사항 등 기본적인 사항을
+                                규정함을 목적으로 합니다.
+                                <br />
+                                제2조 (정의) "회원"은 서비스에 접속하여 이
+                                약관에 따라 [웹 페이지명]이 제공하는 서비스를
+                                받는 자를 말합니다. "이용자"는 회원 및 비회원을
+                                모두 포함한 서비스를 이용하는 모든 사용자를
+                                말합니다.
+                                <br />
+                                제3조 (서비스의 제공 및 변경) [웹 페이지명]은
+                                회원에게 아래와 같은 서비스를 제공합니다.
+                                [서비스 내용 기술] [웹 페이지명]은 상당한 이유가
+                                있는 경우 서비스의 전부 또는 일부를 변경할 수
+                                있으며, 이로 인해 발생하는 손해에 대해 책임을
+                                지지 않습니다.
+                                <br />
+                                제4조 (회원가입 및 계정) 서비스를 이용하려면
+                                회원가입이 필요합니다. 회원은 본인의 개인정보를
+                                제공하여 회원가입을 완료해야 하며, 제공된 정보는
+                                항상 정확해야 합니다.
+                                <br />
+                                제5조 (회원의 의무와 책임) 회원은 자신의 계정
+                                정보를 안전하게 관리해야 합니다. 회원은 서비스를
+                                부정하게 이용하거나 타인의 정보를 도용하여
+                                이용할 수 없습니다.
+                                <br />
+                                제6조 (서비스 이용의 제한 및 중단) [웹
+                                페이지명]은 회원이 본 약관을 위반한 경우에는
+                                사전 통지 없이 서비스의 이용을 제한하거나 중단할
+                                수 있습니다.
+                                <br />
+                                제7조 (개인정보 보호) [웹 페이지명]은 회원의
+                                개인정보를 본인의 동의 없이 타인에게 제공하지
+                                않습니다.
+                                <br />
+                                제8조 (게시물의 관리) 회원이 서비스 내에 게시한
+                                게시물은 사전 통지 없이 [웹 페이지명]에 의해
+                                삭제될 수 있습니다.
+                                <br />
+                                제9조 (책임의 한계) [웹 페이지명]은 정상적인
+                                서비스 제공을 위해 최선을 다하지만, 다음의
+                                사항에 대해 책임을 지지 않습니다. 천재지변 또는
+                                이에 준하는 불가항력적인 상황 회원의 귀책사유로
+                                인한 서비스 이용의 장애
+                                <br />
+                                제10조 (분쟁의 해결) 본 약관과 관련하여 분쟁이
+                                발생할 경우, 당사자 간의 합의에 의해 원만히
+                                해결합니다. 본 약관은 [약관 동의 일자]부터
+                                시행됩니다.
+                              </p>
+                              <span
+                                onClick={openAgreeModal}
+                                style={{ cursor: "pointer", color: "red" }}
+                              >
+                                이용약관(필수)
+                              </span>
+                              <Agree
+                                type="checkbox"
+                                checked={secondAgree}
+                                onChange={handleSecondAreeChange}
+                              ></Agree>
+                            </div>
+                          }
+                        />
+                      </span>
                       <Agree
                         type="checkbox"
                         checked={firstAgree && secondAgree}
@@ -607,7 +768,12 @@ const SignupPage = () => {
                       ></Agree>
                     </div>
                     <div className="agreement-main-row">
-                      <span>개인정보처리방침(필수)</span>
+                      <span
+                        onClick={openAgreeModal}
+                        style={{ cursor: "pointer" }}
+                      >
+                        개인정보처리방침(필수)
+                      </span>
                       <Agree
                         type="checkbox"
                         checked={firstAgree}
@@ -615,7 +781,12 @@ const SignupPage = () => {
                       ></Agree>
                     </div>
                     <div className="agreement-main-row">
-                      <span>이용약관(필수)</span>
+                      <span
+                        onClick={openAgreeModal}
+                        style={{ cursor: "pointer" }}
+                      >
+                        이용약관(필수)
+                      </span>
                       <Agree
                         type="checkbox"
                         checked={secondAgree}

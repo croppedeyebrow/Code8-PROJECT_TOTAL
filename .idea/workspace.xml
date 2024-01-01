@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a9bef0f-6acc-4be1-91c9-5115536ba85f" name="Changes" comment="12.31 조영준">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/pages/SignUpPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/pages/SignUpPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/src/component/MusicList/MusicPlayer.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/src/component/MusicList/MusicPurchaseModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/component/MusicList/MusicPurchaseModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/src/component/MusicList/SearchBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/component/MusicList/SearchBar.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,14 +53,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/dev/PROJECT_TOTAL&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Dev/PROJECT_TOTAL"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.projectBackend.project.controller" />

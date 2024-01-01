@@ -66,3 +66,4 @@ function SearchBar(props: SearchBarPropsType) {
 }
 
 export default SearchBar;
+

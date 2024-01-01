@@ -9,6 +9,8 @@ const ModalComponent = ({ onConfirm, onCancel, children }) => {
     backgroundColor: "#fff",
     padding: "20px",
     zIndex: "1000",
+    justifyContent: "center",
+    alignItems: "center",
   };
 
   const overlayStyle = {

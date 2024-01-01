@@ -382,8 +382,9 @@ const UpdateBox = () => {
                 placeholder="가사를 등록해주세요"
                 value={inputLyrics}
                 onChange={(e) => setinputLyrics(e.target.value)}
+                style={{ whiteSpace: "pre-wrap" }}
               />
-              {inputLyrics.length > 0 && inputLyrics.length < 2000}
+              {inputLyrics.length > 0 && inputLyrics.length < 11000}
             </Lyrics>
           </InputContainer02>
 

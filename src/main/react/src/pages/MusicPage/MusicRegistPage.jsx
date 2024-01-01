@@ -9,7 +9,7 @@ import {
   Button,
 } from "../../style/music/MusicUpdateStyle";
 import UpdateBox from "../../component/musicList/UpdateBox";
-import UpdateUserInfo from "../../component/musicList/UpdateUserInfo";
+import UpdateUserInfo from "../../component/performance/UpdateUserInfo";
 import UseAuth from "../../hooks/UseAuth";
 import PerformanceAxios from "../../axios/PerformanceAxios";
 
@@ -21,12 +21,12 @@ const MusicRegistPage = () => {
   const email = UseAuth();
   console.log(email);
 
-//   useEffect(() => {
-//     if (!email) {
-//       alert("로그인이 필요합니다.");
-//       navigate("/login");
-//     }
-//   }, []);
+  // useEffect(() => {
+  //   if (!email) {
+  //     alert("로그인이 필요합니다.");
+  //     navigate("/login");
+  //   }
+  // }, []);
 
   useEffect(() => {
     // 컴포넌트가 마운트될 때 모든 회원정보를 불러옵니다.

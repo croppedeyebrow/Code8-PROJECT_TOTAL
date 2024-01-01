@@ -365,7 +365,7 @@ export const GenreButton = styled.button`
   border-radius: 4rem;
   font-size: 0.8rem;
   font-weight: 700;
-  border: 1px solid var(--mainblue);
+  border: 0.3rem solid var(--mainblue);
   background-color: ${({ active }) => (active ? "var(--mainblue)" : "white")};
   color: ${({ active }) => (active ? "white" : "var(--mainblue)")};
 
@@ -422,6 +422,10 @@ export const Musicimg = styled.div`
   gap: 0.1rem;
 
   align-items: center;
+
+  @media (max-width: 1280px) {
+    margin-bottom: 3rem;
+  }
 `;
 
 export const Musicimg01 = styled.div`
@@ -447,6 +451,10 @@ export const Musicfile = styled.div`
   gap: 0.1rem;
   padding-top: 1rem;
   align-items: center;
+
+  @media (max-width: 1280px) {
+    margin-bottom: 3rem;
+  }
 `;
 
 export const Musicfile01 = styled.div`
@@ -559,6 +567,10 @@ export const InputContainer02 = styled.div`
 
   flex-direction: column;
   /* background-color: skyblue; */
+
+  @media (max-width: 1280px) {
+    margin-bottom: 5rem;
+  }
 `;
 
 export const Terms = styled.div`
@@ -587,8 +599,11 @@ export const Terms = styled.div`
 export const TermsTitle = styled.div`
   display: flex;
   position: relative;
-  font-size: 2rem;
+  font-size: 2.8rem;
+  font-weight: 500;
   padding-bottom: 1rem;
+  border-bottom: 0.1rem solid var(--mainblue);
+  margin-bottom: 1.8rem;
 `;
 
 export const Term01 = styled.div`
@@ -617,7 +632,7 @@ export const InputBox = styled.input`
   }
 
   @media (max-width: 768px) {
-    width: 30rem;
+    width: 28rem;
   }
 `;
 
@@ -632,6 +647,10 @@ export const TextArea = styled.textarea`
   &::placeholder {
     color: var(--mainolive);
     padding-left: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 28rem;
   }
 `;
 

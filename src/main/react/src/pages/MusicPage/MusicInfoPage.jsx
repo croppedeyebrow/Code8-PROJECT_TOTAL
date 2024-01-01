@@ -533,14 +533,14 @@ const CoperDetail01 = styled.div`
 `;
 
 const CoperMusicName = styled.div`
-  font-size: 2.5rem;
+  font-size: 1.6rem;
   font-weight: bold;
   display: flex;
   position: relative;
 `;
 
 const CoperName = styled.div`
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   font-weight: bold;
   display: flex;
   position: relative;
@@ -599,8 +599,9 @@ const LyricsTitle = styled.div`
 const LyricsBox = styled.div`
   position: relative;
   display: flex;
-  width: 50rem;
-
+  width: 40rem;
+  padding-top: 4rem;
+  padding-left: 3rem;
   height: 102.5rem;
   font-family: "Noto Sans KR";
   font-style: normal;
@@ -608,7 +609,9 @@ const LyricsBox = styled.div`
   font-size: 1.5rem;
   line-height: 2.3rem;
   justify-content: center;
-  color: #000000;
+  border-top: 0.3px dashed #008bff;
+  color: #black;
+  white-space: pre-wrap;
 
   @media (max-width: 1280px) {
     width: 40rem;
@@ -924,6 +927,17 @@ const PaginationButton = styled.button`
   }
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
+
+const ButtonArea = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+`;
+
 const MusicInfo = () => {
   const { id } = useParams();
   console.log("ID:", id); // id 값 확인
@@ -1234,12 +1248,23 @@ const MusicInfo = () => {
                 </BuyBox>
                 {modalOpen && (
                   <ModalComponent>
-                    <h2 style={{ textAlign: "center" }}>음악 구매</h2>
+                    <h2 style={{ textAlign: "center", fontWeight: "bold" }}>
+                      이 가수의 음악 감성을 <br /> 함께 하시겠습니까?
+                    </h2>
                     <p style={{ textAlign: "center", fontWeight: "bold" }}>
-                      해당 음악 구매시 <br /> 100포인트가 차감됩니다.
+                      확인 버튼 클릭시 <br /> 100포인트로 가수를 응원합니다.
                     </p>
-                    <button onClick={handleConfirm}>확인</button>
-                    <button onClick={handleCancel}>취소</button>
+                    <ButtonArea>
+                      <button
+                        style={{
+                          marginRight: "1rem",
+                        }}
+                        onClick={handleConfirm}
+                      >
+                        확인
+                      </button>
+                      <button onClick={handleCancel}>취소</button>
+                    </ButtonArea>
                   </ModalComponent>
                 )}
 
@@ -1290,11 +1315,13 @@ const MusicInfo = () => {
 
                           <CoperDetail02>
                             <LikeBox>
-                              <Link to={`/music-info/${item.musicDTO.id}`}>
+                              <StyledLink
+                                to={`/music-info/${item.musicDTO.id}`}
+                              >
                                 <CoperName>
                                   {item.userResDto.userNickname}
                                 </CoperName>
-                              </Link>
+                              </StyledLink>
                             </LikeBox>
                           </CoperDetail02>
                         </CoperDetail>

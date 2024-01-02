@@ -12,6 +12,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import PerformanceAxios from "../../axios/PerformanceAxios";
 
 const Container = styled.div`
   width: 100%;
@@ -45,9 +46,27 @@ const Td = styled.td`
 `;
 
 const PerformanceList = ({ selectedButton, performanceList, pageList }) => {
-  const data = performanceList.slice(0, 10).map((data) => ({
+  const [purchaseCount, setPurchaseCount] = useState([]);
+
+  // id 에 해당하는 공연자 수
+  useEffect(() => {
+    const getTicket = async () => {
+      const purchaseCount = [];
+
+      for (const performance of performanceList) {
+        const res = await PerformanceAxios.getTicketList(performance.id);
+        purchaseCount.push({ id: performance.id, data: res.data });
+        console.log("공연 데이터", res.data);
+      }
+
+      setPurchaseCount(purchaseCount);
+    };
+    getTicket();
+  }, []);
+
+  const data = performanceList.slice(0, 10).map((data, index) => ({
     performanceName: data.performanceName,
-    value: data.price * data.seatCount,
+    value: data.price * purchaseCount[index].data.length,
   }));
 
   return (
@@ -60,6 +79,7 @@ const PerformanceList = ({ selectedButton, performanceList, pageList }) => {
               <Th>TITLE</Th>
               <Th>PRICE</Th>
               <Th>SEATCOUNT</Th>
+              <Th>PURCHASE</Th>
               <Th>VENUE</Th>
               {/* <Th>HEARTCOUNT</Th> */}
             </tr>
@@ -70,6 +90,7 @@ const PerformanceList = ({ selectedButton, performanceList, pageList }) => {
                 <Td>{index + 1}</Td>
                 <Td>{data.performanceName}</Td>
                 <Td>{data.price}</Td>
+                <Td>{data.seatCount}</Td>
                 <Td>{data.seatCount}</Td>
                 <Td>{data.venue}</Td>
                 {/* <Td>{data.musicDTO.heartCount}</Td> */}

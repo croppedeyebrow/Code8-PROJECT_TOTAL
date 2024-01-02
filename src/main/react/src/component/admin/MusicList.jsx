@@ -44,6 +44,7 @@ const Td = styled.td`
 `;
 
 const MusicList = ({ selectedButton, musicList, pageList }) => {
+  console.log("pageList : ", pageList);
   // 음악 장르별 좋아요
   const heartData = musicList.map((data) => ({
     genre: data.musicDTO.genre,
@@ -67,6 +68,7 @@ const MusicList = ({ selectedButton, musicList, pageList }) => {
               <Th>GENRE</Th>
               <Th>PURCHASECOUNT</Th>
               <Th>HEARTCOUNT</Th>
+              <Th>RELEASEDATE</Th>
             </tr>
           </thead>
           <tbody>
@@ -78,6 +80,7 @@ const MusicList = ({ selectedButton, musicList, pageList }) => {
                 <Td>{data.musicDTO?.genre}</Td>
                 <Td>{data.musicDTO?.purchaseCount}</Td>
                 <Td>{data.musicDTO?.heartCount}</Td>
+                <Td>{data.musicDTO?.releaseDate}</Td>
               </tr>
             ))}
           </tbody>

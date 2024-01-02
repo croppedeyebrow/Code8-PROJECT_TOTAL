@@ -129,7 +129,7 @@ const AdminPage = () => {
             const musicpagelist = await MusicAxios.getMusicList(currentPage, 1);
             if (musiccount.status === 200) {
               setPageList(musicpagelist.data);
-              console.log("음악 페이지 리스트", musicpagelist.data);
+              // console.log("음악 페이지 리스트", musicpagelist.data);
               setTotalPage(musiccount.data);
             }
           }
@@ -143,18 +143,29 @@ const AdminPage = () => {
           );
           if (performanceres.status === 200) {
             setPerformanceList(performanceres.data);
+            console.log("performanceres.data : ", performanceres.data);
             setTotalPage(count.data);
             setPageList(pageList.data);
             // 공연 id에 해당하는 티케터 리스트 반환
             const purchaseCount = [];
 
             for (const performance of performanceres.data) {
-              const res = await PerformanceAxios.getTicketList(performance.id);
-              purchaseCount.push({ id: performance.id, data: res.data });
-              console.log("공연 데이터", res.data);
+              if (performance.performanceId) {
+                const res = await PerformanceAxios.getTicketList(
+                  performance.performanceId
+                );
+                purchaseCount.push({
+                  id: performance.performanceId,
+                  data: res.data.length,
+                });
+                // console.log("공연 데이터", res.data.length);
+              } else {
+                console.error("공연 ID가 null입니다.", performance);
+              }
             }
 
             setPurchaseCount(purchaseCount);
+            console.log("purchaseCount : ", purchaseCount);
           }
           break;
         default:

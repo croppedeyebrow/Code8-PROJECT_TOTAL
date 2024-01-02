@@ -171,3 +171,6 @@ src/main/react/yarn-error.log*
 
 # Resources
 src/main/resources/static/static
+
+# jar 파일
+build/libs/project-0.0.1-SNAPSHOT.jar

@@ -222,12 +222,15 @@ public class MusicService {
             Music music = musics.get(i);
             System.out.println(i + "music " + music);
 
+            // 음악 좋아요 출력
+            Long musicId = music.getMusicId();
+            int hearts = musicHeartService.getAllHeart(musicId);
             // 닉네임 값
             String nickname = nickNames.get(i);
             System.out.println(i + "nickname1 : " + nickname);
 
             // music Dto로 변환
-            MusicUserDto musicUserDto = convertEntityToUserDto(music, nickname);
+            MusicUserDto musicUserDto = convertEntityToUserDto(music, nickname, hearts);
             System.out.println(i + "musicDto : " + musicUserDto);
 
             // 최종 응답 dto list

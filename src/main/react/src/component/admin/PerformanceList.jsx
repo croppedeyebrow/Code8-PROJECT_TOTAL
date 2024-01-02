@@ -12,7 +12,6 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import PerformanceAxios from "../../axios/PerformanceAxios";
 
 const Container = styled.div`
   width: 100%;
@@ -51,9 +50,10 @@ const PerformanceList = ({
   pageList,
   purchaseCount,
 }) => {
-  const data = performanceList.slice(0, 10).map((data) => ({
+  const data = performanceList.slice(0, 10).map((data, index) => ({
     performanceName: data.performanceName,
-    value: data.price * data.seatCount,
+    // ?? (Nullish coalescing)는 null이나 undefined일 때만 뒤의 값을 사용하는 연산자
+    value: data.price * (purchaseCount[index]?.data ?? 0),
   }));
 
   return (
@@ -66,9 +66,7 @@ const PerformanceList = ({
               <Th>TITLE</Th>
               <Th>PRICE</Th>
               <Th>SEATCOUNT</Th>
-              <Th>PURCHASE</Th>
               <Th>VENUE</Th>
-              {/* <Th>HEARTCOUNT</Th> */}
             </tr>
           </thead>
           <tbody>
@@ -78,9 +76,7 @@ const PerformanceList = ({
                 <Td>{data.performanceName}</Td>
                 <Td>{data.price}</Td>
                 <Td>{data.seatCount}</Td>
-                <Td>{data.seatCount}</Td>
                 <Td>{data.venue}</Td>
-                {/* <Td>{data.musicDTO.heartCount}</Td> */}
               </tr>
             ))}
           </tbody>

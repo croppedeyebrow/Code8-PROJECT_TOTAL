@@ -43,7 +43,4 @@
       <excludeFolder url="file://$MODULE_DIR$/../../src/main/react/node_modules/victory-vendor" />
     </content>
   </component>
-  <component name="SonarLintModuleSettings">
-    <option name="uniqueId" value="07309eec-2bb9-49d8-9638-43d3c33ddb63" />
-  </component>
 </module>

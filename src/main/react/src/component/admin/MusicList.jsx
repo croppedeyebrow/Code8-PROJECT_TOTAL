@@ -72,12 +72,12 @@ const MusicList = ({ selectedButton, musicList, pageList }) => {
           <tbody>
             {pageList.map((data, index) => (
               <tr key={index}>
-                <Td>{data.musicDTO.id}</Td>
-                <Td>{data.musicDTO.musicTitle}</Td>
-                <Td>{data.userResDto.userNickname}</Td>
-                <Td>{data.musicDTO.genre}</Td>
-                <Td>{data.musicDTO.purchaseCount}</Td>
-                <Td>{data.musicDTO.heartCount}</Td>
+                <Td>{data.musicDTO?.id}</Td>
+                <Td>{data.musicDTO?.musicTitle}</Td>
+                <Td>{data.userResDto?.userNickname}</Td>
+                <Td>{data.musicDTO?.genre}</Td>
+                <Td>{data.musicDTO?.purchaseCount}</Td>
+                <Td>{data.musicDTO?.heartCount}</Td>
               </tr>
             ))}
           </tbody>

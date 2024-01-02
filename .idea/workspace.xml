@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a9bef0f-6acc-4be1-91c9-5115536ba85f" name="Changes" comment="12.31 조영준">
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/component/MusicList/MusicPlayer.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/component/MusicList/MusicPurchaseModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/component/MusicList/MusicPurchaseModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/component/MusicList/SearchBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/component/MusicList/SearchBar.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="2a9bef0f-6acc-4be1-91c9-5115536ba85f" name="Changes" comment="12.31 조영준" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,7 +20,12 @@
       <state>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="project" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -40,6 +41,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -58,7 +62,9 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Dev/PROJECT_TOTAL"
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/jun_works/DeveloperCourse/PROJECT_TOTAL"
   }
 }]]></component>
   <component name="RecentsManager">

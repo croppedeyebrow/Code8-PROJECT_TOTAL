@@ -1,17 +1,24 @@
 import AxiosApi from "../../axios/PerformanceAxios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, UserInfo, UpdateZone, InputBox, Button } from "../../style/performance/PerformanceUpdateStyle";
 import UpdateBox from "../../component/performance/UpdateBox";
 import UpdateUserInfo from "../../component/performance/UpdateUserInfo";
 import ModalComponent from "../../utils/ModalComponent";
 import UseAuth from "../../hooks/UseAuth";
+import FooterContext from "../../context/FooterContext";
 
 
 
 const PerformanceUpdate = () => {
 
   const [userList, setUserList] = useState([]); // AxiosApi로 가져온 유저정보를 저장
+
+  const { setFooterData } = useContext(FooterContext);
+
+  useEffect(() => {
+    setFooterData(<a href="https://www.flaticon.com/kr/free-icons/" title="심장 아이콘">심장 아이콘  제작자: Kiranshastry - Flaticon</a>);
+  }, []);
 
   const navigate = useNavigate();
 

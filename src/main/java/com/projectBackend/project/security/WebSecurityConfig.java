@@ -49,7 +49,7 @@ public class WebSecurityConfig implements WebMvcConfigurer {
                 .antMatchers("/product", "/product/productlist", "/product/productlist/{artist}", "/product/search").permitAll()
                 .antMatchers("/news/**").permitAll()
                 .antMatchers("/sms/**", "/api/community/**").permitAll()
-                .antMatchers("/performance/list", "/performance/list/page", "/performance/list/count",  "/ticketer/**").permitAll()
+                .antMatchers("/performance/list", "/performance/list/page", "/performance/list/count",  "/ticketer/**", "/performance/userListNoToken").permitAll()
                 .antMatchers("/auth/**", "/main/**").permitAll()
                 .antMatchers( "/", "/static/**").permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()

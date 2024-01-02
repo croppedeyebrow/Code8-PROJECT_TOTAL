@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import MainAxios from "../../axios/MainAxios";
 import AxiosApi from "../../axios/PerformanceAxios";
 import { UserInfo, Button } from "../../style/performance/PerformanceUpdateStyle";
@@ -6,13 +7,14 @@ import { useEffect, useState } from "react";
 const UpdateUserInfo = ({ userList }) => {
 
 
-  
+
   const userEmail = localStorage.getItem('email'); // 로컬 스토리지에서 이메일을 가져옵니다.
   const userArray = userList.filter(user => user.userEmail === userEmail); // 이메일이 일치하는 회원 정보를 찾습니다.
   const user = userArray[0] || {}; // 일치하는 회원 정보를 저장합니다.
   console.log(user); // 일치하는 회원 정보를 출력합니다.
   console.log(user.profileImg);
   const [performerList, setPerformerList] = useState([]); // 퍼포머 정보를 저장할 상태를 선언합니다.
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPerformerList = async () => {
@@ -66,6 +68,10 @@ console.log(allMusic.length);
 
 const gage = `${totalHeartCount * 10  / 5}%`;
 
+const goMyPage =() => {
+  navigate("/mypage");
+}
+
 return (
   <>
     <UserInfo>
@@ -90,7 +96,7 @@ return (
           <div className="Cnt">등록한 곡 <cnt>{allMusic.length}</cnt></div>
         </div>
         <div className="pointerZone">
-          <div className="pointer"/>
+          <div className="pointer" style={{ left : gage }}/>
         </div>
         <div className="mid">
           <div className="authGage">
@@ -114,8 +120,7 @@ return (
         <div className="title">MY 포인트</div>
         <div className="point">{pointComma} P</div>
         <div className="buttonZone">
-          <Button>충전하기</Button>
-          <Button>환전하기</Button>
+          <Button onClick={goMyPage}>마이페이지</Button>
         </div>
       </div>
     </UserInfo>

@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import KakaomapComponent from "../../component/performance/KakaomapComponent";
 import MainAxios from "../../axios/MainAxios";
 import PerformerCardView from "../../component/performance/PerformerCardView";
-import basket from "../../images/Basket.png";
+import basket from "../../images/Basket.svg";
 import NoneBtnModalComponent from "../../utils/NoneBtnModalComponent";
 import Ticket from "../../component/performance/Ticket";
 import FooterContext from "../../context/FooterContext";
@@ -13,10 +13,13 @@ import SignUpAxios from "../../axios/SignUpAxios";
 import UseAuth from "../../hooks/UseAuth";
 
 const Container = styled.div`
-    margin: 8rem; 
+    margin: 8rem;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    @media screen and (max-width: 767px) {
+     margin: 5vw;
+    }
 `;
 
 const Image = styled.img`
@@ -27,6 +30,13 @@ const Image = styled.img`
     margin-right: 5rem;
     box-shadow: 0rem 3rem 5rem -3rem rgba(0, 0, 0, 0.5);
     margin-bottom: 2rem;
+    object-fit: cover;
+    @media screen and (max-width: 767px) {
+        width:66vw;
+        height: 88vw;
+        margin: auto;
+        margin-bottom: 5vw;
+      }
 `;
 
 const Information = styled.div`
@@ -36,6 +46,12 @@ const Information = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     font-size: 2rem;
+    @media screen and (max-width: 767px) {
+     width: 90vw;
+        margin: auto;
+        justify-content: center;
+        font-size: 3.5vw;
+    }
     .title{
         width: 100%;
         height: 5rem;
@@ -44,14 +60,33 @@ const Information = styled.div`
         border-bottom: 0.1rem solid lightgray;
         padding-bottom: 8rem;
         margin-bottom: 2rem;
+        @media screen and (max-width: 767px) {
+            width: 80vw;
+            font-size: 6vw;
+            padding-bottom: 10vw;
+            margin-bottom: 2vw;
+
+    }
     }
     .info{
         width: 50rem;
-        height: 39rem;
+        height: auto;
         margin-top: 1rem;
+        @media screen and (max-width: 767px) {
+            margin-top: 2vw;
+    }
         .desc{
             margin-top: 3rem;
+            @media screen and (max-width: 767px) {
+                margin-top: 5vw;
+    }
         }
+        @media screen and (max-width: 767px) {
+            width: 80vw;
+            margin: auto;
+            margin-top: 5vw;
+
+    }
     }
     .map{
         margin-top: 2rem;
@@ -61,9 +96,18 @@ const Information = styled.div`
         border-radius: 1.5rem;
         overflow: hidden;
         box-shadow: 0rem 3rem 3rem -3rem rgba(0, 0, 0, 0.4);
+        @media screen and (max-width: 767px) {
+            width: 85vw;
+            height: 60vw;
+            margin: auto;
+            margin-top: 5vw;
+    }
     }
     .delete{
         margin-top: 2rem;
+        @media screen and (max-width: 767px) {
+            margin-top: 4vw;
+    }
         button{
             width: 10rem;
             height: 4rem;
@@ -73,6 +117,11 @@ const Information = styled.div`
             color: white;
             font-weight: 700;
             font-size: 1.5rem;
+            @media screen and (max-width: 767px) {
+                width: 20vw;
+                height: 9vw;
+                font-size: 3.5vw;
+    }
             &:hover {
                 cursor: pointer;
                 background-color: black;
@@ -84,7 +133,7 @@ const Information = styled.div`
                 background-color: red;
             }
         }
-    
+
     }
 `;
 
@@ -93,6 +142,7 @@ const Bottom = styled.div`
     height: auto;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     .lineup{
         flex: 1;
         font-size: 4rem;
@@ -100,8 +150,15 @@ const Bottom = styled.div`
         color: var(--mainolive);
         display: flex;
         flex-wrap: wrap;
+        @media screen and (max-width: 767px) {
+             font-size: 6vw;
+            }
         .lineupTitle{
+            margin-top: 2rem;
             width: 100%;
+            @media screen and (max-width: 767px) {
+                margin-top: 5vw;
+            }
         }
     }
     .ticket{
@@ -115,12 +172,15 @@ const Bottom = styled.div`
         flex-direction: column;
         align-items: flex-end;
         padding: 2rem;
+        @media screen and (max-width: 979px) {
+            display: none;
+        }
         .price{
             font-size: 4rem;
             font-weight: 900;
-        }   
+        }
         .ticketing{
-            
+
             font-size: 2rem;
         }
         .button{
@@ -130,6 +190,69 @@ const Bottom = styled.div`
             background-color: white;
             border-radius: 5rem;
             box-shadow: 0rem 0.5rem 2rem -0.5rem rgba(43, 36, 36, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:hover {
+            // 마우스 호버링 효과
+            cursor: pointer;
+            background-color: var(--mainsky);
+            transform: scale(1.05);
+            transition: transform 0.05s ease-in-out; // transform 속성에 대한 전환 효과 설정
+            }
+            &:active {
+                // 클릭 효과
+                background-color: var(--mainblue);
+            }
+            .icon{
+                width: 30%;
+                height: 70%;
+                background: url(${ basket }) no-repeat center center;
+                background-size: contain;
+                margin: auto;
+            }
+        }
+    }
+    .ticket-mobile{
+        width: 100%;
+        height: auto;
+        /* background-color: lightgreen; */
+        border-radius: 1.5rem;
+        overflow: hidden;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 3vw;
+        @media screen and (min-width: 980px) {
+            display: none;
+        }
+        .price{
+            font-size: 4rem;
+            font-weight: 900;
+            @media screen and (max-width: 767px) {
+              font-size: 7vw;
+            }
+        }
+        .ticketing{
+
+            font-size: 2rem;
+            @media screen and (max-width: 767px) {
+             font-size : 4vw;
+            }
+        }
+        .button{
+            margin-top: 2rem;
+            width: 15rem;
+            height: 6rem;
+            background-color: white;
+            border-radius: 10vw;
+            box-shadow: 0vw 1vw 4vw -1vw rgba(43, 36, 36, 0.4);
+            @media screen and (max-width: 767px) {
+             margin-top: 3vw;
+             width: 25vw;
+             height: 10vw;
+            }
             &:hover {
             // 마우스 호버링 효과
             cursor: pointer;
@@ -167,11 +290,10 @@ const PerformanceDetail = () => {
 
     const { setFooterData } = useContext(FooterContext); // FooterContext에서 setFooterData를 가져옵니다.
 
-    
+
 
     useEffect(() => {
-        setFooterData([<a href="https://www.flaticon.com/kr/free-icons/" title="연필 아이콘">연필 아이콘  제작자: Pixel perfect - Flaticon </a>
-        , <br/>, <a href="https://www.flaticon.com/kr/free-icons/" title="연필 아이콘">연필 zz아이콘  제작자: Pixel perfect - Flaticon</a>]);
+        setFooterData("");
     }, []);
 
      // 현재 시간과 공연 시간을 비교합니다.
@@ -184,13 +306,13 @@ const PerformanceDetail = () => {
               const res = await MainAxios.notLoginPerformList();
               console.log("공연리스트 조회 ",res.data);
               const matchingData = res.data.filter(item => item.performanceId === Number(id)); // item은 res.data의 요소 하나하나를 의미
-              console.log("id에 해당하는 공연정보 필터링: ", matchingData);  
-              const performance = matchingData[0]; 
+              console.log("id에 해당하는 공연정보 필터링: ", matchingData);
+              const performance = matchingData[0];
               console.log(performance);
               setPerformance(performance); // API 호출이 완료되면 performance 상태를 업데이트
             } catch (error) {
               console.log(error);
-              
+
             }
           };
         getPerformanceList();
@@ -204,7 +326,7 @@ const PerformanceDetail = () => {
     useEffect(() => {
         const getMemberInfo = async () => {
           try {
-            const userRes = await PerformanceAxios.getUserList();
+            const userRes = await PerformanceAxios.getUserListNoToken();
             console.log("userRes", userRes);
             const matchingUser = userRes.data.filter(user => performance.nicknames.some(nickname => nickname === user.userNickname));
             // matchingUser 에 userRes.data 중에서 userNickname이 performance.nicknames에 포함되어 있는 요소만 필터링
@@ -212,10 +334,10 @@ const PerformanceDetail = () => {
             setMemberInfo(matchingUser);
             console.log("matchingUser", matchingUser);
           } catch (error) {
-            console.log(error);                                                                                                                     
+            console.log(error);
           }
         };
-      
+
         if (performance) {
           getMemberInfo();
         }
@@ -223,14 +345,14 @@ const PerformanceDetail = () => {
 
       // 로그인 확인, 및 이메일 추출
       const email = UseAuth();
-      const checkLogin = () => { // 로컬스토리지상에서 이메일, accessToken, refreshToken이 있는지 확인
-        if (!email) { 
+      const checkLogin = () => {
+        if (!email) {
             setShowLoginModal(true); // email 이 없으면 로그인 필요 모달 호출
             } else {
             setShowPaymentModal(true); // email 있으면 티켓구매모달 호출
             }
         };
-    
+
     // 삭제하고 모달을 닫는 함수
     const deleteAndClose = async () => {
         await deletePerformance();
@@ -265,7 +387,7 @@ const PerformanceDetail = () => {
                         <div className="seat">좌석 수 : {performance && performance.seatCount}</div>
                         <div className="desc">{performance && performance.description}</div>
                         <div className="delete">
-                        {memberInfo && memberInfo.some(user => user.userEmail === email) && ( 
+                        {memberInfo && memberInfo.some(user => user.userEmail === email) && (
                             <button onClick={() => setShowDeleteConfirmModal(true)}>공연 삭제</button>
                         )}
                         </div>
@@ -275,13 +397,29 @@ const PerformanceDetail = () => {
                     </div>
                 </Information>
                 <Bottom>
+                <div className="ticket-mobile">
+                        {!isEnded ? (
+                            <>
+                            <div className="ticketing">티켓 구매</div>
+                            <div className="price">{performance.price} P</div>
+                            <div className="button" onClick={checkLogin}>
+                                <div className="icon"></div>
+                            </div>
+                            </>
+                        ) : (
+                            <div className="ticketing" style = {{fontSize: "2.2rem", fontWeight: "700"}}>판매가 종료된 공연입니다.</div>
+                        )}
+                    </div>
                     <div className="lineup">
+
                         <div className="lineupTitle">라인업</div>
                         {memberInfo && memberInfo.map(user => (
                         <PerformerCardView
                             key={user.id}
                             profileImage={user.profileImg}
                             nickname={user.userNickname}
+                            email={user.userEmail}
+                            loginEmail={email}
                             />
                         ))}
                         </div>

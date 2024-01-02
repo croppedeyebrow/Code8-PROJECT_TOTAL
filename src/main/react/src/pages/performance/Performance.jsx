@@ -28,7 +28,7 @@ const Performance = () => {
 
   const email = UseAuth();
   useEffect(() => {
-    setFooterData("Data from SomePage");
+    setFooterData("");
   }, []);
 
   const handleCardMouseOver = (venue) => {
@@ -97,7 +97,6 @@ const Performance = () => {
   return (
     <>
       <GlobalStyle />
-      <MediaStyle />
       <Container>
         <SearchBanner>
           <Box>

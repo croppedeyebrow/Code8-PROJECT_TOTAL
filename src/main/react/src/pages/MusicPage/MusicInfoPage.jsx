@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled, { css, keyframes } from "styled-components";
 import likeheart from "../../images/Heart.png";
-import buyimg from "../../images/Basket.png";
+import buyimg from "../../images/Basket.svg";
 import artistImg from "../../images/Artist_2.png";
 import commentsend from "../../images/commentsend.png";
 import ReactAudioPlayer from "react-audio-player";

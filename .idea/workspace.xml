@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a9bef0f-6acc-4be1-91c9-5115536ba85f" name="Changes" comment="12.31 조영준" />
+    <list default="true" id="2a9bef0f-6acc-4be1-91c9-5115536ba85f" name="Changes" comment="2024-01-02 장현준 공연구간 반응형, 공연정보 토큰없이유저정보조회 추가">
+      <change afterPath="$PROJECT_DIR$/src/main/react/src/images/Basket.svg" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,20 +59,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/jun_works/DeveloperCourse/PROJECT_TOTAL"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/jun_works/DeveloperCourse/PROJECT_TOTAL&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.projectBackend.project.controller" />
     </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-11.0.21-corretto-11.0.21-f644763e9732-97de7592" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -129,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704014768568</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="2024-01-02 장현준 공연구간 반응형, 공연정보 토큰없이유저정보조회 추가">
+      <option name="closed" value="true" />
+      <created>1704165064118</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1704165064118</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -139,6 +156,7 @@
     <MESSAGE value="공연 회원 조회 수정" />
     <MESSAGE value="통합본 최신화" />
     <MESSAGE value="12.31 조영준" />
-    <option name="LAST_COMMIT_MESSAGE" value="12.31 조영준" />
+    <MESSAGE value="2024-01-02 장현준 공연구간 반응형, 공연정보 토큰없이유저정보조회 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="2024-01-02 장현준 공연구간 반응형, 공연정보 토큰없이유저정보조회 추가" />
   </component>
 </project>

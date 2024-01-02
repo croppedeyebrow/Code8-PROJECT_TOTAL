@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter
@@ -15,7 +14,7 @@ public class CommunityDTO {
     private String categoryName;
     private String title;
     private String content;
-    private List<String> medias;
+    private String text;
     private LocalDateTime regDate;
     private int viewCount;
     private int voteCount;

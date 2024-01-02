@@ -26,6 +26,8 @@ import {
   PostNickName,
   CommentBox,
   ButtonText,
+  CommentNickname,
+  InfoContainer,
 } from "../../style/PostRoomStyle";
 import CommunityAxiosApi from "../../axios/CommunityAxios";
 import { useNavigate, useParams } from "react-router-dom";
@@ -42,7 +44,7 @@ const Post = () => {
   const [sortType, setSortType] = useState("");
   const [newComment, setNewComment] = useState("");
   const [newReply, setNewReply] = useState("");
-  const [email, setEmail] = useState("asd123@naver.com");
+  const [email, setEmail] = useState("");
   const [nickName, setNickName] = useState("");
   const [password, setPassword] = useState("");
   const [replyNickName, setReplyNickName] = useState({});
@@ -85,6 +87,7 @@ const Post = () => {
       }
     };
     postDetail();
+    console.log(post.mediaPaths);
   }, [id, currentCommentPage, sortType]);
   const sendCommentMessage = (
     postId,
@@ -105,6 +108,15 @@ const Post = () => {
   };
   const commentWrite = async () => {
     try {
+      if (!newComment.trim()) {
+        // Check if newComment is empty or contains only whitespace
+        alert("댓글 내용을 입력하세요.");
+        return;
+      }
+      if (!nickName.trim() || !password.trim()) {
+        alert("닉네임과 비밀번호를 모두 입력하세요.");
+        return;
+      }
       const response = await CommunityAxiosApi.commentWrite(
         email,
         nickName,
@@ -136,6 +148,15 @@ const Post = () => {
   // 대댓글 작성 함수
   const replyWrite = async (parentCommentId) => {
     try {
+      if (!newReply.trim()) {
+        // Check if newReply is empty or contains only whitespace
+        alert("대댓글 내용을 입력하세요.");
+        return;
+      }
+      if (!replyAuthorName.trim() || !replyAuthorPassword.trim()) {
+        alert("답글 작성자 닉네임과 비밀번호를 모두 입력하세요.");
+        return;
+      }
       const replyAuthorName = replyNickName[parentCommentId];
       const replyAuthorPassword = replyPassword[parentCommentId];
 
@@ -257,8 +278,7 @@ const Post = () => {
           .map((comment) => (
             <CommentBox key={comment.commentId}>
               <CommentContent>
-                <a
-                  href="#"
+                <CommentNickname
                   onClick={(e) => {
                     e.preventDefault();
                     nicknameClick(comment);
@@ -267,7 +287,7 @@ const Post = () => {
                   {comment.email
                     ? comment.nickName
                     : `${comment.nickName}(${getPartialIp(comment.ipAddress)})`}
-                </a>
+                </CommentNickname>
 
                 <>{Common.formatDate(comment.regDate)}</>
                 <HeadText
@@ -281,7 +301,7 @@ const Post = () => {
                   <FormContainer>
                     {!email && (
                       <InformationContainer>
-                        <FormContainer>
+                        <InfoContainer>
                           <SmallInput
                             type="text"
                             value={replyNickName[comment.commentId] || ""}
@@ -306,7 +326,7 @@ const Post = () => {
                             }
                             placeholder="비밀번호를 입력하세요"
                           />
-                        </FormContainer>
+                        </InfoContainer>
                       </InformationContainer>
                     )}
                     <LargeInput
@@ -332,8 +352,7 @@ const Post = () => {
               {comment.childComments &&
                 comment.childComments.map((childComment) => (
                   <CommentContent style={{ marginLeft: "20px" }}>
-                    <a
-                      href="#"
+                    <CommentNickname
                       onClick={(e) => {
                         e.preventDefault();
                         nicknameClick(comment);
@@ -344,7 +363,7 @@ const Post = () => {
                         : `${comment.nickName}(${getPartialIp(
                             comment.ipAddress
                           )})`}
-                    </a>
+                    </CommentNickname>
                     <>{Common.formatDate(childComment.regDate)}</>
                     <HeadText
                       onClick={() =>
@@ -375,7 +394,7 @@ const Post = () => {
             {!email && (
               <>
                 <InformationContainer>
-                  <FormContainer>
+                  <InfoContainer>
                     <SmallInput
                       type="text"
                       value={nickName}
@@ -388,7 +407,7 @@ const Post = () => {
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="비밀번호를 입력하세요"
                     />
-                  </FormContainer>
+                  </InfoContainer>
                 </InformationContainer>
               </>
             )}

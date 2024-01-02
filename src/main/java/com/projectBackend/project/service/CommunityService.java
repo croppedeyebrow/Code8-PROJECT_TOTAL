@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -28,6 +29,7 @@ public class CommunityService {
     private final CommunityCategoryRepository categoryRepository;
     private final CommunityViewRepository viewRepository;
     private final CommunityVoteRepository communityVoteRepository;
+
     public boolean saveCommunity(CommunityDTO communityDTO, HttpServletRequest request) {
         try{
             Community community = new Community();
@@ -56,8 +58,10 @@ public class CommunityService {
             community.setCategory(category);
             community.setCategoryName(category.getCategoryName());
             community.setContent(communityDTO.getContent());
-            community.setMediaPaths(communityDTO.getMedias());
+            community.setText(communityDTO.getText());
+
             communityRepository.save(community);
+
             return true;
         } catch (Exception e){
             e.printStackTrace();
@@ -72,7 +76,7 @@ public class CommunityService {
         }
         return communityDTOS;
     }
-    public CommunityDTO getCommunityDetail(Long id , HttpServletRequest request) {
+    public CommunityDTO getCommunityDetail(Long id , HttpServletRequest request){
         Community community = communityRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("해당 게시물이 존재하지 않습니다.")
         );
@@ -84,14 +88,19 @@ public class CommunityService {
         List<CommunityView> communityViews = viewRepository.findByCommunity(community);
         if (communityViews.stream().noneMatch(view -> view.getIp().equals(finalVisitorIp))) {
             community.setViewCount(community.getViewCount() + 1);
+
             CommunityView communityView = new CommunityView();
             communityView.setCommunity(community);
             communityView.setIp(finalVisitorIp);
             viewRepository.save(communityView);
         }
 
+        // Community 엔티티를 DTO로 변환
+        CommunityDTO communityDTO = convertEntityToDTO(community);
+
         communityRepository.save(community);
-        return convertEntityToDTO(community);
+
+        return communityDTO;
     }
     public boolean modifyCommunity(Long id, CommunityDTO communityDTO){
         try {
@@ -100,7 +109,8 @@ public class CommunityService {
             );
             community.setTitle(communityDTO.getTitle());
             community.setContent(communityDTO.getContent());
-            community.setMediaPaths(communityDTO.getMedias());
+            community.setText(communityDTO.getText());
+
             communityRepository.save(community);
             return true;
         } catch (Exception e) {
@@ -231,8 +241,8 @@ public class CommunityService {
         return posts.subList(0, Math.min(10, posts.size()));
     }
     // 게시글 페이지네이션 검색
-    public Page<CommunityDTO> searchByTitleAndContent(String keyword, Pageable pageable) {
-        Page<Community> communities = communityRepository.findByTitleContainingOrContentContaining(keyword, keyword, pageable);
+    public Page<CommunityDTO> searchByTitleAndText(String keyword, Pageable pageable) {
+        Page<Community> communities = communityRepository.findByTitleContainingOrTextContaining(keyword, keyword, pageable);
         return communities.map(this::convertEntityToDTO);
     }
 
@@ -250,16 +260,21 @@ public class CommunityService {
         Page<Comment> comments = commentRepository.findByContentContaining(keyword, pageable);
 
         // 찾은 댓글들이 속한 Community들을 찾기
-        List<Community> communities = comments.stream()
+        // 여기서 distinct()를 사용하여 중복을 제거하고, ID를 기준으로 정렬
+        List<Community> uniqueCommunities = comments.getContent().stream()
                 .map(Comment::getCommunity)
+                .distinct()
+                .sorted(Comparator.comparingLong(Community::getCommunityId))
                 .collect(Collectors.toList());
 
         // Community들을 DTO로 변환
-        List<CommunityDTO> communityDTOs = communities.stream()
+        // 중복 제거된 리스트를 사용
+        List<CommunityDTO> communityDTOs = uniqueCommunities.stream()
                 .map(this::convertEntityToDTO)
                 .collect(Collectors.toList());
 
         // DTO 리스트를 페이지로 변환하여 반환
+        // 총 요소의 수를 적절하게 계산하여 전달해야 함
         return new PageImpl<>(communityDTOs, pageable, communityDTOs.size());
     }
     // 게시글 엔티티를 DTO로 변환
@@ -268,8 +283,8 @@ public class CommunityService {
         communityDTO.setId(community.getCommunityId());
         communityDTO.setTitle(community.getTitle());
         communityDTO.setContent(community.getContent());
+        communityDTO.setText(community.getText());
         communityDTO.setIpAddress(community.getIpAddress());
-        communityDTO.setMedias(community.getMediaPaths());
         communityDTO.setEmail(community.getEmail());
         communityDTO.setNickName(community.getNickName());
         communityDTO.setPassword(community.getPassword());
@@ -282,6 +297,7 @@ public class CommunityService {
             communityDTO.setEmail(community.getMember().getUserEmail());
         }
         communityDTO.setRegDate(community.getRegDate());
+
         return communityDTO;
     }
 }

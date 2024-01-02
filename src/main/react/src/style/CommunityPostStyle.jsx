@@ -7,6 +7,9 @@ export const PostContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   flex: 1;
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 `;
 export const PostSection = styled.div`
   align-self: stretch;
@@ -16,16 +19,21 @@ export const Heading = styled.div`
   padding-right: 614.04px;
   flex-direction: column;
   align-items: flex-start;
+  @media (max-width: 1024px) {
+    width: 100%;
+    padding: 0;
+  }
 `;
 export const HeadText = styled.p`
-  width: 300px;
+  width: 10em;
   color: #000;
+  cursor: pointer;
 
   font-family: Inter;
   font-size: 21.6px;
   font-style: normal;
   font-weight: 700;
-  line-height: 28.8px; /* 133.333% */
+  line-height: 28.8px;
 `;
 export const HeadLine = styled.div`
   width: 100%;
@@ -36,11 +44,14 @@ export const HeadLine = styled.div`
 `;
 export const Block = styled.div`
   display: flex;
-  width: 718px;
+  width: 100%;
   max-width: 718px;
   flex-direction: column;
   align-items: flex-start;
   gap: -15.61px;
+  @media (max-width: 1024px) {
+    max-width: 500px;
+  }
 `;
 export const ButtonFlex = styled.div`
   display: flex;
@@ -50,6 +61,9 @@ export const ButtonFlex = styled.div`
   gap: 0px 7px;
   align-self: stretch;
   flex-wrap: wrap;
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 `;
 export const ChoiceButton = styled.button`
   display: flex;
@@ -91,15 +105,24 @@ export const Swiper = styled.div`
 `;
 export const SwiperWrapper = styled.div`
   display: block;
-  height: 300px;
+  height: 100%;
   padding-bottom: 0.1px;
   column-count: 2;
+  @media (max-width: 1024px) {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 export const SwiperSlide = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 `;
 export const RoundedMd = styled.div`
   display: flex;
@@ -108,6 +131,9 @@ export const RoundedMd = styled.div`
   gap: 28.8px;
   align-self: stretch;
   border-radius: 5.4px;
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 `;
 export const PostRankList = styled.div`
   display: flex;
@@ -116,16 +142,25 @@ export const PostRankList = styled.div`
   align-items: flex-start;
   flex: 1;
   align-self: stretch;
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 `;
 export const PostRankListItem = styled.div`
   display: flex;
   padding: 7.2px 155.88px 7.2px 7px;
   align-items: flex-start;
   align-self: stretch;
+  cursor: pointer;
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-bottom: 10px;
+  @media (max-width: 1024px) {
+    width: 100%;
+    align-items: center;
+    margin-bottom: 0;
+  }
 `;
 export const PostRankLink = styled.div`
   display: flex;
@@ -354,20 +389,21 @@ export const PostPage = styled.div`
   align-items: center;
   gap: 9px;
   align-self: stretch;
-  opacity: var(--, 1);
+  opacity: 1;
 `;
 export const Pagination = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
   gap: 7.19px;
-  opacity: var(--, 1);
+  opacity: 1;
 `;
 export const PageContant = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   color: #008bff;
+  cursor: pointer;
 
   font-family: Inter;
   font-size: 11.7px;
@@ -384,10 +420,12 @@ export const MiddlePage = styled.div`
   opacity: var(--, 1);
   flex-direction: row;
 `;
-export const Page = styled.a`
+export const Page = styled.p`
   display: flex;
   padding-right: 0.52px;
   flex-direction: column;
+  cursor: pointer;
+
   align-items: flex-start;
   color: ${(props) => (props.selected ? "#000" : "#C4C4C4")};
   font-family: Inter;
@@ -403,31 +441,10 @@ export const SearchContainer = styled.div`
   width: 100%;
   height: 100%;
   margin-top: 3em;
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
 `;
-
-// export const SearchInput = styled.input`
-//   flex: 3;
-//   width: 100%;
-//   height: 100%;
-//   padding: 10px;
-//   margin-right: 10px;
-//   border: 1px solid #ccc;
-//   border-radius: 5px;
-//   font-size: 14px;
-// `;
-
-// export const SearchButton = styled.button`
-//   width: 150px;
-//   height: 40px;
-//   padding: 0;
-//   margin: 0;
-//   background-color: #007bff;
-//   color: #fff;
-//   border: none;
-//   border-radius: 5px;
-//   font-size: 14px;
-//   cursor: pointer;
-// `;
 
 export const Select = styled.select`
   flex: 1;
@@ -448,10 +465,14 @@ export const SearchBox = styled.div`
   background-color: #fff;
   border: 1px solid #51e3d4;
   transition: 1s;
+  transition: width 0.4s, opacity 0.4s, visibility 0.4s;
 
   &:hover {
     box-shadow: 0px 0px 1px 1px #2446da;
-    width: 800px;
+    width: 700px;
+    @media (max-width: 1024px) {
+      width: 100%;
+    }
   }
 `;
 
@@ -466,6 +487,7 @@ export const SearchButton = styled.a`
   justify-content: center;
   align-items: center;
   color: #51e3d4;
+  transition: width 0.4s, opacity 0.4s, visibility 0.4s;
 
   &:hover {
     background-color: #fff;

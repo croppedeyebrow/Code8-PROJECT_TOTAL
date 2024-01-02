@@ -7,7 +7,6 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Getter
@@ -24,6 +23,9 @@ public class Community {
 
     @Lob
     private String content;
+    @Lob
+    private String text;
+
     private LocalDateTime regDate;
     @PrePersist
     public void prePersist(){
@@ -38,11 +40,6 @@ public class Community {
     private int viewCount;
     private int voteCount;
 
-    @ElementCollection
-    @CollectionTable(name = "media_paths", joinColumns = @JoinColumn(name = "community_id"))
-    @Column(name = "path")
-    private List<String> mediaPaths;
-
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
@@ -55,5 +52,4 @@ public class Community {
     private String ipAddress;
     private String nickName;
     private String password;
-
 }

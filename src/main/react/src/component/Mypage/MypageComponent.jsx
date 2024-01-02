@@ -85,60 +85,52 @@ const MypageComponent = ({ userInfo, userMusic, userPerformance }) => {
         roomId: enterRoomId,
         sender: sender,
         message: inputMsg,
-      }) + loadPreviousChat()
+      })
     );
 
     setInputMsg("");
   };
   const onClickMsgClose = () => {
-    ws.current.send(
-      JSON.stringify({
-        type: "CLOSE",
-        roomId: enterRoomId,
-        sender: sender,
-        message: "종료 합니다.",
-      })
-    );
-    ws.current.close();
-  };
-  // 이전 채팅 내용을 가져오는 함수
-  const loadPreviousChat = async () => {
-    try {
-      const res = await MemberInfoAxiosApi.recentChatLoad(enterRoomId);
-      const recentMessages = res.data;
-      setChatList(recentMessages);
-    } catch (error) {
-      console.error("Failed to load previous chat:", error);
+    if (ws.current) {
+      ws.current.send(
+        JSON.stringify({
+          type: "CLOSE",
+          roomId: enterRoomId,
+          sender: sender,
+          message: "종료 합니다.",
+        })
+      );
+      ws.current.close();
+      navigate(0);
     }
   };
 
   // 화면 하단으로 자동 스크롤
   const chatContainerRef = useRef(null);
 
-  // useEffect(() => {
-  //   // 서버로부터 채팅방 목록을 가져오는 API 호출
-  //   const getChatRoom = async () => {
-  //     try {
-  //       const rsp = await MemberInfoAxiosApi.chatList();
-  //       setChatRooms(rsp.data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   const intervalID = setInterval(getChatRoom, 1000);
-  //   return () => {
-  //     clearInterval(intervalID);
-  //   };
-  // }, []);
-
   useEffect(() => {
-    // ownerId로 채팅방 목록을 가져오는 API 호출
     const getChatRoom = async () => {
       try {
-        // 유저 정보가 있다고 가정하고, userInfo.id를 통해 ownerId를 가져옴
         const rsp = await MemberInfoAxiosApi.chatListByOwnerId(userInfo.id);
-        setChatRooms(rsp.data);
-        console.log(userInfo.id);
+        const chatRoomList = rsp.data;
+
+        // 방 목록을 업데이트
+        setChatRooms(chatRoomList);
+
+        // 룸 아이디를 추출하고 각각의 룸에 대해 세션 counts를 가져옴
+        chatRoomList.forEach(async (room) => {
+          const response = await MemberInfoAxiosApi.chatSessionCount(
+            room.roomId
+          );
+          const updatedRoom = { ...room, sessionCount: response.data };
+
+          // 업데이트된 룸 정보를 이용하여 채팅방 목록을 업데이트
+          setChatRooms((prevChatRooms) =>
+            prevChatRooms.map((prevRoom) =>
+              prevRoom.roomId === room.roomId ? updatedRoom : prevRoom
+            )
+          );
+        });
       } catch (error) {
         console.error("Failed to fetch chat rooms:", error);
       }
@@ -170,9 +162,10 @@ const MypageComponent = ({ userInfo, userMusic, userPerformance }) => {
       ws.current = new WebSocket(Common.SOCKET_CHAT_URL);
       ws.current.onopen = () => {
         console.log("connected to " + Common.SOCKET_CHAT_URL);
-        setSocketConnected(true);
       };
+      setSocketConnected(true);
     }
+
     ws.current.onmessage = (evt) => {
       const data = JSON.parse(evt.data);
       console.log(data.message);
@@ -203,30 +196,38 @@ const MypageComponent = ({ userInfo, userMusic, userPerformance }) => {
           message: "처음으로 접속 합니다.",
         })
       );
+      setChatList([]);
+
+      loadPreviousChat(roomId);
     }
   };
+  // 이전 채팅 내용을 가져오는 함수
+  const loadPreviousChat = async (roomId) => {
+    try {
+      const res = await MemberInfoAxiosApi.recentChatLoad(roomId);
+      const recentMessages = res.data;
+      setChatList((prevMessages) => [...prevMessages, ...recentMessages]);
+    } catch (error) {
+      console.error("Failed to load previous chat:", error);
+    }
+  };
+  // 세션 counts 가져오는 api
+  const fetchSessionCounts = async () => {
+    const updatedChatRooms = await Promise.all(
+      chatRooms.map(async (room) => {
+        const response = await MemberInfoAxiosApi.chatSessionCount(room.roomId);
+        // console.log(response.data);
+        return { ...room, sessionCount: response.data };
+      })
+    );
 
-  useEffect(() => {
-    const fetchSessionCounts = async () => {
-      const updatedChatRooms = await Promise.all(
-        chatRooms.map(async (room) => {
-          const response = await MemberInfoAxiosApi.chatSessionCount(
-            room.roomId
-          );
-          console.log(response.data);
-          return { ...room, sessionCount: response.data };
-        })
-      );
-      setChatRooms(updatedChatRooms);
-    };
-
-    fetchSessionCounts();
-  }, [enterRoomId]);
-
+    setChatRooms(updatedChatRooms);
+    // console.log(chatRooms);
+  };
   const handleCreateChatRoom = async () => {
     const response = await MemberInfoAxiosApi.chatCreate(email, chatRoomTitle);
     console.log(response.data);
-    navigate(`/`);
+    navigate(0);
   };
 
   const settings = {

@@ -69,34 +69,40 @@ const CommunityRankComponent = ({ categoryName }) => {
           <PostUpTimeList>
             <Swiper>
               <SwiperWrapper>
-                {ranking.map((post, index) => (
-                  <SwiperSlide key={index}>
-                    <RoundedMd>
-                      <PostRankList>
-                        <PostRankListItem
-                          onClick={() =>
-                            navigate(`/communitypage/detail/${post.communityId}`)
-                          }
-                        >
-                          <PostRankLink>
-                            <PostRankFrame>{index + 1}</PostRankFrame>
-                          </PostRankLink>
-                          <PostRankCategory>
-                            <PostRankFrame>
-                              {Common.truncateText(post.categoryName, 20)}{" "}
-                              게시판
-                            </PostRankFrame>
-                          </PostRankCategory>
-                          <PostRankContent>
-                            <PostRankFrame width={`${post.title.length}px`}>
-                              {Common.truncateText(post.title, 20)}
-                            </PostRankFrame>
-                          </PostRankContent>
-                        </PostRankListItem>
-                      </PostRankList>
-                    </RoundedMd>
-                  </SwiperSlide>
-                ))}
+                {ranking.length > 0 ? (
+                  ranking.map((post, index) => (
+                    <SwiperSlide key={index}>
+                      <RoundedMd>
+                        <PostRankList>
+                          <PostRankListItem
+                            onClick={() =>
+                              navigate(
+                                `/communitypage/detail/${post.communityId}`
+                              )
+                            }
+                          >
+                            <PostRankLink>
+                              <PostRankFrame>{index + 1}</PostRankFrame>
+                            </PostRankLink>
+                            <PostRankCategory>
+                              <PostRankFrame>
+                                {Common.truncateText(post.categoryName, 20)}{" "}
+                                게시판
+                              </PostRankFrame>
+                            </PostRankCategory>
+                            <PostRankContent>
+                              <PostRankFrame width={`${post.title.length}px`}>
+                                {Common.truncateText(post.title, 20)}
+                              </PostRankFrame>
+                            </PostRankContent>
+                          </PostRankListItem>
+                        </PostRankList>
+                      </RoundedMd>
+                    </SwiperSlide>
+                  ))
+                ) : (
+                  <>랭킹리스트가 없습니다.</>
+                )}
               </SwiperWrapper>
             </Swiper>
           </PostUpTimeList>

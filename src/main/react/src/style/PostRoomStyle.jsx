@@ -12,6 +12,9 @@ export const PostContainer = styled.div`
   border: 0;
   background: transparent;
   font-style: normal;
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 `;
 export const PostHeader = styled.div`
   display: flex;
@@ -84,6 +87,19 @@ export const PostContent = styled.div`
   overflow: auto;
   line-height: 1.5;
   padding: 1em 0;
+  img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  p,
+  span,
+  div {
+    max-width: 100%;
+    white-space: pre-wrap;
+  }
 `;
 
 export const PostVotes = styled.div`
@@ -132,10 +148,10 @@ export const CommentContent = styled.div`
     margin-left: 20px;
   }
 `;
-export const CommentNickname = styled.a`
-  color: #000000; /* 검은색 */
-  text-decoration: none; /* 밑줄 없애기 */
-  font-weight: bold; /* 진하게 */
+export const CommentNickname = styled.p`
+  color: #000000;
+  font-weight: bold;
+  cursor: pointer;
 `;
 
 export const CommentHeader = styled.div`
@@ -181,22 +197,44 @@ export const SmallInput = styled.input`
   ${InputCommonStyle}
   width: 100%;
   height: 30px;
+  border: 1px solid #0d47a1;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
 `;
 
 export const LargeInput = styled.textarea`
   ${InputCommonStyle}
+  padding: 10px;
   width: 100%;
   height: 100px;
+  border: 1px solid #0d47a1;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.9);
+
+  @media (max-width: 1024px) {
+    height: 200px;
+  }
 `;
 
 export const CommentButton = styled.button`
   ${InputCommonStyle}
   width: 300px;
+  border: 1px solid #0d47a1;
+  border-radius: 5px;
+  background-color: #e3f2fd;
   &:after {
     clear: both;
     display: block;
     visibility: hidden;
     content: "";
+  }
+  @media (max-width: 1024px) {
+    width: 100%;
+    height: 50px;
   }
 `;
 
@@ -204,22 +242,41 @@ export const FormContainer = styled.div`
   display: flex;
   width: 100%;
   gap: 1em;
-`;
+  padding: 0;
+  background-color: rgba(238, 238, 238, 0.1);
+  color: #1e90ff;
 
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
+`;
+export const InfoContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 0.6em;
+  background-color: rgba(238, 238, 238, 0.1);
+  color: #1e90ff;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
+`;
 export const CommentForm = styled.form`
   display: block;
   padding: 12px;
   background: #fafafa;
-  border-top: 2px solid #3f82e7;
-  border-bottom: 2px solid #3f82e7;
+  border-top: 2px solid #90caf9; // 색상 변경
+  border-bottom: 2px solid #90caf9; // 색상 변경
   font-size: 12px;
   font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
     "Malgun Gothic", "맑은 고딕", arial, Dotum, 돋움, sans-serif;
 `;
 
 export const Dropdown = styled.select`
-  width: 200px;
-  height: 40px;
+  width: 10em;
+  height: 2em;
   margin: 10px;
   padding: 5px;
   background: transparent;
@@ -228,7 +285,7 @@ export const Dropdown = styled.select`
   font-size: 16px;
   &:focus {
     outline: none;
-    border-color: #4a90e2;
+    border-color: #90caf9;
   }
 `;
 

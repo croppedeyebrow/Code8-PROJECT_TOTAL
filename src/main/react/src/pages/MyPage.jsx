@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import MypageComponent from "../component/Mypage/MypageComponent";
+import MypageComponent from "../conponent/Mypage/MypageComponent";
 import { ReactComponent as Heart } from "../images/HeartBox.svg";
 import { ReactComponent as Subs } from "../images/SubscriberBox.svg";
 
@@ -22,7 +22,8 @@ import {
 } from "../style/MyPageStyle";
 import MemberInfoAxiosApi from "../axios/MemberInfoAxios";
 import ModalComponent from "../utils/ModalComponent";
-import PayComponent from "../component/Mypage/PayComponent.tsx";
+import PayComponent from "../conponent/Mypage/PayComponent.tsx";
+import Category from "../conponent/Category.jsx";
 
 const MyPage = () => {
   const [email, setEmail] = useState("asd123@naver.com");

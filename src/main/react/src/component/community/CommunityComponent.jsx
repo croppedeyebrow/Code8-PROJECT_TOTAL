@@ -41,11 +41,32 @@ const CommunityComponent = () => {
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  const [visiblePageStart, setVisiblePageStart] = useState(0);
   const categoryId = Number(useParams().categoryId);
   const validCategoryId = isNaN(categoryId) ? undefined : categoryId;
   const [totalComments, setTotalComments] = useState([]);
 
-  const pageSize = 10;
+  const PAGE_SIZE = 10;
+
+  const pageClick = (pageNum) => {
+    setCurrentPage(pageNum);
+    if (pageNum >= visiblePageStart + PAGE_SIZE) {
+      setVisiblePageStart(visiblePageStart + PAGE_SIZE);
+    } else if (pageNum < visiblePageStart) {
+      setVisiblePageStart(visiblePageStart - PAGE_SIZE);
+    }
+  };
+
+  const firstClick = () => {
+    setCurrentPage(0);
+    setVisiblePageStart(0);
+  };
+
+  const lastClick = () => {
+    const lastPage = Math.floor((totalPages - 1) / PAGE_SIZE) * PAGE_SIZE;
+    setCurrentPage(totalPages - 1);
+    setVisiblePageStart(lastPage);
+  };
 
   const checkMediaContent = (html) => {
     const parser = new DOMParser();
@@ -64,30 +85,30 @@ const CommunityComponent = () => {
     const postPage = async () => {
       const responsePages =
         validCategoryId === undefined
-          ? await CommunityAxiosApi.getCommunityTotalPages(pageSize)
+          ? await CommunityAxiosApi.getCommunityTotalPages(PAGE_SIZE)
           : await CommunityAxiosApi.getCommunityTotalPagesByCategory(
               validCategoryId,
-              pageSize
+              PAGE_SIZE
             );
       setTotalPages(responsePages.data);
     };
 
     postPage();
-  }, [validCategoryId, currentPage, pageSize]);
+  }, [validCategoryId, currentPage, PAGE_SIZE]);
   useEffect(() => {
-    // 제대로 랜더링 되는지 파악하는 axios 구문 별내용은 없음
+    //  컴포넌트가 언마운트된 후에 상태를 변경하려는 작업을 방지
     let cancelTokenSource = axios.CancelToken.source();
     const postList = async () => {
       try {
         const rsp =
           validCategoryId === undefined
-            ? await CommunityAxiosApi.getCommunityList(currentPage, pageSize, {
+            ? await CommunityAxiosApi.getCommunityList(currentPage, PAGE_SIZE, {
                 cancelToken: cancelTokenSource.token,
               })
             : await CommunityAxiosApi.getCommunityListByCategory(
                 validCategoryId,
                 currentPage,
-                pageSize,
+                PAGE_SIZE,
                 { cancelToken: cancelTokenSource.token }
               );
         setPosts(rsp.data);
@@ -110,7 +131,7 @@ const CommunityComponent = () => {
     return () => {
       cancelTokenSource.cancel();
     };
-  }, [validCategoryId, currentPage, pageSize, totalPages]);
+  }, [validCategoryId, currentPage, PAGE_SIZE, totalPages]);
 
   return (
     <>
@@ -196,41 +217,30 @@ const CommunityComponent = () => {
                 <PageContant>
                   <Prev />
                 </PageContant>
-                <PageContant
-                  onClick={() =>
-                    setCurrentPage(currentPage > 1 ? currentPage - 1 : 0)
-                  }
-                  disabled={currentPage === 0}
-                >
-                  이전
+                <PageContant onClick={firstClick} disabled={currentPage === 0}>
+                  처음
                 </PageContant>
               </Pagination>
               {/* for 문처럼 페이지를 생성하기 위해 Array 인스턴스 생성, _이건 아무의미없는값이고 서서히 늘어나는 현식 */}
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                (pageNum) => (
+              {Array.from({ length: totalPages }, (_, i) => i + 1)
+                .slice(visiblePageStart, visiblePageStart + PAGE_SIZE)
+                .map((pageNum) => (
                   <MiddlePage
                     key={pageNum}
-                    onClick={() => setCurrentPage(pageNum - 1)}
-                    active={currentPage === pageNum ? "true" : "false"}
+                    onClick={() => pageClick(pageNum - 1)}
+                    active={currentPage === pageNum - 1}
                   >
-                    <Page selected={currentPage === pageNum - 1} href="#">
+                    <Page selected={currentPage === pageNum - 1}>
                       {pageNum}
                     </Page>
                   </MiddlePage>
-                )
-              )}
+                ))}
               <Pagination>
                 <PageContant
-                  onClick={() =>
-                    setCurrentPage(
-                      currentPage < totalPages - 1
-                        ? currentPage + 1
-                        : currentPage
-                    )
-                  }
-                  disabled={currentPage === totalPages - 1}
+                  onClick={lastClick}
+                  disabled={currentPage >= totalPages - 1}
                 >
-                  다음
+                  마지막
                 </PageContant>
                 <PageContant>
                   <Next />

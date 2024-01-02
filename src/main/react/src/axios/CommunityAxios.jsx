@@ -211,7 +211,7 @@ const CommunityAxiosApi = {
       return await axios.post(Common.DOMAIN + "/api/category/new", cate, {
         headers: {
           "Content-Type": "application/json",
-          // Authorization: "Bearer " + accessToken,
+          Authorization: "Bearer " + accessToken,
         },
       });
     },
@@ -223,7 +223,7 @@ const CommunityAxiosApi = {
         {
           headers: {
             "Content-Type": "application/json",
-            // Authorization: "Bearer " + accessToken,
+            Authorization: "Bearer " + accessToken,
           },
         }
       );

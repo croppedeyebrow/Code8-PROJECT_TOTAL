@@ -13,7 +13,7 @@ import {
   MyPageContainer,
 } from "../style/MyPageStyle";
 import MemberInfoAxiosApi from "../axios/MemberInfoAxios";
-import OtherPageComponent from "../conponent/Mypage/OtherPageComponent";
+import OtherPageComponent from "../component/Mypage/OtherPageComponent";
 import { useParams } from "react-router";
 
 const OtherPage = () => {

@@ -50,10 +50,10 @@ import styled from "styled-components";
 import AxiosApi from "../axios/CommunityAxios";
 import Common from "../utils/Common";
 import useWebSocket from "../context/useWebsocket";
-import CommunityComponent from "../conponent/community/CommunityComponent";
-import CommunitySearchComponent from "../conponent/community/CommunitySearchComponent";
-import Post from "../conponent/community/PostRoomComponent";
-import WriteComponent from "../conponent/community/CommunityWriteComponent";
+import CommunityComponent from "../component/community/CommunityComponent";
+import CommunitySearchComponent from "../component/community/CommunitySearchComponent";
+import Post from "../component/community/PostRoomComponent";
+import WriteComponent from "../component/community/CommunityWriteComponent";
 import MemberInfoAxiosApi from "../axios/MemberInfoAxios";
 
 const CommunityPage = () => {

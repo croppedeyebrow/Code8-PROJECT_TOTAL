@@ -40,23 +40,8 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
+    jus
 
-  .right {
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .left {
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
 `;
 
 const PIESTYLE = styled.div`
@@ -114,9 +99,8 @@ const UserList = ({ selectedButton, male, female, userList, userAgeList }) => {
           </tbody>
         </Table>
       )}
-      {selectedButton === "UserGraph1" && (
+      {selectedButton === "UserGraph2" && (
         <Container>
-          <div className="right">
             <p style={{ fontSize: "5rem", fontWeight: "900" }}>성 비</p>
             <PIESTYLE>
               <PieChart
@@ -142,23 +126,26 @@ const UserList = ({ selectedButton, male, female, userList, userAgeList }) => {
                 {data[1].title}
               </span>
             </PIESTYLE>
-          </div>
+              </Container>
 
-          <div className="left">
-            <p style={{ fontSize: "5rem", fontWeight: "900" }}>연 령</p>
 
-            <ResponsiveContainer width="80%" height="55%">
-              <BarChart width={500} height={300} data={ageData}>
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Bar dataKey="twentiesvalue" fill="#8884d8" />
-                <Bar dataKey="thirtiesvalue" fill="#82ca9d" />
-                <Bar dataKey="fortiesvalue" fill="#ffc658" />
-                <Bar dataKey="othres" fill="#ffc658" />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </Container>
+      )}
+      {selectedButton === "UserGraph1" && (
+              <Container>
+
+                  <p style={{ fontSize: "5rem", fontWeight: "900" }}>연 령</p>
+
+                  <ResponsiveContainer width="80%" height="55%">
+                    <BarChart width={500} height={300} data={ageData}>
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Bar dataKey="twentiesvalue" fill="#8884d8" />
+                      <Bar dataKey="thirtiesvalue" fill="#82ca9d" />
+                      <Bar dataKey="fortiesvalue" fill="#ffc658" />
+                      <Bar dataKey="othres" fill="#ffc658" />
+                    </BarChart>
+                  </ResponsiveContainer>
+              </Container>
       )}
     </>
   );

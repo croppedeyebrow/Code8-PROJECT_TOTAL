@@ -56,6 +56,8 @@ const AdminPage = () => {
     forties: [],
     others: [],
   });
+  const [purchaseCount, setPurchaseCount] = useState([]);
+
   // 페이지 네이션
   const [currentPage, setCurrentPage] = useState(0); // 현재 페이지
   const [totalPage, setTotalPage] = useState(0); // 총 페이지 수
@@ -110,9 +112,6 @@ const AdminPage = () => {
 
           if (userdatares.status === 200) {
             setUserDataList(userdatares.data);
-
-            // console.log("회원 정보들 : ", userres);
-            // console.log("usercountres", usercountres);
             const userres = await AdminAxios.getUserPage(currentPage, 1);
             const usercountres = await AdminAxios.getUserPageCount(0, 1);
             if (userres.status === 200) {
@@ -143,11 +142,19 @@ const AdminPage = () => {
             1
           );
           if (performanceres.status === 200) {
-            // console.log("공연 정보들 : ", performanceres);
             setPerformanceList(performanceres.data);
-            console.log(pageList.data);
             setTotalPage(count.data);
             setPageList(pageList.data);
+            // 공연 id에 해당하는 티케터 리스트 반환
+            const purchaseCount = [];
+
+            for (const performance of performanceres.data) {
+              const res = await PerformanceAxios.getTicketList(performance.id);
+              purchaseCount.push({ id: performance.id, data: res.data });
+              console.log("공연 데이터", res.data);
+            }
+
+            setPurchaseCount(purchaseCount);
           }
           break;
         default:
@@ -278,6 +285,7 @@ const AdminPage = () => {
               selectedButton={selectedButton + selectGraph}
               performanceList={performanceList}
               pageList={pageList}
+              purchaseCount={purchaseCount}
             ></PerformanceList>
           </div>
           {renderPagination()}

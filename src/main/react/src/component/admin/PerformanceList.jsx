@@ -45,28 +45,15 @@ const Td = styled.td`
   overflow: hidden;
 `;
 
-const PerformanceList = ({ selectedButton, performanceList, pageList }) => {
-  const [purchaseCount, setPurchaseCount] = useState([]);
-
-  // id 에 해당하는 공연자 수
-  useEffect(() => {
-    const getTicket = async () => {
-      const purchaseCount = [];
-
-      for (const performance of performanceList) {
-        const res = await PerformanceAxios.getTicketList(performance.id);
-        purchaseCount.push({ id: performance.id, data: res.data });
-        console.log("공연 데이터", res.data);
-      }
-
-      setPurchaseCount(purchaseCount);
-    };
-    getTicket();
-  }, []);
-
-  const data = performanceList.slice(0, 10).map((data, index) => ({
+const PerformanceList = ({
+  selectedButton,
+  performanceList,
+  pageList,
+  purchaseCount,
+}) => {
+  const data = performanceList.slice(0, 10).map((data) => ({
     performanceName: data.performanceName,
-    value: data.price * purchaseCount[index].data.length,
+    value: data.price * data.seatCount,
   }));
 
   return (

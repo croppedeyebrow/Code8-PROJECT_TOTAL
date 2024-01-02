@@ -11,26 +11,18 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/project.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/project.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/project-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/project-0.0.1-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/static/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/asset-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/logo192.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/logo192.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/logo512.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/logo512.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectBackend/project/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectBackend/project/security/WebSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/react/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/build/asset-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/react/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/build/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/logo192.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/build/logo192.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/logo512.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/build/logo512.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/react/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/node_modules/.cache/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/react/src/component/admin/PerformanceList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/component/admin/PerformanceList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/component/admin/UserList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/component/admin/UserList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/src/pages/AdminPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/pages/AdminPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/asset-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/logo192.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/logo192.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/logo512.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/logo512.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -18,12 +18,13 @@ const GlobalStyle = createGlobalStyle`
 
     :root {
         --maingreen: #61e6ca;
-        --mainblue: #008bff;
-        --mainsky: #82ccff;
-        --mainolive: #97b0aa;
-        --maindarkgreen: #354b45;
-        --darknavy: #0f222d;
-        --gradient: linear-gradient(to right, #61e6ca, #008bff); // background: var(--gradient); 형식으로 배경색 지정 가능
+                --mainblue: #008bff;
+                --mainsky: #82ccff;
+                --mainolive: #97b0aa;
+                --maindarkgreen: #354b45;
+                --darknavy: #0f222d;
+                --gradientright: linear-gradient(to right, #61e6ca, #008bff); // background: var(--gradient); 형식으로 배경색 지정 가능
+                --gradienttop: linear-gradient(to top, #61e6ca, #008bff); // background: var(--gradient); 형식으로 배경색 지정 가능
     }
 `;
 

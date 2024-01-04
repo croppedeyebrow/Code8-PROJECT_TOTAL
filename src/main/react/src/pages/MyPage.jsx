@@ -103,9 +103,10 @@ const MyPage = () => {
             <Artist>ARTIST</Artist>
           </ArtistContainer>
           <PointBox>
-            <MainHeadText>MY 포인트</MainHeadText>
-            {userInfo && userInfo.userPoint}
-
+                 <MainHeadText>
+                    MY 포인트
+                    <div>{userInfo && userInfo.userPoint}</div>
+                 </MainHeadText>
             <MoveButtonBox>
               {userInfo && (
                 <>

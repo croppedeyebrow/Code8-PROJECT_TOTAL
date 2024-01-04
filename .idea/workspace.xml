@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a9bef0f-6acc-4be1-91c9-5115536ba85f" name="Changes" comment="2024-01-02 장현준 공연구간 반응형, 공연정보 토큰없이유저정보조회 추가">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/project.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/project.main.iml" afterDir="false" />
+    <list default="true" id="2a9bef0f-6acc-4be1-91c9-5115536ba85f" name="Changes" comment="2024 0104 길종환 추가">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectBackend/project/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectBackend/project/security/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/style/CommunityStyle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/style/CommunityStyle.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/style/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/style/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/style/MyPageStyle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/style/MyPageStyle.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/style/PostRoomStyle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/style/PostRoomStyle.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/src/pages/MyPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/pages/MyPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +59,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
@@ -155,7 +148,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704165064118</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="2024 0104 길종환 추가">
+      <option name="closed" value="true" />
+      <created>1704333357614</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1704333357614</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -166,6 +167,7 @@
     <MESSAGE value="통합본 최신화" />
     <MESSAGE value="12.31 조영준" />
     <MESSAGE value="2024-01-02 장현준 공연구간 반응형, 공연정보 토큰없이유저정보조회 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="2024-01-02 장현준 공연구간 반응형, 공연정보 토큰없이유저정보조회 추가" />
+    <MESSAGE value="2024 0104 길종환 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="2024 0104 길종환 추가" />
   </component>
 </project>

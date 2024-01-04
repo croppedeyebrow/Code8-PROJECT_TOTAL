@@ -143,6 +143,7 @@ export const SignUpTitle = styled.p`
 `;
 
 export const InputEmail = styled.input`
+padding: 20px;
   outline: none;
   background-color: white;
   border: 1px solid black;
@@ -162,6 +163,7 @@ export const InputEmail = styled.input`
 `;
 
 export const InputPassword = styled.input`
+padding: 20px;
   outline: none;
   background-color: white;
   border: 1px solid black;

@@ -56,7 +56,7 @@ function App() {
               <Route path="/music-list" element={<MusicList></MusicList>} />
               <Route path="/music-info/:id" element={<MusicInfo></MusicInfo>} />
               <Route
-                path="/communitypage"
+                path="/communitypage/*"
                 element={<CommunityPage></CommunityPage>}
               />
               <Route path="/mypage" element={<MyPage></MyPage>} />

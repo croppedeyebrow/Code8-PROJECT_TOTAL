@@ -505,3 +505,46 @@ export const PostDownvote = styled.button`
 export const ButtonText = styled.span`
   padding-left: 0.35em;
 `;
+export const CommentPageButton = styled.button`
+  --flip-button-height: 40px;
+  width: 50%;
+  height: var(--flip-button-height);
+  color: transparent;
+  background: #018cff;
+  border-radius: 0;
+  perspective: 500px;
+  transition: 0.3s;
+  position: relative; // 추가
+
+  &:hover {
+    color: white;
+    background: #018cff;
+    .front {
+      transform: rotateX(-90deg);
+    }
+
+    .back {
+      transform: rotateX(0deg);
+    }
+  }
+
+  .front,
+  .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: white; // 추가
+    background: var(--btn-bg); // 추가
+    transition: 0.3s;
+    transform-origin: center center calc(var(--flip-button-height) / -2);
+  }
+
+  .back {
+    transform: rotateX(88deg);
+  }
+`;

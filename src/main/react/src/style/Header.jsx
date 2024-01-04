@@ -196,7 +196,7 @@ const Header = () => {
           <Link to="/performance"><TextBox>공연</TextBox></Link>
           <Link to="/productPage"><TextBox>STORE</TextBox></Link>
           <Link to="/music-list"><TextBox>음원</TextBox></Link>
-          <Link to="/comunitypage"><TextBox>커뮤니티</TextBox></Link>
+          <Link to="/communitypage"><TextBox>커뮤니티</TextBox></Link>
       </div>
       <HeadLogo onClick={handleLogoClick}/>
       <div className="leftzone">
@@ -234,7 +234,7 @@ const Header = () => {
         <Link to="performance" onClick={toggleSidebar}>공연</Link>
         <Link to="productPage" onClick={toggleSidebar}>STORE</Link>
         <Link to="music" onClick={toggleSidebar}>음원</Link>
-        <Link to="comunitypage" onClick={toggleSidebar}>커뮤니티</Link>
+        <Link to="communitypage" onClick={toggleSidebar}>커뮤니티</Link>
     </Sidebar>
     </>
   );

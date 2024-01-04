@@ -291,19 +291,19 @@ const fadeInOut = keyframes`
   100% { opacity: 0; }
 `;
 export const MessageBox = styled.div`
-  height: 6%;
   border: 1px solid black;
   padding: 10px;
   margin: 10px 0;
+  height: 10%;
+  width: 50%;
   display: flex;
-  position: relative;
+  position: fixed;
   justify-content: center;
   align-items: center;
   background-color: #f8f8f8;
-  z-index: 100;
-  position: fixed;
+  z-index: 1000;
   bottom: 0;
-  width: 50%;
+  left: 25%;
   animation: ${fadeInOut} 4s ease-in-out forwards;
 `;
 export const SVGX = styled.div`

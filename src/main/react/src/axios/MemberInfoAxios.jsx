@@ -13,6 +13,15 @@ const MemberInfoAxiosApi = {
       },
     });
   },
+    // 유저 정보 가져오기 (토큰 기반)
+    getUserInfoByToken: async (token) => {
+      return await axios.get(Common.DOMAIN + `/auth/infoByToken`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    },
   // 유저 음원 가져오기
   getUserMusic: async (userId) => {
     const accessToken = Common.getAccessToken();

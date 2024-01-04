@@ -20,12 +20,15 @@ const OtherPage = () => {
   const [userInfo, setUserInfo] = useState(null);
   const [userMusic, setUserMusic] = useState(null);
   const [userPerformance, setUserPerformance] = useState(null);
-  const { email } = useParams();
+  const { email: ownerEmail } = useParams();
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     const fetchUserInfoAndMusic = async () => {
       try {
-        const userInfoResponse = await MemberInfoAxiosApi.getUserInfo(email);
+        const userInfoResponse = await MemberInfoAxiosApi.getUserInfo(
+          ownerEmail
+        );
         setUserInfo(userInfoResponse.data);
         if (userInfoResponse.data) {
           const musicResponse = await MemberInfoAxiosApi.getUserMusic(
@@ -39,13 +42,13 @@ const OtherPage = () => {
     };
     const fetchData = async () => {
       const response = await MemberInfoAxiosApi.getUserInfoByPerformanceEmail(
-        email
+        ownerEmail
       );
       setUserPerformance(response.data);
     };
     fetchData();
     fetchUserInfoAndMusic();
-  }, [email]);
+  }, [ownerEmail]);
   return (
     <>
       <MyPageContainer>

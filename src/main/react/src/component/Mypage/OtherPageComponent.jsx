@@ -44,18 +44,13 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router";
 import MemberInfoAxiosApi from "../../axios/MemberInfoAxios";
 import ModalComponent from "../../utils/ModalComponent";
-import { ReactComponent as Edit } from "../../images/Edit.svg";
 import Common from "../../utils/Common";
 
 const OtherPageComponent = ({ userInfo, userMusic, userPerformance }) => {
   const [chatRooms, setChatRooms] = useState([]);
-  const navigate = useNavigate();
-  const [chatRoomTitle, setChatRoomTitle] = useState("");
-  const [email, setEmail] = useState(null);
-
+  const [email, setEmail] = useState("");
   const [sender, setSender] = useState("");
   const [roomName, setRoomName] = useState(""); // 채팅방 이름
   const ws = useRef(null);
@@ -116,7 +111,7 @@ const OtherPageComponent = ({ userInfo, userMusic, userPerformance }) => {
         console.log(error);
       }
     };
-    const intervalID = setInterval(getChatRoom, 1000);
+    const intervalID = setInterval(getChatRoom, 2000);
     return () => {
       clearInterval(intervalID);
     };
@@ -156,12 +151,32 @@ const OtherPageComponent = ({ userInfo, userMusic, userPerformance }) => {
     }
   }, [chatList]);
   useEffect(() => {
-    if (userInfo) {
-      console.log(userInfo.userNickname);
-      setEmail(userInfo.email);
-      setSender(userInfo.userNickname);
-    }
-  }, [userInfo]);
+    const getUserInfo = async () => {
+      try {
+        const userInfoResponse = await MemberInfoAxiosApi.getUserInfo(email);
+        console.log("User Info Response:", userInfoResponse);
+        if (userInfoResponse.data && userInfoResponse.data.userNickname) {
+          console.log(userInfoResponse.data);
+          setSender(userInfoResponse.data.userNickname);
+        } else {
+          throw new Error("Invalid user data");
+        }
+      } catch (e) {
+        console.log(e);
+
+        // 랜덤 문자열 생성
+        const randomStr = Math.random().toString(36).substring(2, 10);
+
+        // 랜덤 문자열을 접두사로 가진 익명 유저 이름 생성
+        const anonymousUserName = `${randomStr}유저`;
+        console.log(anonymousUserName);
+        // sender 설정
+        setSender(anonymousUserName);
+      }
+    };
+
+    getUserInfo();
+  }, []);
   const enterChatRoom = (roomId) => {
     console.log(`Entering chat room ${roomId}`);
     setEnterRoomId(roomId);
@@ -193,12 +208,6 @@ const OtherPageComponent = ({ userInfo, userMusic, userPerformance }) => {
 
     fetchSessionCounts();
   }, [enterRoomId]);
-
-  const handleCreateChatRoom = async () => {
-    const response = await MemberInfoAxiosApi.chatCreate(email, chatRoomTitle);
-    console.log(response.data);
-    navigate(`/`);
-  };
 
   const settings = {
     dots: true,
@@ -268,10 +277,7 @@ const OtherPageComponent = ({ userInfo, userMusic, userPerformance }) => {
   return (
     <>
       <ContentContainer>
-        <NameText>
-          {userInfo && userInfo.userNickname}
-          <Edit />
-        </NameText>
+        <NameText>{userInfo && userInfo.userNickname}</NameText>
         <SubTitle>노래 {userMusic ? userMusic.length : 0}</SubTitle>
         {userMusic && userMusic.length >= 10 ? (
           <Slider {...settings}>

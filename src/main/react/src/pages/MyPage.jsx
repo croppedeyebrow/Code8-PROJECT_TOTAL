@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import MypageComponent from "../component/Mypage/MypageComponent";
+import depositPath from "../images/Deposit_white.svg";
+import whitdrawPath from "../images/Whitdraw_white.svg";
 import { ReactComponent as Heart } from "../images/HeartBox.svg";
-import { ReactComponent as Subs } from "../images/SubscriberBox.svg";
 
 import {
   Artist,
@@ -23,7 +24,7 @@ import {
 import MemberInfoAxiosApi from "../axios/MemberInfoAxios";
 import ModalComponent from "../utils/ModalComponent";
 import PayComponent from "../component/Mypage/PayComponent.tsx";
-import Category from "../component/category/Category.jsx";
+import { jwtDecode } from "jwt-decode";
 
 const MyPage = () => {
   const [email, setEmail] = useState("asd123@naver.com");
@@ -41,6 +42,34 @@ const MyPage = () => {
     }
     setAmount(inputAmount);
   };
+  useEffect(() => {
+    const fetchUserEmail = async () => {
+      const token = localStorage.getItem("accessToken");
+      if (token) {
+        try {
+          // 사용자 정보를 가져오는 API 호출
+          const response = await MemberInfoAxiosApi.getUserInfoByToken(token);
+          console.log(response.data);
+          if (response.status === 200) {
+            const userData = response.data;
+            setEmail(userData.email);
+          } else {
+            console.error("사용자 정보를 가져오는데 실패했습니다.");
+            setEmail("");
+          }
+        } catch (error) {
+          console.error(
+            "토큰을 사용하여 사용자 정보를 가져오는 중 에러 발생:",
+            error
+          );
+          setEmail("");
+        }
+      }
+    };
+
+    fetchUserEmail();
+  }, [setEmail]);
+
   useEffect(() => {
     const fetchUserInfoAndMusic = async () => {
       try {
@@ -82,7 +111,16 @@ const MyPage = () => {
     <>
       <MyPageContainer>
         <MainHead>
-          <MainProfile></MainProfile>
+          <MainProfile
+            profile={userMusic && userMusic[0].musicDTO.thumbnailImage}
+          >
+            {
+              <img
+                src={userMusic && userMusic[0].musicDTO.thumbnailImage}
+                alt="Profile"
+              />
+            }
+          </MainProfile>
           <ArtistContainer>
             <MainHeadBox>
               <MainHeadText>
@@ -103,15 +141,23 @@ const MyPage = () => {
             <Artist>ARTIST</Artist>
           </ArtistContainer>
           <PointBox>
-                 <MainHeadText>
-                    MY 포인트
-                    <div>{userInfo && userInfo.userPoint}</div>
-                 </MainHeadText>
+            <MainHeadText>
+              MY 포인트
+              <div>{userInfo && userInfo.userPoint}</div>
+            </MainHeadText>
+
             <MoveButtonBox>
               {userInfo && (
                 <>
                   <ModalComponent
-                    open={<MoveButton>충전하기</MoveButton>}
+                    open={
+                      <MoveButton>
+                        <div className="svg-wrapper">
+                          <img src={depositPath} alt="Deposit" />
+                        </div>
+                        충전하기
+                      </MoveButton>
+                    }
                     content={
                       <PayComponent
                         email={userInfo.userEmail}
@@ -126,7 +172,14 @@ const MyPage = () => {
                     close="닫기"
                   />
                   <ModalComponent
-                    open={<MoveButton>환전하기</MoveButton>}
+                    open={
+                      <MoveButton>
+                        <div className="svg-wrapper">
+                          <img src={whitdrawPath} alt="Whitdraw" />
+                        </div>
+                        환전하기
+                      </MoveButton>
+                    }
                     content={
                       <ExchangeContainer>
                         <CashInput

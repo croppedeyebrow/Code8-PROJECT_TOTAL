@@ -8,10 +8,7 @@ import { jwtDecode } from "jwt-decode";
 
 const Category = () => {
   const [cates, setCates] = useState([]);
-  const token = localStorage.getItem("accessToken");
-  const decodedToken = jwtDecode(token);
-
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("adminlogin123@admin.com");
   const [modalOpen, setModalOpen] = useState(false);
   const [modlaMessage, setModalMessage] = useState("");
   const closeModal = () => {
@@ -75,3 +72,4 @@ const Category = () => {
   );
 };
 export default Category;
+

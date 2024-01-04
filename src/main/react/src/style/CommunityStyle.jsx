@@ -86,7 +86,13 @@ export const Aside = styled.div`
     padding-bottom: 0;
   }
 `;
-
+export const Fixed = styled.div`
+  position: fixed;
+  @media (max-width: 1024px) {
+    position: relative;
+    width: 100%;
+  }
+`;
 export const CommunityDashboard = styled.div`
   height: 200px;
   align-self: stretch;
@@ -191,6 +197,7 @@ export const CommunityMenuList = styled.div`
   @media (max-width: 1024px) {
     padding-bottom: 0;
     width: 100%;
+    padding: 3em;
   }
 `;
 export const CommunityMenuItem = styled.div`

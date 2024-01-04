@@ -111,6 +111,7 @@ const MypageComponent = ({ userInfo, userMusic, userPerformance }) => {
   useEffect(() => {
     const getChatRoom = async () => {
       try {
+      console.log(userInfo);
         const rsp = await MemberInfoAxiosApi.chatListByOwnerId(userInfo.id);
         const chatRoomList = rsp.data;
 
@@ -141,7 +142,7 @@ const MypageComponent = ({ userInfo, userMusic, userPerformance }) => {
     return () => {
       clearInterval(intervalID);
     };
-  }, [userInfo]);
+  }, [email]);
 
   useEffect(() => {
     // 채팅방 정보 가져 오기
@@ -183,7 +184,7 @@ const MypageComponent = ({ userInfo, userMusic, userPerformance }) => {
       setEmail(userInfo.userEmail);
       setSender(userInfo.userNickname);
     }
-  }, [userInfo]);
+  }, []);
   const enterChatRoom = (roomId) => {
     console.log(`Entering chat room ${roomId}`);
     setEnterRoomId(roomId);

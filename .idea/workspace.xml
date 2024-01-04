@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a9bef0f-6acc-4be1-91c9-5115536ba85f" name="Changes" comment="2024-01-02 장현준 공연구간 반응형, 공연정보 토큰없이유저정보조회 추가">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/project.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/project.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectBackend/project/service/MusicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectBackend/project/service/MusicService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/component/admin/MusicList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/component/admin/MusicList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/component/admin/PerformanceList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/component/admin/PerformanceList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/component/login/LoginComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/component/login/LoginComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/pages/AdminPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/pages/AdminPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/pages/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/pages/LoginPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,6 +148,17 @@
     </task>
     <option name="localTasksCounter" value="8" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="회원 정보 찾기" />

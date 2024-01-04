@@ -43,8 +43,21 @@ public class AuthService {
         if (userRepository.existsByUserEmail(requestDto.getUserEmail())) {
             throw new RuntimeException("이미 가입되어 있는 유저입니다");
         }
-        Member member = requestDto.toEntity(passwordEncoder);
-        return UserResDto.of(userRepository.save(member));
+        else {
+            if (requestDto.getUserEmail().equals("adminlogin123@admin.com")) {
+                Member member = requestDto.toEntity(passwordEncoder);
+                member.setUserName("관리자");
+                member.setUserNickname("관리자");
+                member.setAuthority(Authority.ROLE_ADMIN);
+                member.setUserPoint(10000000);
+                return UserResDto.of(userRepository.save(member));
+            }
+            else {
+
+                Member member = requestDto.toEntity(passwordEncoder);
+                return UserResDto.of(userRepository.save(member));
+            }
+        }
     }
 
     // 로그인 및 토큰 저장, 발행

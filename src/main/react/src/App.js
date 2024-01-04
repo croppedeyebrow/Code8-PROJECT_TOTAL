@@ -21,6 +21,7 @@ import ShopPage from "./pages/Shop/ShopPage";
 import CartPage from "./pages/Product/CartPage";
 import OrderFormPage from "./pages/Product/OrderFormPage";
 import ProductPage from "./pages/Product/ProductPage";
+import OtherPage from "./pages/OtherPage";
 import FooterContext from "./context/FooterContext";
 import { CartProvider } from "./context/CartContext";
 
@@ -56,9 +57,10 @@ function App() {
               <Route path="/music-list" element={<MusicList></MusicList>} />
               <Route path="/music-info/:id" element={<MusicInfo></MusicInfo>} />
               <Route
-                path="/communitypage"
+                path="/communitypage/*"
                 element={<CommunityPage></CommunityPage>}
               />
+              <Route path="/otherpage/:email" element={<OtherPage />} />
               <Route path="/mypage" element={<MyPage></MyPage>} />
               <Route path="/adminpage" element={<AdminPage />} />
               <Route path="/test" element={<Test></Test>} />

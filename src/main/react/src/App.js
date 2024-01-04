@@ -21,6 +21,7 @@ import ShopPage from "./pages/Shop/ShopPage";
 import CartPage from "./pages/Product/CartPage";
 import OrderFormPage from "./pages/Product/OrderFormPage";
 import ProductPage from "./pages/Product/ProductPage";
+import OtherPage from "./pages/OtherPage";
 import FooterContext from "./context/FooterContext";
 import { CartProvider } from "./context/CartContext";
 
@@ -59,6 +60,7 @@ function App() {
                 path="/communitypage/*"
                 element={<CommunityPage></CommunityPage>}
               />
+              <Route path="/otherpage/:email" element={<OtherPage />} />
               <Route path="/mypage" element={<MyPage></MyPage>} />
               <Route path="/adminpage" element={<AdminPage />} />
               <Route path="/test" element={<Test></Test>} />

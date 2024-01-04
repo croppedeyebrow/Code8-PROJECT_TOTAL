@@ -44,11 +44,15 @@ export const INPUT = styled.input`
   border: none;
   border-radius: 40px;
   font-size: 1.8rem;
+  @media (max-width: 768px) {
+    border: 1px solid black;
+  }
 `;
 
 export const BUTTON = styled.button`
   border: none;
   width: 15%;
+  min-width: 100px;
   height: 50%;
   margin-left: 10%;
   outline: none;

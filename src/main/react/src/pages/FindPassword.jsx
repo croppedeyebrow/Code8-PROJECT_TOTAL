@@ -1,5 +1,6 @@
-import { BACKGROUND, Container } from "../component/login/LoginComponent";
+import { Container } from "../component/login/LoginComponent";
 import {
+  BACKGROUND,
   Contents,
   Content,
   INPUT,

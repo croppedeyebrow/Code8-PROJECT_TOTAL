@@ -174,7 +174,7 @@ const LoginPage = () => {
                     onClick={onClickAddminLogin}
                     style={{ cursor: "pointer" }}
                   >
-                    /Admin
+                    /admin
                   </span>
                 </LoginTitle>
                 <InputEmail

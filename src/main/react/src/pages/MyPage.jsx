@@ -46,37 +46,35 @@ const MyPage = () => {
     }
     setAmount(inputAmount);
   };
-useEffect(() => {
-  if (decode) {
-    setEmail(decode.sub);
-  }
-}, [decode]);
 
   useEffect(() => {
-    const fetchUserInfoAndMusic = async () => {
+    const fetchData = async () => {
       try {
-        const userInfoResponse = await MemberInfoAxiosApi.getUserInfo(email);
-        console.log(userInfoResponse.data);
-        setUserInfo(userInfoResponse.data);
-        if (userInfoResponse.data) {
-          const musicResponse = await MemberInfoAxiosApi.getUserMusic(
-            userInfoResponse.data.id
-          );
-          setUserMusic(musicResponse.data);
+        if (decode) {
+          setEmail(decode.sub);
+
+          // 이제 decode 값을 기반으로 한 다른 비동기 작업들을 수행합니다.
+          const userInfoResponse = await MemberInfoAxiosApi.getUserInfo(decode.sub);
+          console.log(userInfoResponse.data);
+          setUserInfo(userInfoResponse.data);
+
+          if (userInfoResponse.data) {
+            const musicResponse = await MemberInfoAxiosApi.getUserMusic(userInfoResponse.data.id);
+            setUserMusic(musicResponse.data);
+            if(musicResponse.data){
+             const response = await MemberInfoAxiosApi.getUserInfoByPerformanceEmail(userInfoResponse.data.userEmail);
+             setUserPerformance(response.data);
+            }
+          }
         }
       } catch (error) {
         console.error(error);
       }
     };
-    const fetchData = async () => {
-      const response = await MemberInfoAxiosApi.getUserInfoByPerformanceEmail(
-        email
-      );
-      setUserPerformance(response.data);
-    };
-    fetchUserInfoAndMusic();
+
     fetchData();
-  }, [email]);
+  }, []);
+
   const exchangePoints = async () => {
     try {
       const response = await MemberInfoAxiosApi.exchangePoints(email, amount);

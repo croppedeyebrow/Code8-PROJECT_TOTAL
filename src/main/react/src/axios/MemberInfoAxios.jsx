@@ -156,6 +156,23 @@ const MemberInfoAxiosApi = {
       }
     );
   },
+   // 유저 닉네임 변경
+   changeNickname: async (email, newNickname) => {
+       const accessToken = Common.getAccessToken();
+       return await axios.post(
+           Common.DOMAIN + `/user/change/nickname`,
+           {
+             email: email,
+             newNickname: newNickname,
+           },
+           {
+             headers: {
+                 "Content-Type": "application/json",
+                 Authorization: "Bearer " + accessToken,
+             },
+           }
+       );
+   },
 };
 
 export default MemberInfoAxiosApi;

@@ -409,6 +409,21 @@ public class AuthService {
         return userRepository.findAll();
     }
 
+    // 길종환
+    // 닉네임 변경
+    public boolean changeNickname(String userEmail, String newNickname) {
+        try {
+            Member user = userRepository.findByUserEmail(userEmail)
+                    .orElseThrow(() -> new RuntimeException("User not found"));
 
+            // 닉네임 변경 로직 수행
+            user.setUserNickname(newNickname);
+            userRepository.save(user);
+            return true;
+        } catch (Exception e) {
+            log.error("Error changing nickname", e);
+            return false;
+        }
+    }
 
 }

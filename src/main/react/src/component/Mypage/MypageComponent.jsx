@@ -22,6 +22,7 @@ import {
   ItemTextContainer,
   Message,
   MessagesContainer,
+  MoveButton,
   NameText,
   NextArrow,
   PerformanceBox,
@@ -63,6 +64,27 @@ const MypageComponent = ({ userInfo, userMusic, userPerformance }) => {
   const [inputMsg, setInputMsg] = useState("");
   const [chatList, setChatList] = useState([]);
   const [enterRoomId, setEnterRoomId] = useState("");
+  const [newNickname, setNewNickname] = useState("");
+
+
+ const handleNicknameChange = async () => {
+     try {
+         console.log(userInfo);
+         const response = await MemberInfoAxiosApi.changeNickname(
+             userInfo.userEmail,  // 이 부분을 수정
+             newNickname
+         );
+
+         if (response.status === 200 && response.data === true) {
+             alert("닉네임이 성공적으로 변경되었습니다.");
+             navigate(0);
+         } else {
+             alert("닉네임 변경에 실패하였습니다. 다시 시도해주세요.");
+         }
+     } catch (error) {
+         console.error("닉네임 변경 중 에러 발생:", error);
+     }
+ };
 
   const onChangMsg = (e) => {
     setInputMsg(e.target.value);
@@ -300,8 +322,24 @@ const MypageComponent = ({ userInfo, userMusic, userPerformance }) => {
       <ContentContainer>
         <NameText>
           {userInfo && userInfo.userNickname}
-          <Edit />
+          <ModalComponent
+                    open={<Edit />}
+                    content={
+                      <div>
+                        <h2>닉네임 변경</h2>
+                        <input
+                          type="text"
+                          placeholder="새로운 닉네임을 입력하세요"
+                          value={newNickname}
+                          onChange={(e) => setNewNickname(e.target.value)}
+                        />
+                        <button onClick={handleNicknameChange}>변경</button>
+                      </div>
+                    }
+                    close="닫기"
+                  />
         </NameText>
+
         <SubTitle>
           노래 {userMusic ? userMusic.length : 0}
           <RegButton>음원 등록</RegButton>

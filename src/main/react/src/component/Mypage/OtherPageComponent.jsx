@@ -51,6 +51,8 @@ import Common from "../../utils/Common";
 const OtherPageComponent = ({ userInfo, userMusic, userPerformance }) => {
   const [chatRooms, setChatRooms] = useState([]);
   const [email, setEmail] = useState("");
+  const token  = Common.getAccessToken();
+  const decode = token ? jwtDecode(token) : null;
   const [sender, setSender] = useState("");
   const [roomName, setRoomName] = useState(""); // 채팅방 이름
   const ws = useRef(null);
@@ -101,6 +103,9 @@ const OtherPageComponent = ({ userInfo, userMusic, userPerformance }) => {
   const chatContainerRef = useRef(null);
 
   useEffect(() => {
+    if(decode){
+        setEmail(decode.sub);
+    }
     // 서버로부터 채팅방 목록을 가져오는 API 호출
     const getChatRoom = async () => {
       try {

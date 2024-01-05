@@ -21,7 +21,6 @@ const OtherPage = () => {
   const [userMusic, setUserMusic] = useState(null);
   const [userPerformance, setUserPerformance] = useState(null);
   const { email: ownerEmail } = useParams();
-  const [email, setEmail] = useState("");
 
   useEffect(() => {
     const fetchUserInfoAndMusic = async () => {

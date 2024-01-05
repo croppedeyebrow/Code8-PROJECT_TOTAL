@@ -24,10 +24,13 @@ import {
 import MemberInfoAxiosApi from "../axios/MemberInfoAxios";
 import ModalComponent from "../utils/ModalComponent";
 import PayComponent from "../component/Mypage/PayComponent.tsx";
+import Common from "../utils/Common";
 import { jwtDecode } from "jwt-decode";
 
 const MyPage = () => {
-  const [email, setEmail] = useState("asd123@naver.com");
+  const [email, setEmail] = useState("");
+  const token  = Common.getAccessToken();
+  const decode = token ? jwtDecode(token) : null;
   const [userInfo, setUserInfo] = useState(null);
   const [userMusic, setUserMusic] = useState(null);
   const [userPerformance, setUserPerformance] = useState(null);
@@ -42,33 +45,38 @@ const MyPage = () => {
     }
     setAmount(inputAmount);
   };
-  useEffect(() => {
-    const fetchUserEmail = async () => {
-      const token = localStorage.getItem("accessToken");
-      if (token) {
-        try {
-          // 사용자 정보를 가져오는 API 호출
-          const response = await MemberInfoAxiosApi.getUserInfoByToken(token);
-          console.log(response.data);
-          if (response.status === 200) {
-            const userData = response.data;
-            setEmail(userData.email);
-          } else {
-            console.error("사용자 정보를 가져오는데 실패했습니다.");
-            setEmail("");
-          }
-        } catch (error) {
-          console.error(
-            "토큰을 사용하여 사용자 정보를 가져오는 중 에러 발생:",
-            error
-          );
-          setEmail("");
-        }
-      }
-    };
-
-    fetchUserEmail();
-  }, [setEmail]);
+   useEffect(() => {
+     if (decode) {
+       setEmail(decode.sub);
+     }
+   }, [decode]);
+//   useEffect(() => {
+//     const fetchUserEmail = async () => {
+//       const token = localStorage.getItem("accessToken");
+//       if (token) {
+//         try {
+//           // 사용자 정보를 가져오는 API 호출
+//           const response = await MemberInfoAxiosApi.getUserInfoByToken(token);
+//           console.log(response.data);
+//           if (response.status === 200) {
+//             const userData = response.data;
+//             setEmail(userData.email);
+//           } else {
+//             console.error("사용자 정보를 가져오는데 실패했습니다.");
+//             setEmail("");
+//           }
+//         } catch (error) {
+//           console.error(
+//             "토큰을 사용하여 사용자 정보를 가져오는 중 에러 발생:",
+//             error
+//           );
+//           setEmail("");
+//         }
+//       }
+//     };
+//
+//     fetchUserEmail();
+//   }, [setEmail]);
 
   useEffect(() => {
     const fetchUserInfoAndMusic = async () => {
@@ -92,8 +100,8 @@ const MyPage = () => {
       );
       setUserPerformance(response.data);
     };
-    fetchData();
     fetchUserInfoAndMusic();
+    fetchData();
   }, [email]);
   const exchangePoints = async () => {
     try {

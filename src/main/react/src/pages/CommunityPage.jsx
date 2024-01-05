@@ -59,7 +59,9 @@ import MemberInfoAxiosApi from "../axios/MemberInfoAxios";
 const CommunityPage = () => {
   const [isList, setIsList] = useState(false);
   const [categories, setCategories] = useState([]);
-  const [email, setEmail] = useState("asd123@naver.com");
+  const [email, setEmail] = useState(");
+  const token  = Common.getAccessToken();
+  const decode = token ? jwtDecode(token) : null;
   const [userInfo, setUserInfo] = useState(null);
   const { message: wsMessage } = useWebSocket(Common.SOCKET_URL, email);
   const ListOpen = () => {
@@ -77,6 +79,9 @@ const CommunityPage = () => {
   `;
   useEffect(() => {
     const getCategories = async () => {
+    if(decode){
+        setEmail(decode.sub);
+    }
       try {
         const rsp = await AxiosApi.cateList();
         console.log(rsp.data);

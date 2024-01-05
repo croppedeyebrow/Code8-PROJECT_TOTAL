@@ -165,19 +165,17 @@ const OtherPageComponent = ({ userInfo, userMusic, userPerformance }) => {
           console.log(userInfoResponse.data);
           setSender(userInfoResponse.data.userNickname);
         } else {
-          throw new Error("Invalid user data");
+          // 랜덤 문자열 생성
+          const randomStr = Math.random().toString(36).substring(2, 10);
+
+          // 랜덤 문자열을 접두사로 가진 익명 유저 이름 생성
+          const anonymousUserName = `${randomStr}유저`;
+          console.log(anonymousUserName);
+          // sender 설정
+          setSender(anonymousUserName);
         }
       } catch (e) {
         console.log(e);
-
-        // 랜덤 문자열 생성
-        const randomStr = Math.random().toString(36).substring(2, 10);
-
-        // 랜덤 문자열을 접두사로 가진 익명 유저 이름 생성
-        const anonymousUserName = `${randomStr}유저`;
-        console.log(anonymousUserName);
-        // sender 설정
-        setSender(anonymousUserName);
       }
     };
 

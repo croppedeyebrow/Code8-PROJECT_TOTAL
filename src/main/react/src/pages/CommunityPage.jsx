@@ -55,11 +55,12 @@ import CommunitySearchComponent from "../component/community/CommunitySearchComp
 import Post from "../component/community/PostRoomComponent";
 import WriteComponent from "../component/community/CommunityWriteComponent";
 import MemberInfoAxiosApi from "../axios/MemberInfoAxios";
+import { jwtDecode } from "jwt-decode";
 
 const CommunityPage = () => {
   const [isList, setIsList] = useState(false);
   const [categories, setCategories] = useState([]);
-  const [email, setEmail] = useState(");
+  const [email, setEmail] = useState("");
   const token  = Common.getAccessToken();
   const decode = token ? jwtDecode(token) : null;
   const [userInfo, setUserInfo] = useState(null);
@@ -97,7 +98,8 @@ const CommunityPage = () => {
     };
     getUserInfo();
     getCategories();
-  }, []);
+}, []);
+
 
   return (
     <>
@@ -113,22 +115,22 @@ const CommunityPage = () => {
           </Container>
           <CommunityList>
             <Aside>
-              <CommunityDashboard>
-                <CommunityProfile>
-                  <CommunityProfileFrame>
-                    <CommunityProfilePart></CommunityProfilePart>
-                  </CommunityProfileFrame>
-                  <CommunityProfileImg img={userInfo} />
-                </CommunityProfile>
-                <TextCenter>
-                  <TextFrame>
-                    <TextLog>로그인 후 더 편하게 이용해 보세요</TextLog>
-                  </TextFrame>
-                </TextCenter>
-                <DashboardButtonFrame>
-                  <DashboardButton>로그인</DashboardButton>
-                </DashboardButtonFrame>
-              </CommunityDashboard>
+{/*               <CommunityDashboard> */}
+{/*                 <CommunityProfile> */}
+{/*                   <CommunityProfileFrame> */}
+{/*                     <CommunityProfilePart></CommunityProfilePart> */}
+{/*                   </CommunityProfileFrame> */}
+{/*                   <CommunityProfileImg img={userInfo} /> */}
+{/*                 </CommunityProfile> */}
+{/*                 <TextCenter> */}
+{/*                   <TextFrame> */}
+{/*                     <TextLog>로그인 후 더 편하게 이용해 보세요</TextLog> */}
+{/*                   </TextFrame> */}
+{/*                 </TextCenter> */}
+{/*                 <DashboardButtonFrame> */}
+{/*                   <DashboardButton>로그인</DashboardButton> */}
+{/*                 </DashboardButtonFrame> */}
+{/*               </CommunityDashboard> */}
               <CommunityMenuList>
                 <CommunityMenuItem>
                   <Link to="/communitypage">

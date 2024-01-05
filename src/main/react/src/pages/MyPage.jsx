@@ -26,6 +26,7 @@ import ModalComponent from "../utils/ModalComponent";
 import PayComponent from "../component/Mypage/PayComponent.tsx";
 import Common from "../utils/Common";
 import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 const MyPage = () => {
   const [email, setEmail] = useState("");
@@ -35,7 +36,7 @@ const MyPage = () => {
   const [userMusic, setUserMusic] = useState(null);
   const [userPerformance, setUserPerformance] = useState(null);
   const [amount, setAmount] = useState(0);
-
+  const navigate = useNavigate();
   const amountChange = (e) => {
     const inputAmount = e.target.value;
 
@@ -45,38 +46,11 @@ const MyPage = () => {
     }
     setAmount(inputAmount);
   };
-   useEffect(() => {
-     if (decode) {
-       setEmail(decode.sub);
-     }
-   }, [decode]);
-//   useEffect(() => {
-//     const fetchUserEmail = async () => {
-//       const token = localStorage.getItem("accessToken");
-//       if (token) {
-//         try {
-//           // 사용자 정보를 가져오는 API 호출
-//           const response = await MemberInfoAxiosApi.getUserInfoByToken(token);
-//           console.log(response.data);
-//           if (response.status === 200) {
-//             const userData = response.data;
-//             setEmail(userData.email);
-//           } else {
-//             console.error("사용자 정보를 가져오는데 실패했습니다.");
-//             setEmail("");
-//           }
-//         } catch (error) {
-//           console.error(
-//             "토큰을 사용하여 사용자 정보를 가져오는 중 에러 발생:",
-//             error
-//           );
-//           setEmail("");
-//         }
-//       }
-//     };
-//
-//     fetchUserEmail();
-//   }, [setEmail]);
+useEffect(() => {
+  if (decode) {
+    setEmail(decode.sub);
+  }
+}, [decode]);
 
   useEffect(() => {
     const fetchUserInfoAndMusic = async () => {
@@ -108,6 +82,7 @@ const MyPage = () => {
       const response = await MemberInfoAxiosApi.exchangePoints(email, amount);
       if (response.status === 200) {
         alert("환전이 성공적으로 완료되었습니다.");
+        navigate(0);
       } else {
         alert("환전에 실패하였습니다. 다시 시도해주세요.");
       }
@@ -120,7 +95,7 @@ const MyPage = () => {
       <MyPageContainer>
         <MainHead>
           <MainProfile
-            profile={userMusic && userMusic[0].musicDTO.thumbnailImage}
+            profile={userInfo && userInfo.profileImg}
           >
             {
               <img

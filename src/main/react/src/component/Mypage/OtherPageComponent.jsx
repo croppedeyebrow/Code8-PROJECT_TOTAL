@@ -47,6 +47,7 @@ import { useEffect, useRef, useState } from "react";
 import MemberInfoAxiosApi from "../../axios/MemberInfoAxios";
 import ModalComponent from "../../utils/ModalComponent";
 import Common from "../../utils/Common";
+import { jwtDecode } from "jwt-decode";
 
 const OtherPageComponent = ({ userInfo, userMusic, userPerformance }) => {
   const [chatRooms, setChatRooms] = useState([]);

@@ -16,9 +16,13 @@ import {
 import { useState, useEffect, useRef } from "react";
 import AxiosApi from "../../axios/CommunityAxios";
 import { useNavigate } from "react-router-dom";
+import Common from "../../utils/Common";
+import { jwtDecode } from "jwt-decode";
 
 const WriteComponent = () => {
   const [email, setEmail] = useState("");
+  const token  = Common.getAccessToken();
+  const decode = token ? jwtDecode(token) : null;
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [content, setContent] = useState("");
@@ -30,6 +34,9 @@ const WriteComponent = () => {
 
   const quillRef = useRef(null);
   useEffect(() => {
+        if(decode){
+          setEmail(decode.sub);
+        }
     const getCategories = async () => {
       try {
         const rsp = await AxiosApi.cateList();

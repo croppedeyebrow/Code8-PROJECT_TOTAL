@@ -3,7 +3,7 @@ import b from "../../images/Band.jpg";
 
 export const MainContainer = styled.div`
   width: 100%;
-  height: 500vh;
+  height: 600vh;
   @media (max-width: 768px) {
     min-width: 380px;
     min-height: 4000px;
@@ -25,7 +25,7 @@ export const TopContainer = styled.div`
 export const Main = styled.div`
   margin: 0 auto;
   width: 60%;
-  height: 84%;
+  height: 86%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

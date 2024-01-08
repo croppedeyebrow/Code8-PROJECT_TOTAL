@@ -51,6 +51,7 @@ import ModalComponent from "../../utils/ModalComponent";
 import { ReactComponent as Edit } from "../../images/Edit.svg";
 import Common from "../../utils/Common";
 
+
 const MypageComponent = ({ userInfo, userMusic, userPerformance }) => {
   const [chatRooms, setChatRooms] = useState([]);
   const navigate = useNavigate();
@@ -65,6 +66,12 @@ const MypageComponent = ({ userInfo, userMusic, userPerformance }) => {
   const [chatList, setChatList] = useState([]);
   const [enterRoomId, setEnterRoomId] = useState("");
   const [newNickname, setNewNickname] = useState("");
+
+//     // 음악이나
+//      const onClickToMusic = navigate("/music-regist");
+//      const onClickToPerform = navigate("/PerformanceUpdate");
+
+
 
 
  const handleNicknameChange = async () => {
@@ -342,7 +349,7 @@ const MypageComponent = ({ userInfo, userMusic, userPerformance }) => {
 
         <SubTitle>
           노래 {userMusic ? userMusic.length : 0}
-          <RegButton>음원 등록</RegButton>
+{/*           <RegButton onClick={onClickToMusic}>음원 등록</RegButton> */}
         </SubTitle>
         {userMusic && userMusic.length >= 10 ? (
           <Slider {...settings}>
@@ -381,7 +388,7 @@ const MypageComponent = ({ userInfo, userMusic, userPerformance }) => {
           {userPerformance && userPerformance.performances
             ? userPerformance.performances.length
             : 0}
-          <RegButton>공연 등록</RegButton>
+{/*           <RegButton onClick={onClickToPerform}>공연 등록</RegButton> */}
         </SubTitle>
         {userPerformance &&
         userPerformance.performances &&

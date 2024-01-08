@@ -40,6 +40,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 10px;
+  overflow: hidden;
 
   @media (max-width: 768px) {
     font-size: 1rem;

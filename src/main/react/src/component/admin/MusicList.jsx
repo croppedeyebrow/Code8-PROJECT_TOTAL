@@ -46,15 +46,42 @@ const Td = styled.td`
 const MusicList = ({ selectedButton, musicList, pageList }) => {
   console.log("pageList : ", pageList);
   // 음악 장르별 좋아요
+  // 음악 장르별 좋아요
   const heartData = musicList.map((data) => ({
     genre: data.musicDTO.genre,
     heart: data.musicDTO.heartCount,
   }));
+
   // 음악 장르별 판매수
   const purchaseData = musicList.map((data) => ({
     genre: data.musicDTO.genre,
     purchaseCount: data.musicDTO.purchaseCount,
   }));
+
+  // 누적 데이터 생성
+  const cumulativeHeartChartData = heartData.reduce((acc, data) => {
+    const existingData = acc.find((item) => item.genre === data.genre);
+
+    if (existingData) {
+      existingData.heart += data.heart;
+    } else {
+      acc.push({ genre: data.genre, heart: data.heart });
+    }
+
+    return acc;
+  }, []);
+
+  const cumulativePurchaseChartData = purchaseData.reduce((acc, data) => {
+    const existingData = acc.find((item) => item.genre === data.genre);
+
+    if (existingData) {
+      existingData.purchaseCount += data.purchaseCount;
+    } else {
+      acc.push({ genre: data.genre, purchaseCount: data.purchaseCount });
+    }
+
+    return acc;
+  }, []);
 
   return (
     <>
@@ -88,10 +115,11 @@ const MusicList = ({ selectedButton, musicList, pageList }) => {
       )}
       {selectedButton === "MusicGraph1" && (
         <Container>
-          <p style={{ fontSize: "5rem", fontWeight: "900" }}>장르별: 좋아요</p>
-
+          <p style={{ fontSize: "5rem", fontWeight: "900" }}>
+            장르별 누적: 좋아요
+          </p>
           <ResponsiveContainer width="80%" height="60%">
-            <BarChart width={600} height={300} data={heartData}>
+            <BarChart width={600} height={300} data={cumulativeHeartChartData}>
               <XAxis dataKey="genre" />
               <YAxis />
               <Bar dataKey="heart" fill="orange" />
@@ -99,12 +127,19 @@ const MusicList = ({ selectedButton, musicList, pageList }) => {
           </ResponsiveContainer>
         </Container>
       )}
+
+      {/* 누적 판매수 데이터 바차트 */}
       {selectedButton === "MusicGraph2" && (
         <Container>
-          <p style={{ fontSize: "5rem", fontWeight: "900" }}>장르별: 판매수</p>
-
+          <p style={{ fontSize: "5rem", fontWeight: "900" }}>
+            장르별 누적: 판매수
+          </p>
           <ResponsiveContainer width="80%" height="60%">
-            <BarChart width={600} height={300} data={purchaseData}>
+            <BarChart
+              width={600}
+              height={300}
+              data={cumulativePurchaseChartData}
+            >
               <XAxis dataKey="genre" />
               <YAxis />
               <Bar dataKey="purchaseCount" fill="orange" />

@@ -220,7 +220,7 @@ useEffect(() => {
     <NavContainer isOpen={isOpen}>
       <div className="rightzone">
           <Link to="/performance"><TextBox>공연</TextBox></Link>
-          <Link to=""><TextBox>STORE</TextBox></Link>
+          <Link to="/product"><TextBox>STORE</TextBox></Link>
           <Link to="/music-list"><TextBox>음원</TextBox></Link>
           <Link to="/communitypage"><TextBox>커뮤니티</TextBox></Link>
       </div>

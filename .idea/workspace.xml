@@ -5,45 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a9bef0f-6acc-4be1-91c9-5115536ba85f" name="Changes" comment="2024 0104 길종환 추가">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/asset-manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/js/787.dcaeec60.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/js/787.dcaeec60.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/Artist_2.5d204bf583d91543f3bb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/Band.f5e9687f80e1c143c401.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/Down.06b6eb601e43f888ef10f384577148d2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/Edit.882045e830ec406a693e0cb4209b2d92.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/Heart.1dbd92a064a46df5bd52.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/HeartBox.6a325452f1ae026ae734621c95128355.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/Login_Bg.f960992f10eeae1c0533.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/LogoSymbol_color.1526a61b23d3fcd0c38f.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/LogoSymbol_white.45c35555242e6f505a61.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/MapMarker.8e017dfa441b1f655961.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/Menu.edf4ba8990fd98ea3987902a6472dcf3.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/Next.c2718de96e771927a308e8688b225b1a.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/Prev.8962a7e025064e54307d784d9d533889.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/Signup.5c0173aa561c09e1a58e.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/Star.6106bdbadc29bfed5cea6bf79ca8ca2f.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/Symbol_color.e5f00e64cbce954259e3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/Talk.f05705088c1c422e1606e5975766215c.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/Write.5455a2679a81f3c0d437f8c7dbb9e0ff.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/commentsend.51a82a22bb69798f08f9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/image-svgrepo-com.086064c970422d8e92ac57b067d15cdc.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/music-svgrepo-com.b81ccac7dc6ff0c9029438d32965c110.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/slick.295183786cd8a1389865.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/slick.a4e97f5a2a64f0ab1323.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/slick.c94f7671dcc99dce43e2.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/video-camera-svgrepo-com.0fed4bcf44998b30eb4216aa8aa44ac8.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/media/write-svgrepo-com.5ee26993e7d28440efac5ac551ae2273.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/build/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/build/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/react/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/node_modules/.cache/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/react/src/component/main/GenderAlgorism.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/component/main/GenderAlgorism.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/pages/AdminPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/pages/AdminPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/pages/CommunityPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/pages/CommunityPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/react/src/pages/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/pages/LoginPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/react/src/pages/MusicPage/MusicListPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/pages/MusicPage/MusicListPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/pages/performance/Performance.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/pages/performance/Performance.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/react/src/style/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/style/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,17 +73,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/dev/Backend/PERSONAL_BACKEND&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/dev/PROJECT_NATIVE"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\dev\Backend\PROJECT_TOTAL\src\main\react\src\images" />

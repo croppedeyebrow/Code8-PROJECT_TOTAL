@@ -172,6 +172,7 @@ useEffect(() => {
     // 비동기 작업으로 로그인 상태를 확인하고 Redux 상태를 업데이트
     try {
       const response = await dispatch(fetchUserInfo());
+
       // 여기에서 상태 업데이트 또는 추가 작업 수행
     } catch (error) {
       console.error("Error checking login status", error);

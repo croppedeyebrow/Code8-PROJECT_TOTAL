@@ -960,6 +960,8 @@ const MusicList = () => {
     console.log(id);
     const getAllMusic = async () => {
       try {
+          window.location.reload();
+
         const response = await MusicAxiosApi.getAllMusic();
         console.log("음악 리스트 조회 : ", response.data);
         setMusicInfoList(response.data);

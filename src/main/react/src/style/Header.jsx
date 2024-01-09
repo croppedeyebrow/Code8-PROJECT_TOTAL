@@ -168,28 +168,20 @@ const Header = () => {
 const [loading, setLoading] = useState(true);
 
 useEffect(() => {
-    const checkLoginStatus = async () => {
-      // 비동기 작업으로 로그인 상태를 확인하고 Redux 상태를 업데이트
-      try {
-        const response = await dispatch(fetchUserInfo());
-        // 여기에서 상태 업데이트 또는 추가 작업 수행
-      } catch (error) {
-        console.error("Error checking login status", error);
-      }
-    };
+  const checkLoginStatus = async () => {
+    // 비동기 작업으로 로그인 상태를 확인하고 Redux 상태를 업데이트
+    try {
+      const response = await dispatch(fetchUserInfo());
+      // 여기에서 상태 업데이트 또는 추가 작업 수행
+    } catch (error) {
+      console.error("Error checking login status", error);
+    }
+  };
 
-    // 일정 주기마다 로그인 상태 체크
-    const intervalId = setInterval(() => {
-      checkLoginStatus();
-    }, 1000); // 예: 1초 간격
+  checkLoginStatus();  // 함수 호출을 추가
 
-    return () => {
-      clearInterval(intervalId); // 컴포넌트가 언마운트될 때 clearInterval
-    };
-  }, [dispatch]);   useEffect(() => {
-//       setIsLogIn(!!email);
-      console.log(userInfo);
-    }, [email]);
+}, []);
+
 
   const handleLogoClick = () => {
     navigate("/");

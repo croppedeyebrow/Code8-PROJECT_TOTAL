@@ -85,6 +85,7 @@ const Gender = (useAuth) => {
   };
 
   useEffect(() => {
+  window.location.reload();
     const getList = async () => {
       if (useAuth) {
         try {

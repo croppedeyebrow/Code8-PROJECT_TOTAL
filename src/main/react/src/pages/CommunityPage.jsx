@@ -80,6 +80,7 @@ const CommunityPage = () => {
   `;
   useEffect(() => {
     const getCategories = async () => {
+    window.location.reload();
     if(decode){
         setEmail(decode.sub);
     }

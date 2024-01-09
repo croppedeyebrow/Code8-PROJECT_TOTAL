@@ -133,6 +133,7 @@ const LoginPage = () => {
         dispatch(login());
         setLoginData(true);
         // 로그인 성공 시 메인 페이지로 이동
+        window.location.reload();
         navigate("/");
       } else {
         alert("입력 정보를 확인하시오.");
@@ -158,7 +159,7 @@ const LoginPage = () => {
         setLoginData(true);
         // 로그인 성공 시 메인 페이지로 이동
         navigate("/adminpage");
-        // window.location.reload();
+        window.location.reload();
       } else {
         alert("입력 정보를 확인하시오.");
       }
@@ -172,7 +173,7 @@ const LoginPage = () => {
       <Container>
         <BACKGROUND>
           <LoginSginup>
-            <LOGO onDoubleClick={onClickAddminLogin}></LOGO>
+            <LOGO onClick={onClickAddminLogin}></LOGO>
 
             <div className="login">
               <div className="inline">

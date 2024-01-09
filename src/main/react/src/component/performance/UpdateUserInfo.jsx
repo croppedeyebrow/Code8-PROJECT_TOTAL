@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 const UpdateUserInfo = ({ userList }) => {
 
 
-
+  
   const userEmail = localStorage.getItem('email'); // 로컬 스토리지에서 이메일을 가져옵니다.
   const userArray = userList.filter(user => user.userEmail === userEmail); // 이메일이 일치하는 회원 정보를 찾습니다.
   const user = userArray[0] || {}; // 일치하는 회원 정보를 저장합니다.
@@ -54,7 +54,10 @@ const UpdateUserInfo = ({ userList }) => {
 }, []);
   console.log("노래정보 저장값 확인 : ", allMusic)
   console.log("닉네임정보 확인 : ", user.userNickname)
-  const userNickname = user.userNickname; // 이 부분에 원하는 사용자 닉네임을 넣으세요
+  const userNickname = user.userNickname; 
+
+  const filteredMusic = allMusic.filter(music => music.userResDto.userNickname === user.userNickname);
+
 
   const totalHeartCount = allMusic.reduce((total, music) => {
     if (music.userResDto.userNickname === userNickname) {
@@ -93,7 +96,7 @@ return (
       <div className="rightInfo">
         <div className="top">
           <div className="Cnt">공연횟수<cnt>{performer.length}</cnt></div>
-          <div className="Cnt">등록한 곡 <cnt>{allMusic.length}</cnt></div>
+          <div className="Cnt">등록한 곡 <cnt>{filteredMusic.length}</cnt></div>
         </div>
         <div className="pointerZone">
           <div className="pointer" style={{ left : gage }}/>

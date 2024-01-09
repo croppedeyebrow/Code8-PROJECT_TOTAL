@@ -10,7 +10,10 @@ const CardContainer = styled.div`
   gap: 2rem;
   margin: 2rem 0;
   justify-content: center;
-  /* margin: 20px; */
+  @media screen and (max-width: 767px) {
+   margin: 2vw 0;
+   gap: 2vw;
+  }
 `;
 
 const PaginationContainer = styled.div`

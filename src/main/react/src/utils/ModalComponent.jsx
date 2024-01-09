@@ -63,13 +63,24 @@ export const ModalView = styled.div.attrs((props) => ({ role: "dialog" }))`
   width: auto;
   min-width: 30rem;
   max-width: 100rem;
+  max-height: 50rem;
   padding: 1rem;
   height: auto;
   background-color: #ffffff;
+  overflow: auto;
   > div.desc {
     margin: 4rem;
     font-size: 1.8rem;
+    @media screen and (max-width: 767px) {
+             margin: 6vw;
+              font-size: 3vw; 
+            }
   }
+  @media screen and (max-width: 767px) {
+             min-width: 30vw;
+             max-width: 90vw;
+             padding: 2vw; 
+            }
 `;
 
 export const ModalComponent = ({

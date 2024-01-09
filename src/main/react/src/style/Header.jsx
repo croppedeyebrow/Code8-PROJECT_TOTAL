@@ -150,12 +150,25 @@ const TextBox = styled.div`
 
 const Header = () => {
   const email = UseAuth(); // 로그인 시 로컬 스토리지의 토큰에서 이메일 정보를 가져옵니다.
+
   console.log("헤더이메일조회 : ", email)
-  const [isLogIn, setIsLogIn] = useState(!!email);
+  const [isLogIn, setIsLogIn] = useState();
   const [isOpen, setIsOpen] = useState(false); // 사이드바의 상태를 관리합니다.
   const [userInfo, setUserInfo] = useState(null); // 유저 정보를 관리합니다.
   const navigate = useNavigate();
   const { loginData } = useContext(LoginContext);
+
+  const handleLogoClick = () => {
+    navigate("/");
+  };
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("accessToken");
+    setIsLogIn(!!isLoggedIn);
+    console.log("헤더로그인정보조회 : ", isLoggedIn);
+    console.log("헤더로그인조회 : ", isLogIn)
+    console.log("헤더로그인유저정보조회 : ", userInfo)
+  }, [loginData]); // 이메일 정보가 바뀔 때마다 실행합니다.
 
   useEffect(() => {
     const memberInfo = async () => {
@@ -168,17 +181,7 @@ const Header = () => {
       }
     };
     memberInfo();
-  }, [email]);
-
-
-  const handleLogoClick = () => {
-    navigate("/");
-  };
-
-  useEffect(() => {
-    console.log("헤더로그인정보조회 : ", loginData);
-    setIsLogIn(loginData); // 이메일 정보가 있으면 로그인 상태로 설정합니다.
-  }, [loginData]); // 이메일 정보가 바뀔 때마다 실행합니다.
+  }, [isLogIn]);
 
   const handleLogout = () => {
     localStorage.clear(); // 로그아웃 시 로컬 스토리지의 모든 정보를 제거합니다.

@@ -129,6 +129,7 @@ const LoginPage = () => {
         setLoginData(true);
         // 로그인 성공 시 메인 페이지로 이동
         navigate("/");
+        window.location.reload();
       } else {
         alert("입력 정보를 확인하시오.");
       }
@@ -153,7 +154,7 @@ const LoginPage = () => {
         setLoginData(true);
         // 로그인 성공 시 메인 페이지로 이동
         navigate("/adminpage");
-        // window.location.reload();
+        window.location.reload();
       } else {
         alert("입력 정보를 확인하시오.");
       }

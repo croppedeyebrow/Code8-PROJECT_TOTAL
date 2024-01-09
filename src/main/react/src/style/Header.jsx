@@ -8,6 +8,11 @@ import UseAuth from "../hooks/UseAuth";
 import Cancel from "../images/Cancel_White.png"
 import MemberInfoAxiosApi from "../axios/MemberInfoAxios";
 import LoginContext from "../context/LoginContext";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchUserInfo,
+} from "../context/userSlice.jsx";
+import { login, logout } from "../context/userSlice.jsx";
 
 const NavContainer = styled.div`
   width: 100%;
@@ -149,48 +154,63 @@ const TextBox = styled.div`
 
 
 const Header = () => {
-  const email = UseAuth(); // 로그인 시 로컬 스토리지의 토큰에서 이메일 정보를 가져옵니다.
 
-  console.log("헤더이메일조회 : ", email)
-  const [isLogIn, setIsLogIn] = useState();
   const [isOpen, setIsOpen] = useState(false); // 사이드바의 상태를 관리합니다.
-  const [userInfo, setUserInfo] = useState(null); // 유저 정보를 관리합니다.
   const navigate = useNavigate();
-  const { loginData } = useContext(LoginContext);
+//   const { loginData } = useContext(LoginContext);
+  const email = useSelector((state) => state.user.email);
+  const userInfo = useSelector((state) => state.user.userInfo);
+  const isLogin = useSelector((state) => state.user.isLogin);
+//   const [isLogIn, setIsLogIn] = useState(!!email); // useState로 상태 관리
+  const dispatch = useDispatch();
+
+
+const [loading, setLoading] = useState(true);
+
+useEffect(() => {
+    const checkLoginStatus = async () => {
+      // 비동기 작업으로 로그인 상태를 확인하고 Redux 상태를 업데이트
+      try {
+        const response = await dispatch(fetchUserInfo());
+        // 여기에서 상태 업데이트 또는 추가 작업 수행
+      } catch (error) {
+        console.error("Error checking login status", error);
+      }
+    };
+
+    // 일정 주기마다 로그인 상태 체크
+    const intervalId = setInterval(() => {
+      checkLoginStatus();
+    }, 1000); // 예: 1초 간격
+
+    return () => {
+      clearInterval(intervalId); // 컴포넌트가 언마운트될 때 clearInterval
+    };
+  }, [dispatch]);   useEffect(() => {
+//       setIsLogIn(!!email);
+      console.log(userInfo);
+    }, [email]);
 
   const handleLogoClick = () => {
     navigate("/");
   };
-
-  useEffect(() => {
-    const isLoggedIn = localStorage.getItem("accessToken");
-    setIsLogIn(!!isLoggedIn);
-    console.log("헤더로그인정보조회 : ", isLoggedIn);
-    console.log("헤더로그인조회 : ", isLogIn)
-    console.log("헤더로그인유저정보조회 : ", userInfo)
-  }, [loginData]); // 이메일 정보가 바뀔 때마다 실행합니다.
-
-  useEffect(() => {
-    const memberInfo = async () => {
-      try {
-        const response = await MemberInfoAxiosApi.getUserInfo(email);
-        console.log(response.data);
-        setUserInfo(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    memberInfo();
-  }, [isLogIn]);
-
   const handleLogout = () => {
-    localStorage.clear(); // 로그아웃 시 로컬 스토리지의 모든 정보를 제거합니다.
-    // localStorage.removeItem('email'); // 로그아웃 시 로컬 스토리지의 이메일 정보를 제거합니다.
-    // localStorage.removeItem('accessToken'); // 로그아웃 시 로컬 스토리지의 액세스토큰 정보를 제거합니다.
-    // localStorage.removeItem('refreshToken'); // 로그아웃 시 로컬 스토리지의 리프레쉬토큰 정보를 제거합니다.
-    setIsLogIn(false);
-    window.location.reload();
+    dispatch(logout()); // 로그아웃 액션 디스패치
+    localStorage.clear(); // 로그아웃 시 로컬 스토리지의 모든 정보를 제거
   };
+//   useEffect(() => {
+//     console.log("헤더로그인정보조회 : ", loginData);
+//     setIsLogIn(loginData); // 이메일 정보가 있으면 로그인 상태로 설정합니다.
+//   }, [loginData]); // 이메일 정보가 바뀔 때마다 실행합니다.
+
+//   const handleLogout = () => {
+//     localStorage.clear(); // 로그아웃 시 로컬 스토리지의 모든 정보를 제거합니다.
+//     // localStorage.removeItem('email'); // 로그아웃 시 로컬 스토리지의 이메일 정보를 제거합니다.
+//     // localStorage.removeItem('accessToken'); // 로그아웃 시 로컬 스토리지의 액세스토큰 정보를 제거합니다.
+//     // localStorage.removeItem('refreshToken'); // 로그아웃 시 로컬 스토리지의 리프레쉬토큰 정보를 제거합니다.
+// //     setIsLogIn(false);
+//     window.location.reload();
+//   };
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -202,12 +222,12 @@ const Header = () => {
           <Link to="/performance"><TextBox>공연</TextBox></Link>
           <Link to=""><TextBox>STORE</TextBox></Link>
           <Link to="/music-list"><TextBox>음원</TextBox></Link>
-          <Link to="/comunitypage"><TextBox>커뮤니티</TextBox></Link>
+          <Link to="/communitypage"><TextBox>커뮤니티</TextBox></Link>
       </div>
       <HeadLogo onClick={handleLogoClick}/>
       <div className="leftzone">
         <div className="leftinleft">
-          {isLogIn ? (
+          {isLogin ? (
             <>
               <TextBox onClick={handleLogout} >로그아웃</TextBox>
               <Link to="/mypage"><TextBox>마이페이지</TextBox></Link>
@@ -224,7 +244,7 @@ const Header = () => {
     </NavContainer>
     <Sidebar isOpen={isOpen}>
         <div className="close" onClick={toggleSidebar}/>
-        {isLogIn ? (
+        {isLogin ? (
           <>
           <Link to="/mypage" onClick={toggleSidebar} style={{margin:"0"}}>{userInfo && userInfo.authority}</Link>
           <Link to="/mypage" onClick={toggleSidebar} style={{fontSize:"3rem", fontWeight:"700"}}>{userInfo && userInfo.userNickname} <span>님</span></Link>
@@ -240,7 +260,7 @@ const Header = () => {
         <Link to="performance" onClick={toggleSidebar}>공연</Link>
         <Link to="product" onClick={toggleSidebar}>STORE</Link>
         <Link to="music" onClick={toggleSidebar}>음원</Link>
-        <Link to="comunitypage" onClick={toggleSidebar}>커뮤니티</Link>
+        <Link to="communitypage" onClick={toggleSidebar}>커뮤니티</Link>
     </Sidebar>
     </>
   );

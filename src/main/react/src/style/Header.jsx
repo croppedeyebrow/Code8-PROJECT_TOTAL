@@ -233,7 +233,7 @@ const Header = () => {
 
         <Link to="performance" onClick={toggleSidebar}>공연</Link>
         <Link to="productPage" onClick={toggleSidebar}>STORE</Link>
-        <Link to="music" onClick={toggleSidebar}>음원</Link>
+        <Link to="music-list" onClick={toggleSidebar}>음원</Link>
         <Link to="communitypage" onClick={toggleSidebar}>커뮤니티</Link>
     </Sidebar>
     </>

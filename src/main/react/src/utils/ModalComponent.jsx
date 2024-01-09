@@ -65,6 +65,7 @@ export const ModalView = styled.div.attrs((props) => ({ role: "dialog" }))`
   max-width: 100rem;
   max-height: 50rem;
   padding: 1rem;
+  overflow: auto;
   height: auto;
   background-color: #ffffff;
   overflow: auto;

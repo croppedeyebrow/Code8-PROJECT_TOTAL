@@ -7,6 +7,7 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   @media (max-width: 768px) {
+    min-height: 1000px;
     height: 120vh;
   }
 `;
@@ -142,7 +143,7 @@ export const SignUpTitle = styled.p`
 `;
 
 export const InputEmail = styled.input`
-  padding: 12px;
+padding: 20px;
   outline: none;
   background-color: white;
   border: 1px solid black;
@@ -162,7 +163,7 @@ export const InputEmail = styled.input`
 `;
 
 export const InputPassword = styled.input`
-  padding: 12px;
+padding: 20px;
   outline: none;
   background-color: white;
   border: 1px solid black;

@@ -47,10 +47,13 @@ import { useEffect, useRef, useState } from "react";
 import MemberInfoAxiosApi from "../../axios/MemberInfoAxios";
 import ModalComponent from "../../utils/ModalComponent";
 import Common from "../../utils/Common";
+import { jwtDecode } from "jwt-decode";
 
 const OtherPageComponent = ({ userInfo, userMusic, userPerformance }) => {
   const [chatRooms, setChatRooms] = useState([]);
   const [email, setEmail] = useState("");
+  const token  = Common.getAccessToken();
+  const decode = token ? jwtDecode(token) : null;
   const [sender, setSender] = useState("");
   const [roomName, setRoomName] = useState(""); // 채팅방 이름
   const ws = useRef(null);
@@ -101,6 +104,9 @@ const OtherPageComponent = ({ userInfo, userMusic, userPerformance }) => {
   const chatContainerRef = useRef(null);
 
   useEffect(() => {
+    if(decode){
+        setEmail(decode.sub);
+    }
     // 서버로부터 채팅방 목록을 가져오는 API 호출
     const getChatRoom = async () => {
       try {
@@ -159,19 +165,17 @@ const OtherPageComponent = ({ userInfo, userMusic, userPerformance }) => {
           console.log(userInfoResponse.data);
           setSender(userInfoResponse.data.userNickname);
         } else {
-          throw new Error("Invalid user data");
+          // 랜덤 문자열 생성
+          const randomStr = Math.random().toString(36).substring(2, 10);
+
+          // 랜덤 문자열을 접두사로 가진 익명 유저 이름 생성
+          const anonymousUserName = `${randomStr}유저`;
+          console.log(anonymousUserName);
+          // sender 설정
+          setSender(anonymousUserName);
         }
       } catch (e) {
         console.log(e);
-
-        // 랜덤 문자열 생성
-        const randomStr = Math.random().toString(36).substring(2, 10);
-
-        // 랜덤 문자열을 접두사로 가진 익명 유저 이름 생성
-        const anonymousUserName = `${randomStr}유저`;
-        console.log(anonymousUserName);
-        // sender 설정
-        setSender(anonymousUserName);
       }
     };
 

@@ -190,7 +190,7 @@ const PerformanceCardView = ({
             {isEnded ? "공연 종료" : "공연 예정"}
           </Status>
           <Button onClick={handleDetailClick}>자세히</Button>
-          {!isEnded && <Button onClick={handleBookingClick}>예매하기</Button>}
+{/*           {!isEnded && <Button onClick={handleBookingClick}>예매하기</Button>} */}
         </ButtonContainer>
       </CardView>
     </>

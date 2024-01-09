@@ -177,7 +177,7 @@ const CommunityComponent = () => {
                     : "";
                   const hasMediaContent = checkMediaContent(post.content);
                   const writerInfo = post.email
-                    ? post.email
+                    ? post.nickName
                     : `${Common.truncateText(post.nickName, 10)}(${ipAddress})`;
 
                   return (

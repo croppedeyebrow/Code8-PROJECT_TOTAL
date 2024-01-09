@@ -35,6 +35,7 @@ import Common from "../../utils/Common";
 import CommunityRankComponent from "./CommunityRankComponent";
 import useWebSocket from "../../context/useWebsocket";
 import { HeadText } from "../../style/CommunityPostStyle";
+import { jwtDecode } from "jwt-decode";
 
 const Post = () => {
   const [comments, setComments] = useState([]);
@@ -45,6 +46,8 @@ const Post = () => {
   const [newComment, setNewComment] = useState("");
   const [newReply, setNewReply] = useState("");
   const [email, setEmail] = useState("");
+  const token  = Common.getAccessToken();
+  const decode = token ? jwtDecode(token) : null;
   const [nickName, setNickName] = useState("");
   const [password, setPassword] = useState("");
   const [replyNickName, setReplyNickName] = useState({});
@@ -63,7 +66,11 @@ const Post = () => {
     return `${segments[0]}.${segments[1]}`;
   };
   const ipAddress = getPartialIp(post.ipAddress);
-
+useEffect(() => {
+    if(decode){
+        setEmail(decode.sub);
+    }
+}, []);
   useEffect(() => {
     const postDetail = async () => {
       try {
@@ -108,6 +115,7 @@ const Post = () => {
   };
   const commentWrite = async () => {
     try {
+    if(email === null) {
       if (!newComment.trim()) {
         // Check if newComment is empty or contains only whitespace
         alert("댓글 내용을 입력하세요.");
@@ -117,6 +125,7 @@ const Post = () => {
         alert("닉네임과 비밀번호를 모두 입력하세요.");
         return;
       }
+    }
       const response = await CommunityAxiosApi.commentWrite(
         email,
         nickName,
@@ -148,15 +157,16 @@ const Post = () => {
   // 대댓글 작성 함수
   const replyWrite = async (parentCommentId) => {
     try {
-      if (!newReply.trim()) {
-        // Check if newReply is empty or contains only whitespace
+     if(email === null){
+      if (!newReply) {
         alert("대댓글 내용을 입력하세요.");
         return;
       }
-      if (!replyAuthorName.trim() || !replyAuthorPassword.trim()) {
+      if (!replyAuthorName || !replyAuthorPassword) {
         alert("답글 작성자 닉네임과 비밀번호를 모두 입력하세요.");
         return;
       }
+     }
       const replyAuthorName = replyNickName[parentCommentId];
       const replyAuthorPassword = replyPassword[parentCommentId];
 

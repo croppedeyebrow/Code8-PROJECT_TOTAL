@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a9bef0f-6acc-4be1-91c9-5115536ba85f" name="Changes" comment="2024-01-04 장현준, 모바일버전 헤더 사이드바 배경문제, 글로벌스타일 누락코드 수정">
+    <list default="true" id="2a9bef0f-6acc-4be1-91c9-5115536ba85f" name="Changes" comment="2024 0104 길종환 추가">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/src/component/community/CommunityComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/component/community/CommunityComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/src/style/CommunityPostWriteStyle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/style/CommunityPostWriteStyle.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/src/style/MyPageStyle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/style/MyPageStyle.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +67,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/jun_works/DeveloperCourse/PROJECT_TOTAL"
+    "last_opened_file_path": "D:/dev/Backend/PERSONAL_BACKEND"
   }
 }]]></component>
   <component name="RecentsManager">

@@ -24,15 +24,19 @@ import {
 import MemberInfoAxiosApi from "../axios/MemberInfoAxios";
 import ModalComponent from "../utils/ModalComponent";
 import PayComponent from "../component/Mypage/PayComponent.tsx";
+import Common from "../utils/Common";
 import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 const MyPage = () => {
-  const [email, setEmail] = useState("asd123@naver.com");
+  const [email, setEmail] = useState("");
+  const token  = Common.getAccessToken();
+  const decode = token ? jwtDecode(token) : null;
   const [userInfo, setUserInfo] = useState(null);
   const [userMusic, setUserMusic] = useState(null);
   const [userPerformance, setUserPerformance] = useState(null);
   const [amount, setAmount] = useState(0);
-
+  const navigate = useNavigate();
   const amountChange = (e) => {
     const inputAmount = e.target.value;
 
@@ -42,64 +46,41 @@ const MyPage = () => {
     }
     setAmount(inputAmount);
   };
-  useEffect(() => {
-    const fetchUserEmail = async () => {
-      const token = localStorage.getItem("accessToken");
-      if (token) {
-        try {
-          // 사용자 정보를 가져오는 API 호출
-          const response = await MemberInfoAxiosApi.getUserInfoByToken(token);
-          console.log(response.data);
-          if (response.status === 200) {
-            const userData = response.data;
-            setEmail(userData.email);
-          } else {
-            console.error("사용자 정보를 가져오는데 실패했습니다.");
-            setEmail("");
-          }
-        } catch (error) {
-          console.error(
-            "토큰을 사용하여 사용자 정보를 가져오는 중 에러 발생:",
-            error
-          );
-          setEmail("");
-        }
-      }
-    };
-
-    fetchUserEmail();
-  }, [setEmail]);
 
   useEffect(() => {
-    const fetchUserInfoAndMusic = async () => {
+    const fetchData = async () => {
       try {
-        const userInfoResponse = await MemberInfoAxiosApi.getUserInfo(email);
-        console.log(userInfoResponse.data);
-        setUserInfo(userInfoResponse.data);
-        if (userInfoResponse.data) {
-          const musicResponse = await MemberInfoAxiosApi.getUserMusic(
-            userInfoResponse.data.id
-          );
-          setUserMusic(musicResponse.data);
+        if (decode) {
+          setEmail(decode.sub);
+
+          // 이제 decode 값을 기반으로 한 다른 비동기 작업들을 수행합니다.
+          const userInfoResponse = await MemberInfoAxiosApi.getUserInfo(decode.sub);
+          console.log(userInfoResponse.data);
+          setUserInfo(userInfoResponse.data);
+
+          if (userInfoResponse.data) {
+            const musicResponse = await MemberInfoAxiosApi.getUserMusic(userInfoResponse.data.id);
+            setUserMusic(musicResponse.data);
+            if(musicResponse.data){
+             const response = await MemberInfoAxiosApi.getUserInfoByPerformanceEmail(userInfoResponse.data.userEmail);
+             setUserPerformance(response.data);
+            }
+          }
         }
       } catch (error) {
         console.error(error);
       }
     };
-    const fetchData = async () => {
-      const response = await MemberInfoAxiosApi.getUserInfoByPerformanceEmail(
-        email
-      );
-      setUserPerformance(response.data);
-    };
+
     fetchData();
-    fetchUserInfoAndMusic();
-  }, [email]);
+  }, []);
+
   const exchangePoints = async () => {
     try {
       const response = await MemberInfoAxiosApi.exchangePoints(email, amount);
       if (response.status === 200) {
         alert("환전이 성공적으로 완료되었습니다.");
+        navigate(0);
       } else {
         alert("환전에 실패하였습니다. 다시 시도해주세요.");
       }
@@ -112,7 +93,7 @@ const MyPage = () => {
       <MyPageContainer>
         <MainHead>
           <MainProfile
-            profile={userMusic && userMusic[0].musicDTO.thumbnailImage}
+            profile={userInfo && userInfo.profileImg}
           >
             {
               <img

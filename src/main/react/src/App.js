@@ -24,6 +24,9 @@ import ProductPage from "./pages/Product/ProductPage";
 import OtherPage from "./pages/OtherPage";
 import FooterContext from "./context/FooterContext";
 import { CartProvider } from "./context/CartContext";
+import FindEmail from "./pages/FindEmail";
+import FindPassword from "./pages/FindPassword";
+import {SuccessPage} from "./component/Mypage/SuccessComponent";
 
 function App() {
   const [footerData, setFooterData] = useState([]);
@@ -62,6 +65,7 @@ function App() {
               />
               <Route path="/otherpage/:email" element={<OtherPage />} />
               <Route path="/mypage" element={<MyPage></MyPage>} />
+              <Route path="/success" element={<SuccessPage />} />
               <Route path="/adminpage" element={<AdminPage />} />
               <Route path="/test" element={<Test></Test>} />
               <Route path="/shopPage" element={<ShopPage></ShopPage>} />
@@ -73,6 +77,11 @@ function App() {
               <Route
                 path="/productPage"
                 element={<ProductPage></ProductPage>}
+              />
+              <Route path="/findemail" element={<FindEmail></FindEmail>} />
+              <Route
+                path="/findpassword"
+                element={<FindPassword></FindPassword>}
               />
             </Routes>
             <Footer />

@@ -164,7 +164,7 @@ const LoginPage = () => {
       <Container>
         <BACKGROUND>
           <LoginSginup>
-            <LOGO onDoubleClick={onClickAddminLogin}></LOGO>
+            <LOGO onClick={onClickAddminLogin}></LOGO>
 
             <div className="login">
               <div className="inline">

@@ -22,6 +22,7 @@ import {
   ItemTextContainer,
   Message,
   MessagesContainer,
+  MoveButton,
   NameText,
   NextArrow,
   PerformanceBox,
@@ -50,6 +51,7 @@ import ModalComponent from "../../utils/ModalComponent";
 import { ReactComponent as Edit } from "../../images/Edit.svg";
 import Common from "../../utils/Common";
 
+
 const MypageComponent = ({ userInfo, userMusic, userPerformance }) => {
   const [chatRooms, setChatRooms] = useState([]);
   const navigate = useNavigate();
@@ -63,6 +65,33 @@ const MypageComponent = ({ userInfo, userMusic, userPerformance }) => {
   const [inputMsg, setInputMsg] = useState("");
   const [chatList, setChatList] = useState([]);
   const [enterRoomId, setEnterRoomId] = useState("");
+  const [newNickname, setNewNickname] = useState("");
+
+//     // 음악이나
+//      const onClickToMusic = navigate("/music-regist");
+//      const onClickToPerform = navigate("/PerformanceUpdate");
+
+
+
+
+ const handleNicknameChange = async () => {
+     try {
+         console.log(userInfo);
+         const response = await MemberInfoAxiosApi.changeNickname(
+             userInfo.userEmail,  // 이 부분을 수정
+             newNickname
+         );
+
+         if (response.status === 200 && response.data === true) {
+             alert("닉네임이 성공적으로 변경되었습니다.");
+             navigate(0);
+         } else {
+             alert("닉네임 변경에 실패하였습니다. 다시 시도해주세요.");
+         }
+     } catch (error) {
+         console.error("닉네임 변경 중 에러 발생:", error);
+     }
+ };
 
   const onChangMsg = (e) => {
     setInputMsg(e.target.value);
@@ -111,7 +140,6 @@ const MypageComponent = ({ userInfo, userMusic, userPerformance }) => {
   useEffect(() => {
     const getChatRoom = async () => {
       try {
-      console.log(userInfo);
         const rsp = await MemberInfoAxiosApi.chatListByOwnerId(userInfo.id);
         const chatRoomList = rsp.data;
 
@@ -142,7 +170,7 @@ const MypageComponent = ({ userInfo, userMusic, userPerformance }) => {
     return () => {
       clearInterval(intervalID);
     };
-  }, [email]);
+  }, [userInfo]);
 
   useEffect(() => {
     // 채팅방 정보 가져 오기
@@ -184,7 +212,7 @@ const MypageComponent = ({ userInfo, userMusic, userPerformance }) => {
       setEmail(userInfo.userEmail);
       setSender(userInfo.userNickname);
     }
-  }, []);
+  }, [userInfo]);
   const enterChatRoom = (roomId) => {
     console.log(`Entering chat room ${roomId}`);
     setEnterRoomId(roomId);
@@ -301,11 +329,27 @@ const MypageComponent = ({ userInfo, userMusic, userPerformance }) => {
       <ContentContainer>
         <NameText>
           {userInfo && userInfo.userNickname}
-          <Edit />
+          <ModalComponent
+                    open={<Edit />}
+                    content={
+                      <div>
+                        <h2>닉네임 변경</h2>
+                        <input
+                          type="text"
+                          placeholder="새로운 닉네임을 입력하세요"
+                          value={newNickname}
+                          onChange={(e) => setNewNickname(e.target.value)}
+                        />
+                        <button onClick={handleNicknameChange}>변경</button>
+                      </div>
+                    }
+                    close="닫기"
+                  />
         </NameText>
+
         <SubTitle>
           노래 {userMusic ? userMusic.length : 0}
-          <RegButton>음원 등록</RegButton>
+{/*           <RegButton onClick={onClickToMusic}>음원 등록</RegButton> */}
         </SubTitle>
         {userMusic && userMusic.length >= 10 ? (
           <Slider {...settings}>
@@ -344,7 +388,7 @@ const MypageComponent = ({ userInfo, userMusic, userPerformance }) => {
           {userPerformance && userPerformance.performances
             ? userPerformance.performances.length
             : 0}
-          <RegButton>공연 등록</RegButton>
+{/*           <RegButton onClick={onClickToPerform}>공연 등록</RegButton> */}
         </SubTitle>
         {userPerformance &&
         userPerformance.performances &&

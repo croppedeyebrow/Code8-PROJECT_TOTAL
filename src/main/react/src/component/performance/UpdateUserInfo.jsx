@@ -54,10 +54,8 @@ const UpdateUserInfo = ({ userList }) => {
 }, []);
   console.log("노래정보 저장값 확인 : ", allMusic)
   console.log("닉네임정보 확인 : ", user.userNickname)
-  const userNickname = user.userNickname; 
-
-  const filteredMusic = allMusic.filter(music => music.userResDto.userNickname === user.userNickname);
-
+  const userNickname = user.userNickname; // 이 부분에 원하는 사용자 닉네임을 넣으세요
+const filteredMusic = allMusic.filter(music => music.userResDto.userNickname === user.userNickname);
 
   const totalHeartCount = allMusic.reduce((total, music) => {
     if (music.userResDto.userNickname === userNickname) {

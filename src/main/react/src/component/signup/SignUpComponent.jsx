@@ -9,7 +9,7 @@ export const CONTAINER = styled.div`
     background: linear-gradient(180deg, #008bff 0%, #61e6ca 100%);
     width: 100%;
     height: 240vh;
-    min-height: 1400px;
+    min-height: 1800px;
   }
 `;
 
@@ -29,7 +29,7 @@ export const SIGNUP = styled.div`
     background: none;
     box-shadow: none;
     width: 100%;
-    height: 80%;
+    height: 100%;
     min-width: 300px;
   }
 `;
@@ -360,6 +360,28 @@ export const CheckButton = styled.button`
   color: white;
   cursor: pointer;
   min-width: 80px;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    border-radius: 0;
+    height: 4rem;
+    line-height: 0.5;
+  }
+`;
+
+export const CheckButton1 = styled.button`
+  width: 20%;
+  height: 3rem;
+  margin-left: 5%;
+  background-color: #61e6ca;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  min-width: 80px;
+
   @media (max-width: 768px) {
     margin-left: 0;
     border-radius: 0;
@@ -404,6 +426,7 @@ export const SignUpButton = styled.button`
     border-radius: 50px;
     background: none;
     background-color: #008bff;
+    margin-bottom: 20%;
   }
 `;
 

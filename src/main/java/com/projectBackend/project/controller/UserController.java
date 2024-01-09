@@ -89,8 +89,18 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(false);
         }
     }
+    // 유저 닉네임 변경
+    @PostMapping("/change/nickname")
+    public ResponseEntity<Boolean> changeNickname(@RequestBody Map<String, String> payload) {
+        String email = payload.get("email");
+        String newNickname = payload.get("newNickname");  // 수정된 부분
+        boolean success = authService.changeNickname(email, newNickname);
 
-
-
+        if (success) {
+            return ResponseEntity.ok().body(true);
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(false);
+        }
+    }
 
 }

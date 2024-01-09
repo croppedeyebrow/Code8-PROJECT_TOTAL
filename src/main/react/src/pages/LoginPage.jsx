@@ -23,8 +23,12 @@ import kakao from "../images/kakao_login.png";
 import Common from "../utils/Common";
 import FooterContext from "../context/FooterContext";
 import LoginContext from "../context/LoginContext";
+import { useDispatch } from "react-redux";
+import { login } from "../context/userSlice";
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
+
   // 저작권
   const { setFooterData } = useContext(FooterContext);
   const { setLoginData } = useContext(LoginContext);
@@ -126,10 +130,10 @@ const LoginPage = () => {
         // console.log("토큰의 id:", res.data.accessToken.name);
         window.localStorage.setItem("refreshToken", refreshToken);
         alert("로그인 성공");
+        dispatch(login());
         setLoginData(true);
         // 로그인 성공 시 메인 페이지로 이동
         navigate("/");
-        window.location.reload();
       } else {
         alert("입력 정보를 확인하시오.");
       }
@@ -154,7 +158,7 @@ const LoginPage = () => {
         setLoginData(true);
         // 로그인 성공 시 메인 페이지로 이동
         navigate("/adminpage");
-        window.location.reload();
+        // window.location.reload();
       } else {
         alert("입력 정보를 확인하시오.");
       }

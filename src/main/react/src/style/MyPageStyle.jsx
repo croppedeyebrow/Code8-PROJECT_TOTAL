@@ -23,7 +23,7 @@ export const MainHead = styled.div`
     background: white;
     width: 100%;
     height: 100%;
-    /* justify-content: center; */
+    justify-content: center;
     align-items: center;
     flex-direction: column;
   }
@@ -297,6 +297,8 @@ export const NameText = styled.div`
   line-height: normal;
   @media (max-width: 1024px) {
     width: 100%;
+    margin: 0;
+    gap: 0;
   }
 `;
 
@@ -453,6 +455,8 @@ export const PerformanceBox = styled.div`
   background: #fff;
 
   box-shadow: 0px 5px 20px 5px rgba(0, 0, 0, 0.15);
+  @media (max-width: 1024px) {
+  }
 `;
 export const PerformancePictureBox = styled.div`
   width: 365.776px;
@@ -547,6 +551,9 @@ export const PayBox = styled.div`
   width: 500px;
   height: 100%;
   overflow: auto;
+  @media (max-width: 1024px) {
+    width: 450px;
+  }
 `;
 
 export const RadioButton = styled.button`

@@ -9,12 +9,19 @@ export const WriteContainer = styled.div`
   align-items: flex-start;
   flex: 1 0 0;
   opacity: var(--, 1);
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 `;
 
 export const WriteSection = styled.div`
   height: 1494.03px;
   align-self: stretch;
   opacity: var(--, 1);
+  @media (max-width: 1024px) {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 export const WriteHeading = styled.div`
@@ -49,7 +56,7 @@ export const Line = styled.div`
 `;
 export const WriteBorder = styled.input`
   display: flex;
-  width: ${(props) => props.width || "97.2%"};
+  width: ${(props) => props.width || "100%"};
   padding: 10px 13px;
   align-items: center;
   border-top: 1px solid #66baff;
@@ -104,6 +111,13 @@ export const StyledReactQuill = styled(ReactQuill)`
   .ql-toolbar .ql-formats {
     margin-right: 2px !important; // 버튼들 사이의 간격을 2px로
   }
+  @media (max-width: 1024px) {
+    .ql-container {
+      width: 100%; // 모바일 환경에서는 에디터의 높이를 줄입니다.
+    }
+    .ql-toolbar {
+    }
+  }
 `;
 export const CancelButton = styled.button`
   --flip-button-height: 40px;
@@ -148,6 +162,12 @@ export const CancelButton = styled.button`
   .back {
     transform: rotateX(88deg);
   }
+  @media (max-width: 1024px) {
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    perspective: 100%;
+  }
 `;
 export const WriteButton = styled.button`
   --flip-button-height: 40px;
@@ -190,5 +210,9 @@ export const WriteButton = styled.button`
 
   .back {
     transform: rotateX(88deg);
+  }
+  @media (max-width: 1024px) {
+    width: 100%;
+    margin-top: 20px;
   }
 `;

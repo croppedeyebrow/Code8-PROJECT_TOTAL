@@ -5,40 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a9bef0f-6acc-4be1-91c9-5115536ba85f" name="Changes" comment="2024 0104 길종환 추가">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/projectBackend/project/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/projectBackend/project/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/projectBackend/project/service/AuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/projectBackend/project/service/AuthService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/static/css/main.8e70d4ba.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/static/css/main.8e70d4ba.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/static/js/787.dcaeec60.chunk.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/static/js/787.dcaeec60.chunk.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/build/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/build/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/build/static/js/787.dcaeec60.chunk.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/build/static/js/787.dcaeec60.chunk.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/node_modules/.cache/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/component/Mypage/MypageComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/component/Mypage/MypageComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/component/admin/MusicList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/component/admin/MusicList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/component/community/CommunityWriteComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/component/community/CommunityWriteComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/component/main/HeartSong.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/component/main/HeartSong.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/component/main/MainPageComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/component/main/MainPageComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/component/performance/UpdateUserInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/component/performance/UpdateUserInfo.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/component/performance/performanceCardView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/component/performance/performanceCardView.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/style/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/style/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/utils/ModalComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/utils/ModalComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/static/js/787.dcaeec60.chunk.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/static/js/787.dcaeec60.chunk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/src/component/community/CommunityComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/component/community/CommunityComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/src/style/CommunityPostWriteStyle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/style/CommunityPostWriteStyle.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/src/style/MyPageStyle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/style/MyPageStyle.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,17 +59,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/dev/Backend/PROJECT_TOTAL/src/main/react/src/images&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/dev/Backend/PERSONAL_BACKEND"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\dev\Backend\PROJECT_TOTAL\src\main\react\src\images" />

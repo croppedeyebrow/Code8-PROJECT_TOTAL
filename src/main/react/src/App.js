@@ -27,15 +27,18 @@ import { CartProvider } from "./context/CartContext";
 import FindEmail from "./pages/FindEmail";
 import FindPassword from "./pages/FindPassword";
 import {SuccessPage} from "./component/Mypage/SuccessComponent";
+import LoginContext from "./context/LoginContext";
 
 function App() {
   const [footerData, setFooterData] = useState([]);
+    const [loginData, setLoginData] = useState();
 
   return (
     <>
       <GlobalStyle />
       <Router>
         <CartProvider>
+        <LoginContext.Provider value={{ loginData, setLoginData }}>
           <FooterContext.Provider value={{ footerData, setFooterData }}>
             <Header />
 
@@ -86,6 +89,7 @@ function App() {
             </Routes>
             <Footer />
           </FooterContext.Provider>
+          </LoginContext.Provider>
         </CartProvider>
       </Router>
     </>

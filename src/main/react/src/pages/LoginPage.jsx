@@ -22,10 +22,12 @@ import { useNavigate } from "react-router-dom";
 import kakao from "../images/kakao_login.png";
 import Common from "../utils/Common";
 import FooterContext from "../context/FooterContext";
+import LoginContext from "../context/LoginContext";
 
 const LoginPage = () => {
   // 저작권
   const { setFooterData } = useContext(FooterContext);
+  const { setLoginData } = useContext(LoginContext);
 
   useEffect(() => {
     setFooterData(
@@ -124,9 +126,9 @@ const LoginPage = () => {
         // console.log("토큰의 id:", res.data.accessToken.name);
         window.localStorage.setItem("refreshToken", refreshToken);
         alert("로그인 성공");
+        setLoginData(true);
         // 로그인 성공 시 메인 페이지로 이동
         navigate("/");
-        window.location.reload();
       } else {
         alert("입력 정보를 확인하시오.");
       }
@@ -148,9 +150,10 @@ const LoginPage = () => {
         window.localStorage.setItem("refreshToken", refreshToken);
         window.localStorage.setItem("admin", "admin");
         alert("관리자 로그인 성공");
+        setLoginData(true);
         // 로그인 성공 시 메인 페이지로 이동
         navigate("/adminpage");
-        window.location.reload();
+        // window.location.reload();
       } else {
         alert("입력 정보를 확인하시오.");
       }
@@ -164,7 +167,7 @@ const LoginPage = () => {
       <Container>
         <BACKGROUND>
           <LoginSginup>
-            <LOGO onClick={onClickAddminLogin}></LOGO>
+            <LOGO onDoubleClick={onClickAddminLogin}></LOGO>
 
             <div className="login">
               <div className="inline">
@@ -174,7 +177,7 @@ const LoginPage = () => {
                     onClick={onClickAddminLogin}
                     style={{ cursor: "pointer" }}
                   >
-                    /Admin
+                    /admin
                   </span>
                 </LoginTitle>
                 <InputEmail

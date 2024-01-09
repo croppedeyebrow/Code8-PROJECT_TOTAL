@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import headlogo from "../images/Symbol_white.png";
 import headlogo2 from "../images/Symbol_color.png";
@@ -7,6 +7,7 @@ import { Link as RouterLink, useNavigate } from "react-router-dom";
 import UseAuth from "../hooks/UseAuth";
 import Cancel from "../images/Cancel_White.png"
 import MemberInfoAxiosApi from "../axios/MemberInfoAxios";
+import LoginContext from "../context/LoginContext";
 
 const NavContainer = styled.div`
   width: 100%;
@@ -154,6 +155,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false); // 사이드바의 상태를 관리합니다.
   const [userInfo, setUserInfo] = useState(null); // 유저 정보를 관리합니다.
   const navigate = useNavigate();
+  const { loginData } = useContext(LoginContext);
 
   useEffect(() => {
     const memberInfo = async () => {
@@ -174,8 +176,9 @@ const Header = () => {
   };
 
   useEffect(() => {
-    setIsLogIn(!!email); // 이메일 정보가 있으면 로그인 상태로 설정합니다.
-  }, [email]); // 이메일 정보가 바뀔 때마다 실행합니다.
+    console.log("헤더로그인정보조회 : ", loginData);
+    setIsLogIn(loginData); // 이메일 정보가 있으면 로그인 상태로 설정합니다.
+  }, [loginData]); // 이메일 정보가 바뀔 때마다 실행합니다.
 
   const handleLogout = () => {
     localStorage.clear(); // 로그아웃 시 로컬 스토리지의 모든 정보를 제거합니다.
@@ -194,9 +197,9 @@ const Header = () => {
     <NavContainer isOpen={isOpen}>
       <div className="rightzone">
           <Link to="/performance"><TextBox>공연</TextBox></Link>
-          <Link to="/productPage"><TextBox>STORE</TextBox></Link>
+          <Link to=""><TextBox>STORE</TextBox></Link>
           <Link to="/music-list"><TextBox>음원</TextBox></Link>
-          <Link to="/communitypage"><TextBox>커뮤니티</TextBox></Link>
+          <Link to="/comunitypage"><TextBox>커뮤니티</TextBox></Link>
       </div>
       <HeadLogo onClick={handleLogoClick}/>
       <div className="leftzone">
@@ -220,8 +223,8 @@ const Header = () => {
         <div className="close" onClick={toggleSidebar}/>
         {isLogIn ? (
           <>
-          <Link to="/mypage" onClick={toggleSidebar} style={{margin:"0"}}>{userInfo.authority}</Link>
-          <Link to="/mypage" onClick={toggleSidebar} style={{fontSize:"3rem", fontWeight:"700"}}>{userInfo.userNickname} <span>님</span></Link>
+          <Link to="/mypage" onClick={toggleSidebar} style={{margin:"0"}}>{userInfo && userInfo.authority}</Link>
+          <Link to="/mypage" onClick={toggleSidebar} style={{fontSize:"3rem", fontWeight:"700"}}>{userInfo && userInfo.userNickname} <span>님</span></Link>
           <Link onClick={handleLogout}>로그아웃</Link>
           </>
         ):(
@@ -232,9 +235,9 @@ const Header = () => {
         )}
 
         <Link to="performance" onClick={toggleSidebar}>공연</Link>
-        <Link to="productPage" onClick={toggleSidebar}>STORE</Link>
-        <Link to="music-list" onClick={toggleSidebar}>음원</Link>
-        <Link to="communitypage" onClick={toggleSidebar}>커뮤니티</Link>
+        <Link to="product" onClick={toggleSidebar}>STORE</Link>
+        <Link to="music" onClick={toggleSidebar}>음원</Link>
+        <Link to="comunitypage" onClick={toggleSidebar}>커뮤니티</Link>
     </Sidebar>
     </>
   );

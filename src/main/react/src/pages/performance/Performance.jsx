@@ -28,7 +28,7 @@ const Performance = () => {
 
   const email = UseAuth();
   useEffect(() => {
-  window.location.reload();
+//   window.location.reload();
     setFooterData("");
   }, []);
 

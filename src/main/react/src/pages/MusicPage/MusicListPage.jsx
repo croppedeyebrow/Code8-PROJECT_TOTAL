@@ -954,6 +954,8 @@ const MusicList = () => {
     }
   };
 
+
+
   //음악 리스트 불러오기.
 
   useEffect(() => {
@@ -976,9 +978,9 @@ const MusicList = () => {
         console.log(error);
       }
     };
-          window.location.reload();
 
     getAllMusic();
+
   }, []);
 
   //랜덤으로 이미지 뽑기.

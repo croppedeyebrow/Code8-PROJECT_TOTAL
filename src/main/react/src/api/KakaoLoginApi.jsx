@@ -35,6 +35,7 @@ const KakaoLogin = () => {
           Common.setRefreshToken(kakaoRes.data.refreshToken);
           alert("로그인 성공");
           usenavigator("/");
+          window.location.reload();
         } else {
           // 아이디 존재 x => 회원 가입
           alert("회원 가입이 필요합니다.");

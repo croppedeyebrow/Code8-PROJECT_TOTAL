@@ -18,10 +18,14 @@
       <change beforePath="$PROJECT_DIR$/src/main/react/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/build/asset-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/react/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/build/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/react/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/node_modules/.cache/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/component/main/GenderAlgorism.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/component/main/GenderAlgorism.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/src/api/KakaoLoginApi.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/api/KakaoLoginApi.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/src/pages/AdminPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/pages/AdminPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/src/pages/CommunityPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/pages/CommunityPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/react/src/pages/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/pages/LoginPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/react/src/pages/MusicPage/MusicListPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/pages/MusicPage/MusicListPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/react/src/style/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/style/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/src/pages/performance/Performance.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/pages/performance/Performance.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/react/src/utils/Common.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/react/src/utils/Common.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/asset-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
     </list>

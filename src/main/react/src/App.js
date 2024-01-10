@@ -42,7 +42,7 @@ function App() {
       <Router>
        <Provider store={store}>
         <CartProvider>
-//        <LoginContext.Provider value={{ loginData, setLoginData }}>
+        <LoginContext.Provider value={{ loginData, setLoginData }}>
           <FooterContext.Provider value={{ footerData, setFooterData }}>
             <Header />
 
@@ -93,7 +93,7 @@ function App() {
             </Routes>
             <Footer />
           </FooterContext.Provider>
-//          </LoginContext.Provider>
+          </LoginContext.Provider>
         </CartProvider>
          </Provider>
       </Router>

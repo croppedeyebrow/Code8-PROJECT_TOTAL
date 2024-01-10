@@ -197,7 +197,7 @@ const AdminPage = () => {
   useEffect(() => {
     const isAdmin = async () => {
       try {
-        window.location.reload();
+//         window.location.reload();
 
         const res = await SignUpAxios.checkAddmin();
         // console.log("어드민?", res);

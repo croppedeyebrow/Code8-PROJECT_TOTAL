@@ -36,7 +36,8 @@ const WriteComponent = () => {
   useEffect(() => {
         if(decode){
           setEmail(decode.sub);
-          setNickName(decode.nickname);
+          const userInfoResponse = await MemberInfoAxiosApi.getUserInfo(decode.sub);
+          setNickName(userInfoResponse.userNickname)
         }
     const getCategories = async () => {
       try {

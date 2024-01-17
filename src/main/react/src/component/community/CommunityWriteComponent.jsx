@@ -36,6 +36,7 @@ const WriteComponent = () => {
   useEffect(() => {
         if(decode){
           setEmail(decode.sub);
+          setNickName(decode.nickname);
         }
     const getCategories = async () => {
       try {

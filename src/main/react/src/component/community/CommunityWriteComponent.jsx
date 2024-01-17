@@ -35,9 +35,13 @@ const WriteComponent = () => {
   const quillRef = useRef(null);
   useEffect(() => {
         if(decode){
-          setEmail(decode.sub);
-          const userInfoResponse = await MemberInfoAxiosApi.getUserInfo(decode.sub);
-          setNickName(userInfoResponse.userNickname)
+        setEmail(decode.sub);
+            const fetchData = async () => {
+            const userInfoResponse = await MemberInfoAxiosApi.getUserInfo(decode.sub);
+                      setNickName(userInfoResponse.userNickname)
+
+            }
+           fetchData();
         }
     const getCategories = async () => {
       try {

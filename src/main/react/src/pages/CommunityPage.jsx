@@ -61,7 +61,7 @@ const CommunityPage = () => {
   const [isList, setIsList] = useState(false);
   const [categories, setCategories] = useState([]);
   const [email, setEmail] = useState("");
-  const token  = Common.getAccessToken();
+  const token = Common.getAccessToken();
   const decode = token ? jwtDecode(token) : null;
   const [userInfo, setUserInfo] = useState(null);
   const { message: wsMessage } = useWebSocket(Common.SOCKET_URL, email);
@@ -80,10 +80,10 @@ const CommunityPage = () => {
   `;
   useEffect(() => {
     const getCategories = async () => {
-//     window.location.reload();
-    if(decode){
+      //     window.location.reload();
+      if (decode) {
         setEmail(decode.sub);
-    }
+      }
       try {
         const rsp = await AxiosApi.cateList();
         console.log(rsp.data);
@@ -99,8 +99,7 @@ const CommunityPage = () => {
     };
     getUserInfo();
     getCategories();
-}, []);
-
+  }, []);
 
   return (
     <>
@@ -116,22 +115,22 @@ const CommunityPage = () => {
           </Container>
           <CommunityList>
             <Aside>
-{/*               <CommunityDashboard> */}
-{/*                 <CommunityProfile> */}
-{/*                   <CommunityProfileFrame> */}
-{/*                     <CommunityProfilePart></CommunityProfilePart> */}
-{/*                   </CommunityProfileFrame> */}
-{/*                   <CommunityProfileImg img={userInfo} /> */}
-{/*                 </CommunityProfile> */}
-{/*                 <TextCenter> */}
-{/*                   <TextFrame> */}
-{/*                     <TextLog>로그인 후 더 편하게 이용해 보세요</TextLog> */}
-{/*                   </TextFrame> */}
-{/*                 </TextCenter> */}
-{/*                 <DashboardButtonFrame> */}
-{/*                   <DashboardButton>로그인</DashboardButton> */}
-{/*                 </DashboardButtonFrame> */}
-{/*               </CommunityDashboard> */}
+              {/*               <CommunityDashboard> */}
+              {/*                 <CommunityProfile> */}
+              {/*                   <CommunityProfileFrame> */}
+              {/*                     <CommunityProfilePart></CommunityProfilePart> */}
+              {/*                   </CommunityProfileFrame> */}
+              {/*                   <CommunityProfileImg img={userInfo} /> */}
+              {/*                 </CommunityProfile> */}
+              {/*                 <TextCenter> */}
+              {/*                   <TextFrame> */}
+              {/*                     <TextLog>로그인 후 더 편하게 이용해 보세요</TextLog> */}
+              {/*                   </TextFrame> */}
+              {/*                 </TextCenter> */}
+              {/*                 <DashboardButtonFrame> */}
+              {/*                   <DashboardButton>로그인</DashboardButton> */}
+              {/*                 </DashboardButtonFrame> */}
+              {/*               </CommunityDashboard> */}
               <CommunityMenuList>
                 <CommunityMenuItem>
                   <Link to="/communitypage">

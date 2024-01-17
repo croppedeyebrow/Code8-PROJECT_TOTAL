@@ -37,9 +37,8 @@ const WriteComponent = () => {
         if(decode){
         setEmail(decode.sub);
             const fetchData = async () => {
-            const userInfoResponse = await MemberInfoAxiosApi.getUserInfo(decode.sub);
-                      setNickName(userInfoResponse.userNickname)
-
+                const userInfoResponse = await MemberInfoAxiosApi.getUserInfo(decode.sub);
+                setNickName(userInfoResponse.userNickname);
             }
            fetchData();
         }

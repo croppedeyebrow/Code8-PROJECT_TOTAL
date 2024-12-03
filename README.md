@@ -1,5 +1,5 @@
 <h1>세미 파이널 프로젝트 : CODE8</h1>
-
+![code8](https://github.com/user-attachments/assets/0028e378-3453-4466-aa0e-d86c037a0d78)
 ----
 <h2>프로덕트 개요</h2>
 

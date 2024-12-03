@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/abcbea7b-f579-4d22-9017-2464c65137db)<h1>세미 파이널 프로젝트 : CODE8</h1>
+<h1>세미 파이널 프로젝트 : CODE8</h1>
 
 ----
 <h2>프로덕트 개요</h2>

@@ -27,6 +27,14 @@
 <h4>레퍼런스 정리</h4>
  [레퍼런스 정리](https://neulsom-insight.notion.site/a86aaff066364d81828ea2d5188631fc)
 
+</br>
+---
+<h4>세부 기획서 정리-notion</h4>0
+ [Notion](https://neulsom-insight.notion.site/Project-Page-a49bc0583f504082a454e867fb52d89c)
 
+
+ 
+</br>
+---
 
 

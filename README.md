@@ -1,6 +1,7 @@
 <h1>세미 파이널 프로젝트 : CODE8</h1>
-<img  src= https://github.com/user-attachments/assets/69eca219-fb8f-4c0d-a26d-3d43ffe6e68a.jpeg />
 
+
+![image](https://github.com/user-attachments/assets/5022a960-8393-46c2-96da-1392f7624155)
 
 
 

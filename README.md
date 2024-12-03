@@ -79,10 +79,19 @@
     </br>
             ∇ 음악 리스트 페이지 </br>
                 [ 이름/작곡가별 검색 기능, 장르별 검색, 음악 재생, 페이지네이션 ] </br>
+                ![image](https://github.com/user-attachments/assets/4d933cb5-76b5-4e38-9caf-6dd388dfdc27)
+                ![image](https://github.com/user-attachments/assets/1a691f58-7528-4a56-aa15-846c8da3fa8f)
+</br>
             ∇ 음악 정보 페이지 </br>
                 [ 등록된 정보 불러오기, 좋아요 기능, 음원 구매 기능, 음원 별 댓글 기능, 음악 재생 ] </br>
-            ∇ 음악 등 페이지 </br>
+![image](https://github.com/user-attachments/assets/b8a7fd5c-e291-4164-a23e-f83c1c05d0f4)
+![image](https://github.com/user-attachments/assets/53861c59-34fd-4ea9-b509-c0c3b1d11a96)
+
+
+ </br>
+            ∇ 음악 등록 페이지 </br>
                 [ 음악 정보 입력, firebase 활용 이미지 등록 ]
+![image](https://github.com/user-attachments/assets/7a0b313a-3ef3-4886-9227-bc5199dba91c)
 
 
 

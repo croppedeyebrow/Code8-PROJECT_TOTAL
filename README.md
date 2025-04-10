@@ -38,6 +38,8 @@
 ![Python](https://img.shields.io/badge/python-3776AB.svg?&style=for-the-badge&logo=python&logoColor=white)
 <img src="https://img.shields.io/badge/java-%23ED8B00?style=for-the-badge&logo=openjdk&logoColor=white">
 
+
+
 </br>
 
 
@@ -61,7 +63,8 @@
     <h4>∇ 디자인 및 기획 </h4>
     <h4>∇ 담당 페이지의 프론트 UI 설계 및 API 엔드포인트 설정 </h4>
     <h4>∇ 담당 페이지의 백엔드 로직 설계(Java + SpringBoot) </h4>
-    <h5>∇ 담당한 페이지 </h5>
+    
+<h5>∇ 담당한 프론트엔드 이미지 및 코드 정리 </h5>
     </br>
 ∇ 음악 리스트 페이지 </br>
                 [ 이름/작곡가별 검색 기능, 장르별 검색, 음악 재생, 페이지네이션 ] </br>
@@ -92,6 +95,8 @@ https://github.com/croppedeyebrow/Code8-PROJECT_TOTAL/blob/master/src/main/react
 ![image](https://github.com/user-attachments/assets/bfa753ab-1c50-4eaf-81f4-c58754e478c6)
 
 
+
+
  </br>
             ∇ 음악 등록 페이지 </br>
                 [ 음악 정보 입력, firebase 활용 이미지 등록 ]
@@ -107,5 +112,30 @@ https://github.com/croppedeyebrow/Code8-PROJECT_TOTAL/blob/master/src/main/react
 
 
 
+<h5>∇ 담당한 백엔드 코드 정리 </h5>
 
+<h6>entity</h6>
+Music.java
+MusicComment.java
+MusicHeart.java
 
+<h6>controller</h6>
+MusicCommentController.java
+MusicController.java
+MusicHeartController.java
+
+<h6>dto</h6>
+MusicCommentDTO.java
+MusicDTO.java
+MusicHeartDto.java
+MusicUserDto.java
+
+<h6>repository</h6>
+MusicHeartRepository.java
+MusicCommentRepository.java
+MusicRepository.java
+
+<h6>service</h6>
+MusicCommentService.java
+MusicHeartService.java
+MusicService.java

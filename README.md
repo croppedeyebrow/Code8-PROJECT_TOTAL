@@ -19,7 +19,7 @@
 ----
 </br>
 
-<h4>프로덕트 스택 정리</h4>
+<h3>프로덕트 스택 정리</h3>
 </br>
 <h5>프론트엔드</h5>
 
@@ -57,19 +57,28 @@
 
 </br>
 
-<h4>담당 업무 정리</h4>
+<h3>담당 역할</h3>
     <h4>∇ 디자인 및 기획 </h4>
     <h4>∇ 담당 페이지의 프론트 UI 설계 및 API 엔드포인트 설정 </h4>
     <h4>∇ 담당 페이지의 백엔드 로직 설계(Java + SpringBoot) </h4>
     <h5>∇ 담당한 페이지 </h5>
     </br>
-            ∇ 음악 리스트 페이지 </br>
+∇ 음악 리스트 페이지 </br>
                 [ 이름/작곡가별 검색 기능, 장르별 검색, 음악 재생, 페이지네이션 ] </br>
 
  ![image](https://github.com/user-attachments/assets/4d933cb5-76b5-4e38-9caf-6dd388dfdc27)
  ![image](https://github.com/user-attachments/assets/1a691f58-7528-4a56-aa15-846c8da3fa8f)
+
+
+
+![image](https://github.com/user-attachments/assets/ef6d62a8-31a3-4d81-8298-3b6ebe45ee9e)
+
+ 
 </br>
-            ∇ 음악 정보 페이지 </br>
+
+
+
+∇ 음악 정보 페이지 </br>
                 [ 등록된 정보 불러오기, 좋아요 기능, 음원 구매 기능, 음원 별 댓글 기능, 음악 재생 ] </br>
                 
 ![image](https://github.com/user-attachments/assets/b8a7fd5c-e291-4164-a23e-f83c1c05d0f4)

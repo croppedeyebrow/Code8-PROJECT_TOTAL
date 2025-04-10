@@ -86,11 +86,23 @@ https://github.com/croppedeyebrow/Code8-PROJECT_TOTAL/blob/master/src/main/react
 ![image](https://github.com/user-attachments/assets/53861c59-34fd-4ea9-b509-c0c3b1d11a96)
 
 
+https://github.com/croppedeyebrow/Code8-PROJECT_TOTAL/blob/master/src/main/react/src/pages/MusicPage/MusicInfoPage.jsx
+
+![image](https://github.com/user-attachments/assets/967153fc-fab8-4acb-94a9-592bdad1f378)
+![image](https://github.com/user-attachments/assets/bfa753ab-1c50-4eaf-81f4-c58754e478c6)
+
+
  </br>
             ∇ 음악 등록 페이지 </br>
                 [ 음악 정보 입력, firebase 활용 이미지 등록 ]
                 
 ![image](https://github.com/user-attachments/assets/7a0b313a-3ef3-4886-9227-bc5199dba91c)
+
+https://github.com/croppedeyebrow/Code8-PROJECT_TOTAL/blob/master/src/main/react/src/pages/MusicPage/MusicRegistPage.jsx
+
+![image](https://github.com/user-attachments/assets/15721346-23b3-4889-8778-5ea833797e9c)
+
+![image](https://github.com/user-attachments/assets/c1656fbf-0220-4043-b92b-4a1170b1976d)
 
 
 

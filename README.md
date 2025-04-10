@@ -115,27 +115,27 @@ https://github.com/croppedeyebrow/Code8-PROJECT_TOTAL/blob/master/src/main/react
 <h5>∇ 담당한 백엔드 코드 정리 </h5>
 
 <h6>entity</h6>
-Music.java
-MusicComment.java
-MusicHeart.java
+Music.java </br>
+MusicComment.java </br>
+MusicHeart.java </br>
 
 <h6>controller</h6>
-MusicCommentController.java
-MusicController.java
-MusicHeartController.java
+MusicCommentController.java </br>
+MusicController.java </br>
+MusicHeartController.java </br>
 
 <h6>dto</h6>
-MusicCommentDTO.java
-MusicDTO.java
-MusicHeartDto.java
-MusicUserDto.java
+MusicCommentDTO.java </br>
+MusicDTO.java </br>
+MusicHeartDto.java </br>
+MusicUserDto.java </br>
 
 <h6>repository</h6>
-MusicHeartRepository.java
-MusicCommentRepository.java
-MusicRepository.java
+MusicHeartRepository.java </br>
+MusicCommentRepository.java </br>
+MusicRepository.java </br>
 
 <h6>service</h6>
-MusicCommentService.java
-MusicHeartService.java
+MusicCommentService.java </br>
+MusicHeartService.java </br>
 MusicService.java
